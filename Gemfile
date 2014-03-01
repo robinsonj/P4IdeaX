@@ -10,6 +10,9 @@ gem 'rails', '4.0.3'
 gem 'haml', '~> 4.0.5'
 gem 'haml-rails', '~> 0.5.0'
 
+# Use devise for use authentication
+gem 'devise', '~> 3.2.3'
+
 # Use sqlite3 as the database for Active Record
 gem 'sqlite3'
 
