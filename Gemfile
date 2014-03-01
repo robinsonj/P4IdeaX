@@ -1,7 +1,14 @@
 source 'https://rubygems.org'
 
+# Specify Ruby version for application use.
+ruby '2.0.0'
+
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 gem 'rails', '4.0.3'
+
+# Use haml for the application's views instead of erb
+gem 'haml', '~> 4.0.5'
+gem 'haml-rails', '~> 0.5.0'
 
 # Use sqlite3 as the database for Active Record
 gem 'sqlite3'
