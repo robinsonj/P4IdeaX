@@ -11,6 +11,12 @@ indent_size = 2
 charset = utf-8
 end_of_line = lf
 
+[*.haml]
+indent_style = space
+indent_size = 2
+charset = utf-8
+end_of_line = lf
+
 [Gemfile]
 indent_style = space
 indent_size = 2
