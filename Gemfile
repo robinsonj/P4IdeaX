@@ -41,10 +41,10 @@ end
 
 group :development do
   gem 'rspec-rails', '~> 2.14.1'
-
-  # Use sqlite3 as the database for Active Record
-  gem 'sqlite3'
 end
+
+# Use sqlite3 as the database for Active Record
+gem 'sqlite3'
 
 # Use thin as the app server
 gem 'thin'
