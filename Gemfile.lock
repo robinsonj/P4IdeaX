@@ -157,7 +157,7 @@ PLATFORMS
   ruby
 
 DEPENDENCIES
-  capybara
+  capybara (~> 2.2.1)
   coffee-rails (~> 4.0.0)
   devise (~> 3.2.3)
   haml (~> 4.0.5)
