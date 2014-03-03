@@ -13,9 +13,6 @@ gem 'haml-rails', '~> 0.5.0'
 # Use devise for use authentication
 gem 'devise', '~> 3.2.3'
 
-# Use sqlite3 as the database for Active Record
-gem 'sqlite3'
-
 # Use SCSS for stylesheets
 gem 'sass-rails', '~> 4.0.0'
 
@@ -42,11 +39,15 @@ group :doc do
   gem 'sdoc', require: false
 end
 
+group :development do
+  gem 'rspec-rails', '~> 2.14.1'
+
+  # Use sqlite3 as the database for Active Record
+  gem 'sqlite3'
+end
+
 # Use thin as the app server
 gem 'thin'
-
-# Use ActiveModel has_secure_password
-# gem 'bcrypt-ruby', '~> 3.1.2'
 
 # Use Capistrano for deployment
 # gem 'capistrano', group: :development
