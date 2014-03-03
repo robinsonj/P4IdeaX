@@ -10,6 +10,8 @@ require 'sprockets/railtie'
 # you've limited to :test, :development, or :production.
 Bundler.require(:default, Rails.env)
 
+require File.dirname(__FILE__) + '/environment_custom.rb'
+
 module P4IDX
   class Application < Rails::Application
     # Settings in config/environments/* take precedence over those specified here.
