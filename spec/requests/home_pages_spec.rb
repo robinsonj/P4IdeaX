@@ -1,6 +1,6 @@
 require 'spec_helper'
 
-describe "HomePages" do
+describe "HomeRequests" do
   describe "GET index" do
     it "renders home#index template." do
       get home_index_path

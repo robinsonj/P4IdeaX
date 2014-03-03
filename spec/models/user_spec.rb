@@ -9,7 +9,7 @@ describe User do
 
   subject { @user }
 
-  describe "email address is already taken" do
+  describe "creation with duplicate email address" do
     before do
       duplicate_user = @user.dup
       duplicate_user.email = @user.email.upcase
@@ -21,7 +21,7 @@ describe User do
 
   subject { @user2 }
 
-  describe "password is blank" do
+  describe "creation with blank password" do
     it { should_not be_valid }
   end
 end
