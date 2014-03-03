@@ -1,5 +1,8 @@
 require 'spec_helper'
 
 describe "home/index.html.haml" do
-  pending "add some examples to (or delete) #{__FILE__}"
+  it "renders home/index" do
+    render
+    expect(view).to render_template("home/index")
+  end
 end

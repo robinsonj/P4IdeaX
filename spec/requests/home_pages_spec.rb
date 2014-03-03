@@ -1,10 +1,23 @@
 require 'spec_helper'
 
 describe "HomePages" do
-  describe "GET /home_pages" do
-    it "works! (now write some real specs)" do
-      # Run the generator again with the --webrat flag if you want to use webrat methods/matchers
-      get home_pages_index_path
+  describe "GET index" do
+    it "renders home#index template." do
+      get home_index_path
+      response.status.should be(200)
+    end
+  end
+
+  describe "GET about" do
+    it "renders home#about template." do
+      get home_about_path
+      response.status.should be(200)
+    end
+  end
+
+  describe "GET contact" do
+    it "renders home#contact template." do
+      get home_contact_path
       response.status.should be(200)
     end
   end
