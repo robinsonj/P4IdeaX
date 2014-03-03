@@ -2,11 +2,11 @@ P4IDX::Application.routes.draw do
   root :to => "home#index"
 
   devise_for :users
-  resources :users
+  # resources :users
 
-  match '/index'    => 'home#index',   via: 'get',  :as => :home_index
-  match '/about'    => 'home#about',   via: 'get',  :as => :home_about
-  match '/contact'  => 'home#contact', via: 'get',  :as => :home_contact
+  match '/index'    => 'home#index',    via: 'get',   :as => :home_index
+  match '/about'    => 'home#about',    via: 'get',   :as => :home_about
+  match '/contact'  => 'home#contact',  via: 'get',   :as => :home_contact
 
   # Example resource route with options:
   #   resources :products do
