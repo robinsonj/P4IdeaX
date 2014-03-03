@@ -4,12 +4,12 @@
 #     SHORT_SITE_NAME = 'Ideaomatic'
 
 COMPANY_NAME = 'YOUR_COMPANY_NAME'
-SHORT_SITE_NAME = 'BBYIDX'
+SHORT_SITE_NAME = 'SHORT_SITE_NAME'
 LONG_SITE_NAME = "#{COMPANY_NAME} #{SHORT_SITE_NAME}"
 
 # Set these to the hostnames of the machines where you'll be doing your deploys.
-PRODUCTION_HOST = 'bbyidx.com'
-STAGING_HOST = 'bbyidx.com'
+PRODUCTION_HOST = 'your_production_host.com'
+STAGING_HOST = 'your_staging_host.com'
 EMAIL_FROM_ADDRESS = "#{LONG_SITE_NAME} <noreply@#{PRODUCTION_HOST}>"
 
 # # Specify a long random string for SESSION_SECRET to secure user sessions
