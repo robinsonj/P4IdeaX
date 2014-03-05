@@ -46,7 +46,7 @@ describe "DeviseUsers" do
       page.should have_content("Signed in successfully.")
     end
 
-    it "has error message after devise/sessions#new with invalid email" do
+    it "does not have succesful login message after devise/sessions#new with invalid email" do
 
       visit new_user_session_path
 
@@ -55,10 +55,11 @@ describe "DeviseUsers" do
 
       click_button "Sign in"
 
-      page.should have_content("error_message")
+      # page.should have_content("error_message")
+      page.should_not have_content("Signed in successfully.")
     end
 
-    it "has error message after devise/sessions#new with invalid password" do
+    it "does not have succesful login message after devise/sessions#new with invalid password" do
 
       visit new_user_session_path
 
@@ -67,7 +68,8 @@ describe "DeviseUsers" do
 
       click_button "Sign in"
 
-      page.should have_content("error_message")
+      # page.should have_content("error_message")
+      page.should_not have_content("Signed in successfully.")
     end
   end
 end
