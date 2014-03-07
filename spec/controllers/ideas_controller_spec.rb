@@ -33,5 +33,5 @@ describe IdeasController do
     end
   end
 
-  pending "has no POST tests yet"
+  pending "needs expanded GET, POST, PATCH, PUT, DESTROY tests"
 end
