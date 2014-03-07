@@ -43,4 +43,7 @@ RSpec.configure do |config|
 
   # Include the Capybara DSL for clean spec writing.
   config.include Capybara::DSL
+
+  # Use factory_girl & factory_girl_rails to generate test data.
+  config.include FactoryGirl::Syntax::Methods
 end
