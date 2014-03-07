@@ -15,16 +15,12 @@ describe Idea do
       idea2.should_not be_valid
     end
 
-    it "does not create an idea with an empty title" do
+    it "does not create an idea with an empty or nil title" do
       idea = build(:idea, title: '')
+      idea2 = build(:idea, title: nil)
 
       idea.should_not be_valid
-    end
-
-    it "does not create an idea with a nil title" do
-      idea = build(:idea, title: nil)
-
-      idea.should_not be_valid
+      idea2.should_not be_valid
     end
   end
 end
