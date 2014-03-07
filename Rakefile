@@ -3,4 +3,4 @@
 
 require File.expand_path('../config/application', __FILE__)
 
-P4IDX::Application.load_tasks
+BBYIDX::Application.load_tasks

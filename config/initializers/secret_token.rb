@@ -22,4 +22,4 @@ end
 
 # Make sure your secret_key_base is kept private
 # if you're sharing your code publicly.
-P4IDX::Application.config.secret_key_base = secure_token
+BBYIDX::Application.config.secret_key_base = secure_token

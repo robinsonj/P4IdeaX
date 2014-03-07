@@ -1,4 +1,4 @@
-P4IDX::Application.routes.draw do
+BBYIDX::Application.routes.draw do
   root :to => "home#index"
 
   devise_for :users
