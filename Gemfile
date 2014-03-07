@@ -39,12 +39,14 @@ group :doc do
   gem 'sdoc', require: false
 end
 
-group :development do
+group :development, :test do
   gem 'rspec-rails', '~> 2.14.1'
+  gem 'factory_girl_rails'
 end
 
 group :test do
   gem 'capybara', '~> 2.2.1'
+  gem 'faker'
 end
 
 # Use sqlite3 as the database for Active Record
