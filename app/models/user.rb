@@ -5,4 +5,6 @@ class User < ActiveRecord::Base
          :recoverable, :rememberable, :trackable, :validatable
 
   validates :email, presence: true, uniqueness: {case_sensitive: false}
+
+  has_many :comments, :foreign_key => 'author_id'
 end
