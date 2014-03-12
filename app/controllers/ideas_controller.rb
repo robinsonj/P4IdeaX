@@ -15,6 +15,17 @@ class IdeasController < ApplicationController
   end
 
   def index
+    if params[:page_size]
+      page_size = params[:page_size].to_i
+      params[:page_size] = 10 if page_size < 10
+      params[:page_size] = 50 if page_size > 50
+    end
+
+    idea_objects_list
+
+    respond_to do |format|
+      format.html
+    end
   end
 
   # GET /users/1/edit
@@ -25,6 +36,12 @@ class IdeasController < ApplicationController
   def update
 
   end
+
+  def idea_objects_list
+    @ideas ||= Idea.all.to_a
+  end
+
+  helper_method :idea_objects_list
 
   private
 
