@@ -17,7 +17,7 @@ describe "DeviseUsers" do
 
       click_button "Sign up"
 
-      page.should have_content("Welcome! You have signed up successfully.")
+      expect(page).to have_content("Welcome! You have signed up successfully.")
     end
 
     it "has error message after devise/registrations#new with invalid credentials" do
@@ -29,7 +29,7 @@ describe "DeviseUsers" do
 
       click_button "Sign up"
 
-      page.should have_content("errors prohibited this user from being saved")
+      expect(page).to have_content("errors prohibited this user from being saved")
     end
   end
 
@@ -43,7 +43,7 @@ describe "DeviseUsers" do
 
       click_button "Sign in"
 
-      page.should have_content("Signed in successfully.")
+      expect(page).to have_content("Signed in successfully.")
     end
 
     it "does not have succesful login message after devise/sessions#new with invalid email" do
@@ -55,8 +55,8 @@ describe "DeviseUsers" do
 
       click_button "Sign in"
 
-      # page.should have_content("error_message")
-      page.should_not have_content("Signed in successfully.")
+      # expect(page).to have_content("error_message")
+      expect(page).not_to have_content("Signed in successfully.")
     end
 
     it "does not have succesful login message after devise/sessions#new with invalid password" do
@@ -68,8 +68,8 @@ describe "DeviseUsers" do
 
       click_button "Sign in"
 
-      # page.should have_content("error_message")
-      page.should_not have_content("Signed in successfully.")
+      # expect(page).to have_content("error_message")
+      expect(page).not_to have_content("Signed in successfully.")
     end
   end
 end
