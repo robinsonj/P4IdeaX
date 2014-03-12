@@ -6,6 +6,8 @@ describe CommentsController do
     @user    = create(:user)
     @idea    = create(:idea)
     @comment = create(:comment)
+
+    sign_in @user
   end
 
   describe "GET 'index'" do
