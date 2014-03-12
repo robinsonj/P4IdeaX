@@ -21,8 +21,6 @@ class IdeasController < ApplicationController
       params[:page_size] = 50 if page_size > 50
     end
 
-    idea_objects_list
-
     respond_to do |format|
       format.html
     end
@@ -36,12 +34,6 @@ class IdeasController < ApplicationController
   def update
 
   end
-
-  def idea_objects_list
-    @ideas ||= Idea.all.to_a
-  end
-
-  helper_method :idea_objects_list
 
   private
 
