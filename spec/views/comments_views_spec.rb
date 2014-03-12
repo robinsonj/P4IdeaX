@@ -12,23 +12,27 @@ describe "CommentsViews" do
     it "renders create template" do
       render :template => "comments/edit"
       expect(view).to render_template("comments/edit")
-    end  end
+    end
+  end
 
   describe "comments/index.html.haml" do
     it "renders create template" do
       render :template => "comments/index"
       expect(view).to render_template("comments/index")
-    end  end
+    end
+  end
 
   describe "comments/new.html.haml" do
     it "renders create template" do
       render :template => "comments/new"
       expect(view).to render_template("comments/new")
-    end  end
+    end
+  end
 
   describe "comments/show.html.haml" do
     it "renders create template" do
       render :template => "comments/show"
       expect(view).to render_template("comments/show")
-    end  end
+    end
+  end
 end
