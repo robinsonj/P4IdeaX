@@ -8,6 +8,12 @@ class CommentsController < ApplicationController
 
   def create
     @comment = Commane.new(params)
+
+    if @comment.save
+      redirect_to @comment, notice: 'Your comment has been saved.'
+    else
+      render action: 'new'
+    end
   end
 
   def index
