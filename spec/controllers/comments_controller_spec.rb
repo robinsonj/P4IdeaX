@@ -17,7 +17,7 @@ describe CommentsController do
 
   describe "GET 'new'" do
     it "returns http success" do
-      get 'new', :idea_id => @idea.id
+      get 'new', { :idea_id => @idea.id }
       response.should be_success
     end
   end
