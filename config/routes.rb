@@ -8,7 +8,9 @@ BBYIDX::Application.routes.draw do
   match '/about'    => 'home#about',    via: 'get',   :as => :home_about
   match '/contact'  => 'home#contact',  via: 'get',   :as => :home_contact
 
-  resources :ideas
+  resources :ideas do
+    resources :comments
+  end
 
   # Example resource route with options:
   #   resources :products do
