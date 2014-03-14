@@ -1,12 +1,6 @@
 require 'spec_helper'
 
 describe "CommentsViews" do
-  describe "comments/create.html.haml" do
-    it "renders create template" do
-      render :template => "comments/create"
-      expect(view).to render_template("comments/create")
-    end
-  end
 
   describe "comments/edit.html.haml" do
     it "renders create template" do
