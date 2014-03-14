@@ -7,11 +7,13 @@ class IdeasController < ApplicationController
 
   # POST /ideas
   def create
+    render :nothing => true
     @idea = Idea.new(idea_params)
   end
 
   # GET /ideas/1
   def show
+    @idea = Idea.find(params[:id])
   end
 
   def index
