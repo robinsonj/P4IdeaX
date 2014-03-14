@@ -25,6 +25,8 @@ describe "CommentsViews" do
 
   describe "comments/show.html.haml" do
     it "renders create template" do
+      author   = create(:user)
+      @comment = create(:comment, author_id: author.id)
       render :template => "comments/show"
       expect(view).to render_template("comments/show")
     end
