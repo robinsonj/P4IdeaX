@@ -12,6 +12,8 @@ describe "IdeaViews" do
     it "renders ideas/new" do
       render :template => "ideas/new"
       expect(rendered).to render_template("ideas/new")
+      expect(rendered).to render_template(:partial => "_new")
+      expect(rendered).to include "Remember, please keep it constructive!"
     end
   end
 
@@ -19,7 +21,6 @@ describe "IdeaViews" do
     it "renders ideas/show" do
       render :template => "ideas/show"
       expect(rendered).to render_template("ideas/show")
-      expect(rendered).not_to include "Remember, please keep it constructive!"
     end
   end
 
