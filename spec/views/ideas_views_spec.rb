@@ -19,6 +19,7 @@ describe "IdeaViews" do
 
   describe "ideas/show.html.haml" do
     it "renders ideas/show" do
+      @idea = create(:idea)
       render :template => "ideas/show"
       expect(rendered).to render_template("ideas/show")
     end
