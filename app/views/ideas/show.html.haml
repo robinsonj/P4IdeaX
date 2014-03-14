@@ -3,4 +3,4 @@
   %p=    @idea.description
   %div
     %h3 Comments
-    %div= render :template =>  'comments/show', :collection => @idea.comments, :controller => 'comments'
+    %div= render :partial =>  'comments/comment', :collection => @idea.comments, :controller => 'comments'
