@@ -7,8 +7,9 @@ class IdeasController < ApplicationController
 
   # POST /ideas
   def create
-    render :nothing => true
     @idea = Idea.new(idea_params)
+    @idea.save
+    redirect_to idea_path(@idea.id)
   end
 
   # GET /ideas/1
