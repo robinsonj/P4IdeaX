@@ -14,6 +14,10 @@ class IdeasController < ApplicationController
   # GET /ideas/1
   def show
     @idea = Idea.find(params[:id])
+
+    respond_to do |format|
+      format.html
+    end
   end
 
   def index
