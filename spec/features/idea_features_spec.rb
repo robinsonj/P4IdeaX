@@ -17,11 +17,11 @@ describe "IdeaFeatures" do
 
   describe "Show an existing idea" do
     before do
-      @idea1 = create(:idea, id: 1)
+      @idea1 = create(:idea)
     end
 
     it "should show an idea's title and description" do
-      visit idea_path(id: 1)
+      visit idea_path(id: @idea1.id)
 
       expect(page).to have_content @idea1.title
       expect(page).to have_content @idea1.description
