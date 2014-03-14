@@ -1,3 +1,6 @@
 %div
   %h2= h @idea.title
   %p=    @idea.description
+  %div
+    %h3 Comments
+    %div= render :template =>  'comments/show', :collection => @idea.comments, :controller => 'comments'
