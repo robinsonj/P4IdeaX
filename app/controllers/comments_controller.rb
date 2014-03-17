@@ -7,12 +7,14 @@ class CommentsController < ApplicationController
   end
 
   def create
-    @comment = Commane.new(params)
+    @comment = Comment.new(comment_params)
+    @comment.idea_id = params[:idea_id]
+    @comment.author_id = current_user.id
 
     if @comment.save
-      redirect_to @comment, notice: 'Your comment has been saved.'
+      redirect_to idea_path(:id => params[:idea_id]), notice: 'Your comment has been saved.'
     else
-      render action: 'new'
+      redirect_to idea_path(:id => params[:idea_id]), notice: 'Your comment could not be saved.'
     end
   end
 
@@ -28,4 +30,9 @@ class CommentsController < ApplicationController
     @comment = Comment.find(params[:id])
   end
 
+  private
+
+    def comment_params
+      params.require(:comment).permit(:text)
+    end
 end
