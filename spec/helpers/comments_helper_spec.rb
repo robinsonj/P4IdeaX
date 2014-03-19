@@ -11,5 +11,5 @@ require 'spec_helper'
 #   end
 # end
 describe CommentsHelper do
-  pending "No home helper functions to test yet."
+  pending "No comments helper functions to test yet."
 end
