@@ -9,7 +9,7 @@ class Tag < ActiveRecord::Base
 
     # Split the input string at commas, then strip any extra whitespace
     # on each end of the substrings.
-    tag_names.split(/,/).strip.downcase.gsub(/ +/, '')each do |tag_name|
+    tag_names.split(/,/).strip.downcase.gsub(/ +/, '').each do |tag_name|
       tags.push(find_or_create_by_name(tag_name)) if !tag_name.blank?
     end
 
