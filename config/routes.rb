@@ -12,6 +12,8 @@ BBYIDX::Application.routes.draw do
     resources :comments
   end
 
+  resources :tags, only: [:index]
+
   # Example resource route with options:
   #   resources :products do
   #     member do
