@@ -10,4 +10,7 @@ class Idea < ActiveRecord::Base
   validates :title, presence: true, uniqueness: {case_sensitive: false}
   validates :description, presence: true
 
+  def tag_names
+    tags.map{ |tag| tag.name }.sort.join(', ')
+  end
 end
