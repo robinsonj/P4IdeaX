@@ -6,6 +6,7 @@
     = f.label :description, "Description"
     = f.text_area :description, :example => "It would be great if...", :id => "new-idea-description", :rows => "7", :columns => "20"
   #idea-tags.form-group.inline
+    = render :partial => 'tags/tag_editor', :locals => { :f => f }
     = submit_tag 'Share my idea', :class => 'input-submit'
   %p
     %strong<>
