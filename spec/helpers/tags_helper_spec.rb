@@ -11,5 +11,5 @@ require 'spec_helper'
 #   end
 # end
 describe TagsHelper do
-  pending "add some examples to (or delete) #{__FILE__}"
+  pending "No tags helper functions to test yet."
 end
