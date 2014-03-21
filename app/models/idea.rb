@@ -8,7 +8,7 @@ class Idea < ActiveRecord::Base
     join_table: "idea_tags"
 
   validates :title, presence: true, uniqueness: {case_sensitive: false}
-  validates :description, presence: true
+  validates :description, :owner_id, presence: true
 
   def tag_names
     tags.map{ |tag| tag.name }.sort.join(', ')
