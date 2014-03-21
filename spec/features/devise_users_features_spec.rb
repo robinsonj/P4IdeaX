@@ -3,8 +3,10 @@ require 'spec_helper'
 describe "DeviseUsers" do
 
   before do
-    @user1  = User.create(name: 'test1', email: 'test1@test.com',  password: 'testtest')
-    @user2  = User.create(name: 'test2', email: 'test2@test.com',  password: 'testtest')
+    @user1  = create(:user, name: 'test1', email: 'test1@test.com',  password: 'testtest')
+    @user2  = create(:user, name: 'test2', email: 'test2@test.com',  password: 'testtest')
+
+    @user2.confirm!
   end
 
   describe "devise creates a new user" do
@@ -17,7 +19,9 @@ describe "DeviseUsers" do
 
       click_button "Sign up"
 
-      expect(page).to have_content("Welcome! You have signed up successfully.")
+      expect(page).to have_content("A message with a confirmation \
+              link has been sent to your email address. Please open \
+              the link to activate your account.")
     end
 
     it "has error message after devise/registrations#new with invalid credentials" do
@@ -38,8 +42,8 @@ describe "DeviseUsers" do
 
       visit new_user_session_path
 
-      fill_in "Email",    :with => "test2@test.com"
-      fill_in "Password", :with => "testtest"
+      fill_in "Email",    :with => "#{@user2.email}"
+      fill_in "Password", :with => "#{@user2.password}"
 
       click_button "Sign in"
 
