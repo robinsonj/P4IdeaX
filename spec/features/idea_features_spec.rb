@@ -18,12 +18,19 @@ describe "IdeaFeatures" do
 
       visit new_idea_path
 
-      fill_in "new-idea-title",         :with => Faker::Lorem.sentence
-      fill_in "new-idea-description",   :with => Faker::Lorem.paragraph
+      title = Faker::Lorem.sentence
+      description = Faker::Lorem.paragraph
+      tags = "tag1, tag2, tag3, tag4"
+
+      fill_in "new-idea-title",         :with => title
+      fill_in "new-idea-description",   :with => description
+      fill_in "idea_tag_names",         :with => tags
 
       click_button "Share my idea"
 
-      # expect(page).to have_content("")
+      expect(page).to have_content(title)
+      expect(page).to have_content(description)
+      expect(page).to have_content(tags)
     end
   end
 
