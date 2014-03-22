@@ -2,11 +2,11 @@ require 'spec_helper'
 
 describe "TagViews" do
   before do
-    @tag1 = create(:tag)
-    @tag2 = create(:tag)
-    @tag3 = create(:tag)
-    @tag4 = create(:tag)
-    @tag5 = create(:tag)
+    @tag1 = create(:tag, name: "tag1")
+    @tag2 = create(:tag, name: "tag2")
+    @tag3 = create(:tag, name: "tag3")
+    @tag4 = create(:tag, name: "tag4")
+    @tag5 = create(:tag, name: "tag5")
   end
 
   describe "tags/index.html.haml" do
