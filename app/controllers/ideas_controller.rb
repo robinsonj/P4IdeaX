@@ -8,6 +8,13 @@ class IdeasController < ApplicationController
   # POST /ideas
   def create
     @idea = Idea.new(idea_params)
+
+    if params[:idea][:tag_names]
+      @idea.tags += params[:idea][:tag_names].map{ |tag| Tag.from_string(tag) }.flatten
+      puts @idea.tags
+      puts @idea.inspect
+    end
+
     @idea.save
     redirect_to idea_path(@idea.id)
   end
