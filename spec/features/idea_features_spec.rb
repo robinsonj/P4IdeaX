@@ -30,7 +30,10 @@ describe "IdeaFeatures" do
 
       expect(page).to have_content(title)
       expect(page).to have_content(description)
-      expect(page).to have_content(tags)
+      expect(page).to have_content("tag1")
+      expect(page).to have_content("tag2")
+      expect(page).to have_content("tag3")
+      expect(page).to have_content("tag4")
     end
   end
 
