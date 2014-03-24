@@ -4,7 +4,7 @@ class Tag < ActiveRecord::Base
 
   validates :name, presence: true, uniqueness: {case_sensitive: false}
 
-  def from_string(tag_names)
+  def self.from_string(tag_names)
     tags = []
 
     # Split the input string at commas, then strip any extra whitespace
