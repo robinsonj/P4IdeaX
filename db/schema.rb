@@ -13,6 +13,9 @@
 
 ActiveRecord::Schema.define(version: 20140321180750) do
 
+  # These are extensions that must be enabled in order to support this database
+  enable_extension "plpgsql"
+
   create_table "comments", force: true do |t|
     t.integer  "idea_id"
     t.integer  "author_id"
@@ -26,8 +29,8 @@ ActiveRecord::Schema.define(version: 20140321180750) do
     t.integer "idea_id"
   end
 
-  add_index "idea_tags", ["idea_id"], name: "index_idea_tags_on_idea_id"
-  add_index "idea_tags", ["tag_id"], name: "index_idea_tags_on_tag_id"
+  add_index "idea_tags", ["idea_id"], name: "index_idea_tags_on_idea_id", using: :btree
+  add_index "idea_tags", ["tag_id"], name: "index_idea_tags_on_tag_id", using: :btree
 
   create_table "ideas", force: true do |t|
     t.text     "title"
@@ -61,7 +64,7 @@ ActiveRecord::Schema.define(version: 20140321180750) do
     t.string   "unconfirmed_email"
   end
 
-  add_index "users", ["email"], name: "index_users_on_email", unique: true
-  add_index "users", ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
+  add_index "users", ["email"], name: "index_users_on_email", unique: true, using: :btree
+  add_index "users", ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true, using: :btree
 
 end
