@@ -8,6 +8,11 @@ class IdeasController < ApplicationController
   # POST /ideas
   def create
     @idea = Idea.new(idea_params)
+
+    if params[:idea][:tag_names]
+      @idea.tags += Tag.from_string(params[:idea][:tag_names])
+    end
+
     @idea.save
     redirect_to idea_path(@idea.id)
   end
@@ -45,6 +50,6 @@ class IdeasController < ApplicationController
   private
 
     def idea_params
-      params.require(:idea).permit(:title, :description)
+      params.require(:idea).permit(:owner_id, :title, :description)
     end
 end

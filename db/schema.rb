@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140312160348) do
+ActiveRecord::Schema.define(version: 20140321180750) do
 
   create_table "comments", force: true do |t|
     t.integer  "idea_id"
@@ -21,12 +21,24 @@ ActiveRecord::Schema.define(version: 20140312160348) do
     t.datetime "updated_at"
   end
 
+  create_table "idea_tags", id: false, force: true do |t|
+    t.integer "tag_id"
+    t.integer "idea_id"
+  end
+
+  add_index "idea_tags", ["idea_id"], name: "index_idea_tags_on_idea_id"
+  add_index "idea_tags", ["tag_id"], name: "index_idea_tags_on_tag_id"
+
   create_table "ideas", force: true do |t|
     t.text     "title"
     t.text     "description"
     t.integer  "owner_id"
     t.datetime "created_at"
     t.datetime "updated_at"
+  end
+
+  create_table "tags", force: true do |t|
+    t.string "name"
   end
 
   create_table "users", force: true do |t|
@@ -43,20 +55,13 @@ ActiveRecord::Schema.define(version: 20140312160348) do
     t.datetime "last_sign_in_at"
     t.string   "current_sign_in_ip"
     t.string   "last_sign_in_ip"
+    t.string   "confirmation_token"
+    t.datetime "confirmed_at"
+    t.datetime "confirmation_sent_at"
+    t.string   "unconfirmed_email"
   end
 
   add_index "users", ["email"], name: "index_users_on_email", unique: true
   add_index "users", ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
-
-  create_table "votes", force: true do |t|
-    t.datetime "updated_at"
-    t.datetime "created_at"
-    t.integer  "user_id"
-    t.integer  "idea_id"
-    t.decimal  "rating",     default: 0.0
-  end
-
-  add_index "votes", ["idea_id"], name: "index_votes_on_idea_id"
-  add_index "votes", ["user_id"], name: "index_votes_on_user_id"
 
 end

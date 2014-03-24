@@ -15,5 +15,9 @@
 /log/*.log
 /tmp
 
+# Ignore OS X folder config
+.DS_Store
+.DS_STORE
+
 # Ignore secret token file
 /.secret_token

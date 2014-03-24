@@ -7,6 +7,7 @@ describe CommentsController do
     @idea    = create(:idea)
     @comment = create(:comment)
 
+    @user.confirm!
     sign_in @user
   end
 
