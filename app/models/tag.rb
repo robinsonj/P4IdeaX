@@ -13,14 +13,4 @@ class Tag < ActiveRecord::Base
 
     tags
   end
-
-  private
-
-    def find_or_create_by_name(tag_name)
-      # Strip out any HTML tags that may have been slipped into the input.
-      tag_name = strip_tags(tag_name)
-
-      # Find the tag if it already exists, otherwise create a new one.
-      find_by_name(tag_name) || create!(:name => tag_name)
-    end
 end
