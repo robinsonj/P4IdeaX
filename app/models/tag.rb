@@ -4,6 +4,9 @@ class Tag < ActiveRecord::Base
 
   validates :name, presence: true, uniqueness: {case_sensitive: false}
 
+  include PgSearch
+  pg_search_scope :search_name, against: [:name]
+
   def self.from_string(tag_names)
     tags = []
 
