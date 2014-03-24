@@ -49,8 +49,11 @@ group :test do
   gem 'faker'
 end
 
-# Use sqlite3 as the database for Active Record
-gem 'sqlite3'
+# Use pg as the database for Active Record
+gem 'pg'
+
+# Use pg_search for text-search across the database
+gem 'pg_search'
 
 # Use thin as the app server
 gem 'thin'
