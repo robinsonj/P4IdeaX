@@ -10,6 +10,11 @@ class Idea < ActiveRecord::Base
   validates :title, presence: true, uniqueness: {case_sensitive: false}
   validates :description, :owner_id, presence: true
 
+  include PgSearch
+  pg_search_scope :search_tags, :associated_against => {
+    :tags => :name
+  }
+
   def tag_names
     tags.map{ |tag| tag.name }.sort.join(', ')
   end
