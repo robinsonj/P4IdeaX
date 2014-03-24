@@ -7,10 +7,8 @@ class Tag < ActiveRecord::Base
   def self.from_string(tag_names)
     tags = []
 
-    # Split the input string at commas, then strip any extra whitespace
-    # on each end of the substrings.
-    tag_names.split(/,/).strip.downcase.gsub(/ +/, '').each do |tag_name|
-      tags.push(find_or_create_by_name(tag_name)) if !tag_name.blank?
+    tag_names.strip.downcase.gsub(/ +/, '').split(/,/).each do |tag_name|
+      tags.push(find_or_create_by(name: tag_name)) if !tag_name.blank?
     end
 
     tags

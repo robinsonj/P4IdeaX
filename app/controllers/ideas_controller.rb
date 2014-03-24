@@ -10,9 +10,7 @@ class IdeasController < ApplicationController
     @idea = Idea.new(idea_params)
 
     if params[:idea][:tag_names]
-      @idea.tags += params[:idea][:tag_names].map{ |tag| Tag.from_string(tag) }.flatten
-      puts @idea.tags
-      puts @idea.inspect
+      @idea.tags += Tag.from_string(params[:idea][:tag_names])
     end
 
     @idea.save
