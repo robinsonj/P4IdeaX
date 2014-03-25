@@ -40,11 +40,15 @@ describe "IdeaRequests" do
     end
   end
 
-  pending "needs expanded GET, POST, PATCH, PUT, DESTROY tests"
   describe "POST /ideas/search" do
     it "should return http success" do
       post search_ideas_path(:search => ['tag', 'tag1'])
       expect(response).to be_success
     end
   end
+
+  pending "POST /ideas"
+  pending "PATCH /ideas/:id"
+  pending "PUT /ideas/:id"
+  pending "DELETE /ideas/:id"
 end
