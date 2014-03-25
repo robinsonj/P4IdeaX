@@ -1,6 +1,6 @@
 require 'spec_helper'
 
-describe "DeviseUsers" do
+describe "UsersFeatures" do
 
   before do
     @user1  = create(:user, name: 'test1', email: 'test1@test.com',  password: 'testtest')
