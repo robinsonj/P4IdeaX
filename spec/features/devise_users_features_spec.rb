@@ -13,9 +13,10 @@ describe "DeviseUsers" do
     it "has welcome message after devise/registrations#new with valid credentials" do
       visit new_user_registration_path
 
-      fill_in "Email",                 :with => "test@test.com"
-      fill_in "Password",              :with => "testtest"
-      fill_in "Password confirmation", :with => "testtest"
+      fill_in "Name",                   :with => "test"
+      fill_in "Email",                  :with => "test@test.com"
+      fill_in "Password",               :with => "testtest"
+      fill_in "Password confirmation",  :with => "testtest"
 
       click_button "Sign up"
 
