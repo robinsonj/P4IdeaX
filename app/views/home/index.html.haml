@@ -53,3 +53,32 @@
       = image_tag "instruction-4-read-thumb.png", :alt => "Read our Feedback"
       %p.legend= "We're posting in the comments and on #{link_to 'our blog', '#'}. Let's keep the conversation going."
   %hr.hide
+
+  #ideas.section
+    %h2.header
+      Here are some ideas.
+      %em
+        This should get you started.
+    .ideas-group
+      #popular-ideas.panel.summary.hfeed
+        .header
+          %h3.icon.popular
+            What's Hot
+          %ul.actions
+        .body.ideas
+          = render :partial => 'ideas/idea_teaser', :collection => search_ideas(:search => 'hot', :page_size => 5)
+        .footer
+          .pagination
+            = link_to 'More', search_ideas_path(:search => 'top-rated')
+    .ideas-group
+      #recent-ideas.panel.summary.hfeed
+        .header
+          %h3.icon.recent
+            Recent Ideas
+          %ul.actions
+            %li= link_to image_tag("icn/16-sq-rss.png", :alt => "Subscribe to these ideas"), "/ideas.rss"
+        .body.ideas
+          = render :partial => 'ideas/idea_teaser', :collection => search_ideas(:search => 'recent', :page_size => 5)
+        .footer
+          .pagination
+            = link_to 'More', search_ideas_path(:search => 'recent')
