@@ -2,12 +2,25 @@ require 'spec_helper'
 require 'faker'
 
 describe "IdeaFeatures" do
-  describe "Create new ideas" do
-    before do
-      @user = create(:user)
-      @user.confirm!
-    end
+  before do
+    @user = create(:user)
+    @user.confirm!
 
+    @idea1 = create(:idea)
+    @idea2 = create(:idea)
+    @idea3 = create(:idea)
+    @idea4 = create(:idea)
+
+    @tag1 = create(:tag, name: 'tag1')
+    @tag2 = create(:tag, name: 'tag2')
+
+    @idea1.tags = [@tag1]
+    @idea2.tags = [@tag1]
+    @idea3.tags = [@tag1]
+    @idea4.tags = [@tag2]
+  end
+
+  describe "Create new ideas" do
     it "should create a new idea" do
       visit new_user_session_path
 
@@ -38,10 +51,6 @@ describe "IdeaFeatures" do
   end
 
   describe "Show an existing idea" do
-    before do
-      @idea1 = create(:idea)
-    end
-
     it "should show an idea's title and description" do
       visit idea_path(id: @idea1.id)
 
