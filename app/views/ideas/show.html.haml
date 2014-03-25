@@ -3,7 +3,7 @@
   %p=    @idea.description
   %div
     %h5 Tags
-    = @idea.tags.map { |tag| link_to h(tag.name), search_ideas_path(:search => ['tag', tag.name]) }.join(', ')
+    = @idea.tags.map { |tag| link_to h(tag.name), search_ideas_path(:search => ['tag', tag.name]), :method => :post }.join(', ')
   %div
     %h3 Comments
     %div= render :partial => 'comments/comment', :collection => @idea.comments, :controller => 'comments'
