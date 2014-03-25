@@ -26,7 +26,15 @@ class IdeasController < ApplicationController
     end
   end
 
+  # GET   /ideas
+  # POST  /ideas/search   # Potentially needs to be moved to another action?
   def index
+    if params[:search]
+      @ideas = Idea.search_tags(params[:search])
+    else
+      @ideas = Idea.all
+    end
+
     if params[:page_size]
       page_size = params[:page_size].to_i
       params[:page_size] = 10 if page_size < 10
