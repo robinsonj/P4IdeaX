@@ -11,7 +11,7 @@ BBYIDX::Application.routes.draw do
   resources :ideas do
     resources :comments
     collection do
-      get 'search', to: 'ideas#index'
+      post 'search', to: 'ideas#index'
     end
   end
 
