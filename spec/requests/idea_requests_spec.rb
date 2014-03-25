@@ -41,4 +41,10 @@ describe "IdeaRequests" do
   end
 
   pending "needs expanded GET, POST, PATCH, PUT, DESTROY tests"
+  describe "POST /ideas/search" do
+    it "should return http success" do
+      post search_ideas_path(:search => ['tag', 'tag1'])
+      expect(response).to be_success
+    end
+  end
 end
