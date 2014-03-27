@@ -52,6 +52,9 @@ end
 # Use pg as the database for Active Record
 gem 'pg'
 
+# Allow composite primary keys to be used. Unsupported by Active Record by default.
+gem 'composite_primary_keys'
+
 # Use pg_search for text-search across the database
 gem 'pg_search'
 
