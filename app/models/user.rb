@@ -5,9 +5,10 @@ class User < ActiveRecord::Base
          :recoverable, :rememberable, :trackable, :validatable,
          :confirmable
 
+  has_many :votes
+  has_many :comments, :foreign_key => 'author_id'
+
   validates :name, presence: true, uniqueness: {case_sensitive: false}
   validates :email, presence: true, uniqueness: {case_sensitive: false}
   validates :encrypted_password, presence: true
-
-  has_many :comments, :foreign_key => 'author_id'
 end
