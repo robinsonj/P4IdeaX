@@ -17,7 +17,7 @@ class IdeasController < ApplicationController
     redirect_to idea_path(@idea.id)
   end
 
-  # GET /ideas/1
+  # GET /ideas/:id
   def show
     @idea = Idea.find(params[:id])
 
@@ -46,7 +46,7 @@ class IdeasController < ApplicationController
     end
   end
 
-  # GET /users/1/edit
+  # GET /users/:id/edit
   def edit
     render :partial => 'edit'
   end
