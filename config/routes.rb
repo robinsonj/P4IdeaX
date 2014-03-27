@@ -13,6 +13,11 @@ BBYIDX::Application.routes.draw do
     collection do
       post 'search', to: 'ideas#index'
     end
+    member do
+      post :vote    , :as => :create_vote
+      patch :vote   , :as => :change_vote
+      delete :vote  , :as => :delete_vote
+    end
   end
 
   resources :tags, only: [:index]
