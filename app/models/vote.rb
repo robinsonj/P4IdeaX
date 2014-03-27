@@ -1,5 +1,7 @@
 class Vote < ActiveRecord::Base
 
+  self.primary_keys = :idea_id, :user_id
+
   belongs_to :idea
   belongs_to :user
 
