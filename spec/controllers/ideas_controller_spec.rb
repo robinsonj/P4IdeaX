@@ -33,5 +33,11 @@ describe IdeasController do
     end
   end
 
-  pending "needs expanded GET, POST, PATCH, PUT, DESTROY tests"
+  pending "POST create"
+  pending "PATCH update"
+  pending "PUT update"
+  pending "DELETE destroy"
+  pending "POST vote"
+  pending "PATCH vote"
+  pending "DELETE vote"
 end
