@@ -5,7 +5,7 @@ class User < ActiveRecord::Base
          :recoverable, :rememberable, :trackable, :validatable,
          :confirmable
 
-  has_many :votes, :dependent => :destroy
+  has_many :votes, :dependent => :destroy, :foreign_key => [:user_id, :idea_id]
   has_many :comments, :foreign_key => 'author_id'
 
   validates :name, presence: true, uniqueness: {case_sensitive: false}
