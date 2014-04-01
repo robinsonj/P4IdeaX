@@ -37,7 +37,4 @@ describe IdeasController do
   pending "PATCH update"
   pending "PUT update"
   pending "DELETE destroy"
-  pending "POST vote"
-  pending "PATCH vote"
-  pending "DELETE vote"
 end
