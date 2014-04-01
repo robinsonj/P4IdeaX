@@ -55,28 +55,10 @@ class IdeasController < ApplicationController
 
   end
 
-  # POST    /ideas/:id/vote
-  # PATCH   /ideas/:id/vote
-  # DELETE  /ideas/:id/vote
-  def vote
-    if request.post?
-      Idea.new(vote_params)
-    elsif request.patch?
-
-    elsif request.delete?
-
-    else
-
-    end
-  end
-
   private
 
     def idea_params
       params.require(:idea).permit(:owner_id, :title, :description)
     end
 
-    def vote_params
-      params.require(:idea).permit(:user_id, :idea_id, :value)
-    end
 end
