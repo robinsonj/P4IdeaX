@@ -11,5 +11,5 @@ require 'spec_helper'
 #   end
 # end
 describe TagsHelper do
-  pending "No tags helper functions to test yet."
+  pending "has no tags helper functions to test."
 end

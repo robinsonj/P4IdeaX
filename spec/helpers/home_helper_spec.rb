@@ -11,5 +11,5 @@ require 'spec_helper'
 #   end
 # end
 describe HomeHelper do
-  pending "No home helper functions to test yet."
+  pending "has no home helper functions to test."
 end
