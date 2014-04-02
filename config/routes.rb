@@ -10,9 +10,17 @@ BBYIDX::Application.routes.draw do
 
   resources :ideas do
     resources :comments
-    resources :votes, only: [:create, :update, :destroy]
+
     collection do
       post 'search', to: 'ideas#index'
+    end
+
+    member do
+      resource :vote, only: [] do
+        post    ''        => :create,  :as => 'create_idea' # Creates url helper method 'create_idea_vote_path'
+        patch   '/update' => :update,  :as => 'change_idea'
+        delete  '/remove' => :destroy, :as => 'remove_idea'
+      end
     end
   end
 
