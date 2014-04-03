@@ -25,6 +25,7 @@ class Idea < ActiveRecord::Base
     vote.lock!
     self.lock!
     self.rating += vote.value
+    self.save!
     vote
   end
 
@@ -32,6 +33,7 @@ class Idea < ActiveRecord::Base
     vote.lock!
     self.lock!
     self.rating -= vote.value
+    self.save!
     vote
   end
 end
