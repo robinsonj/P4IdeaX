@@ -20,4 +20,18 @@ class Idea < ActiveRecord::Base
   def tag_names
     tags.map{ |tag| tag.name }.sort.join(', ')
   end
+
+  def add_vote(vote)
+    vote.lock!
+    self.lock!
+    self.rating += vote.value
+    vote
+  end
+
+  def subtract_vote(vote)
+    vote.lock!
+    self.lock!
+    self.rating -= vote.value
+    vote
+  end
 end
