@@ -39,5 +39,9 @@ describe CommentsController do
     end
   end
 
-  pending "needs expanded GET, POST, PATCH, PUT, DESTROY tests"
+  pending "GET expanded tests (templates, instance variable results, etc)"
+  pending "POST 'create'"
+  pending "PATCH 'update'"
+  pending "PUT 'update'"
+  pending "DELETE 'destroy'"
 end
