@@ -1,0 +1,15 @@
+- if user_signed_in?
+  - if @user_vote
+    - if @user_vote.value == 1
+      = link_to 'Delete Vote', remove_idea_vote_path(@idea), :method => :delete
+    - else
+      = link_to 'Vote Up', change_idea_vote_path(@idea, :value => 1), :method => :patch
+  - else
+    = link_to 'Vote Up', create_idea_vote_path(@idea, :value => 1), :method => :post
+  - if @user_vote
+    - if @user_vote.value == -1
+      = link_to 'Delete Vote', remove_idea_vote_path(@idea), :method => :delete
+    - else
+      = link_to 'Vote Down', change_idea_vote_path(@idea, :value => -1), :method => :patch
+  - else
+    = link_to 'Vote Down', create_idea_vote_path(@idea, :value => -1), :method => :post
