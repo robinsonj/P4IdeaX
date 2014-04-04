@@ -11,30 +11,26 @@ describe VotesController do
 
   describe "POST 'create'" do
     before(:each) do
-      @response = post 'create', { :id => @idea.id, :value => -1 }
+      post 'create', { :id => @idea.id, :value => -1 }
     end
 
-    subject { @response }
-
     it "should return http 'created' (201)" do
-      expect(@response.status).to eq(201)
+      expect(response.status).to eq(201)
     end
 
     it "should render idea 'show' template" do
-      expect(@response).to render_template 'ideas/show'
+      expect(response).to render_template 'ideas/show'
     end
   end
 
   describe "PATCH 'update'" do
     before(:each) do
       create(:vote, :idea_id => @idea.id, :user_id => @user.id, :value => -1)
-      @response = patch 'update', { :id => @idea.id, :value => 1 }
+      patch 'update', { :id => @idea.id, :value => 1 }
     end
 
-    subject { @response }
-
     it "should return http success" do
-      expect(@response).to be_success
+      expect(response).to be_success
     end
 
     it "should render idea 'show' template" do
@@ -45,13 +41,11 @@ describe VotesController do
   describe "DELETE 'destroy'" do
     before(:each) do
       create(:vote, :idea_id => @idea.id, :user_id => @user.id, :value => -1)
-      @repsonse = delete 'destroy', { :id => @idea.id }
+      delete 'destroy', { :id => @idea.id }
     end
 
-    subject { @response }
-
     it "should return http success" do
-      expect(@response).to be_success
+      expect(response).to be_success
     end
 
     it "should render idea 'show' template" do
