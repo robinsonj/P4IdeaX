@@ -33,8 +33,8 @@ describe IdeasController do
     end
   end
 
-  pending "POST create"
-  pending "PATCH update"
-  pending "PUT update"
-  pending "DELETE destroy"
+  pending "POST 'create'"
+  pending "PATCH 'update'"
+  pending "PUT 'update'"
+  pending "DELETE 'destroy'"
 end
