@@ -1,4 +1,6 @@
 %div
+  %div= render :partial => 'votes/vote'
+  %h= @idea.rating
   %h2= h @idea.title
   %p=    @idea.description
   %div
