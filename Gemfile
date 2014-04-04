@@ -47,6 +47,7 @@ end
 group :test do
   gem 'capybara', '~> 2.2.1'
   gem 'faker'
+  gem 'database_cleaner', '~> 1.2.0'
 end
 
 # Use pg as the database for Active Record
