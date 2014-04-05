@@ -10,6 +10,6 @@
     %h3 Comments
     %div= render :partial => 'comments/comment', :collection => @idea.comments, :controller => 'comments'
     %div
-      = if user_signed_in?
+      - if user_signed_in?
         %h4 Comment on this idea
         %div= render :partial => 'comments/new'
