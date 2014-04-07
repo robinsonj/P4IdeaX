@@ -1,6 +1,7 @@
 class Idea < ActiveRecord::Base
 
   belongs_to :owner, :class_name => 'User'
+  belongs_to :current
 
   has_many :votes, :dependent => :destroy, :foreign_key => [:user_id, :idea_id]
   has_many :voters, :through => :votes, :source => :user, :class_name => 'User'
