@@ -11,5 +11,5 @@ require 'spec_helper'
 #   end
 # end
 describe CurrentsHelper do
-  pending "add some examples to (or delete) #{__FILE__}"
+  pending "has no Currents helper functions to test."
 end
