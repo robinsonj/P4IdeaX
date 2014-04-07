@@ -14,12 +14,9 @@ describe VotesController do
       post 'create', { :id => @idea.id, :value => -1 }
     end
 
-    it "should return http 'created' (201)" do
-      expect(response.status).to eq(201)
-    end
-
-    it "should render idea 'show' template" do
-      expect(response).to render_template 'ideas/show'
+    it "should return http 'redirect'" do
+      expect(response).to be_redirect
+      expect(response).to redirect_to idea_path
     end
   end
 
@@ -29,12 +26,9 @@ describe VotesController do
       patch 'update', { :id => @idea.id, :value => 1 }
     end
 
-    it "should return http success" do
-      expect(response).to be_success
-    end
-
-    it "should render idea 'show' template" do
-      expect(response).to render_template 'ideas/show'
+    it "should return http 'redirect'" do
+      expect(response).to be_redirect
+      expect(response).to redirect_to idea_path
     end
   end
 
@@ -44,12 +38,8 @@ describe VotesController do
       delete 'destroy', { :id => @idea.id }
     end
 
-    it "should return http success" do
-      expect(response).to be_success
+    it "should return http 'redirect'" do
+      expect(response).to be_redirect
+      expect(response).to redirect_to idea_path
     end
-
-    it "should render idea 'show' template" do
-      expect(response).to render_template 'ideas/show'
-    end
-  end
 end
