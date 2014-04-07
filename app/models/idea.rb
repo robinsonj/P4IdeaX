@@ -29,6 +29,14 @@ class Idea < ActiveRecord::Base
     vote
   end
 
+  def change_vote(vote)
+    vote.lock!
+    self.lock!
+    self.rating += vote.value * 2
+    self.save!
+    vote
+  end
+
   def subtract_vote(vote)
     vote.lock!
     self.lock!
