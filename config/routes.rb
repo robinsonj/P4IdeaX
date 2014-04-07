@@ -25,6 +25,7 @@ BBYIDX::Application.routes.draw do
   end
 
   resources :tags, only: [:index]
+  resources :currents
 
   # Example resource route with options:
   #   resources :products do
