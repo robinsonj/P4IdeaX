@@ -1,6 +1,6 @@
 class VotesController < ApplicationController
 
-  before_filter :authenticate_user!
+  before_filter :authenticate_user! # Require users to be authenticated for any voting actions.
 
   def create
     @idea = Idea.find(params[:id])
