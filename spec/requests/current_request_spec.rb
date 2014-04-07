@@ -7,6 +7,4 @@ describe "Currents" do
       response.status.should be(200)
     end
   end
-
-  pending "Currents request specs"
 end
