@@ -8,11 +8,9 @@ class VotesController < ApplicationController
 
     if @vote.save!
       @idea.add_vote(@vote)
-      flash[:notice] = 'Your vote was saved.'
-      render template: 'ideas/show', status: 201
+      redirect_to idea_path(@idea), notice: 'Your vote was saved.'
     else
-      flash[:notice] = 'Your vote could not be saved.'
-      render template: 'ideas/show'
+      redirect_to idea_path(@idea), notice: 'Your vote could not be saved.'
     end
   end
 
@@ -22,13 +20,10 @@ class VotesController < ApplicationController
     @vote.value = params[:value]
 
     if @vote.save!
-      @idea.subtract_vote(@vote)
-      @idea.add_vote(@vote)
-      flash[:notice] = 'Your vote was saved.'
-      render template: 'ideas/show'
+      @idea.change_vote(@vote)
+      redirect_to idea_path(@idea), notice: 'Your vote was saved.'
     else
-      flash[:notice] = 'Your vote could not be saved.'
-      render template: 'ideas/show'
+      redirect_to idea_path(@idea), notice: 'Your vote could not be saved.'
     end
   end
 
@@ -38,11 +33,9 @@ class VotesController < ApplicationController
     @idea.subtract_vote(@vote)
 
     if @vote.destroy!
-      flash[:notice] = 'Your vote was removed.'
-      render template: 'ideas/show'
+      redirect_to idea_path(@idea), notice: 'Your vote was removed.'
     else
-      flash[:notice] = 'Your vote could not be removed.'
-      render template: 'ideas/show'
+      redirect_to idea_path(@idea), notice: 'Your vote could not be removed.'
     end
   end
 
