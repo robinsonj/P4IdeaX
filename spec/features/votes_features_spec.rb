@@ -1,7 +1,7 @@
 require 'spec_helper'
 
 describe "VoteFeatures" do
-  before(:all) do
+  before do
     @idea = create(:idea)
     @user = create(:user)
     @user.confirm!
@@ -11,44 +11,51 @@ describe "VoteFeatures" do
     click_button "Sign in"
   end
 
-  before(:each) do
-    visit idea_path(@idea)
+  describe "'Vote Up' button" do
+    it "creates a new vote" do
+      visit idea_path(@idea)
+      click_button "Vote Up"
+
+      expect(page).to have_content("Your vote was saved.")
+    end
   end
 
-  describe "Vote on an idea" do
-    it "creates a new vote on an idea" do
-      # puts Vote.find(@idea.id, @user.id).inspect
-
-      click_link "Vote Up"
-      expect(page).to have_content("Your vote was saved")
+  describe "Change a vote down" do
+    before do
+      @vote = create(:vote, :user_id => @user.id, :idea_id => @idea.id, :value => 1)
     end
 
-  #   it "changes a vote's value down" do
-  #     puts Vote.find(@idea.id, @user.id).inspect
+    it "changes a vote's value" do
+      visit idea_path(@idea)
+      click_button "Vote Down"
 
-  #     click_link "Vote Down"
-  #     expect(page).to have_content("Your vote was saved")
-  #   end
+      expect(page).to have_content("Your vote was saved.")
+    end
+  end
 
-  #   it "changes a vote's value up" do
-  #     puts Vote.find(@idea.id, @user.id).inspect
+  describe "Change a vote up" do
+    before do
+      @vote = create(:vote, :user_id => @user.id, :idea_id => @idea.id, :value => -1)
+    end
 
-  #     click_link "Vote Up"
-  #     expect(page).to have_content("Your vote was saved")
-  #   end
-  # end
+    it "changes a vote's value" do
+      visit idea_path(@idea)
+      click_button "Vote Up"
 
-  # describe "Remove a vote on an idea" do
+      expect(page).to have_content("Your vote was saved.")
+    end
+  end
 
-  #   before(:all) do
-  #     create(:vote, :user_id => @user.id, :idea_id => @idea.id)
-  #   end
+  describe "Delete a vote" do
+    before do
+      @vote = create(:vote, :user_id => @user.id, :idea_id => @idea.id, :value => 1)
+    end
 
-  #   it "removes a vote" do
-  #     puts Vote.find(@idea.id, @user.id).inspect
+    it "changes a vote's value" do
+      visit idea_path(@idea)
+      click_button "Delete Vote"
 
-  #     click_link "Delete Vote"
-  #     expect(page).to have_content("Your vote was removed")
-  #   end
+      expect(page).to have_content("Your vote was removed.")
+    end
   end
 end
