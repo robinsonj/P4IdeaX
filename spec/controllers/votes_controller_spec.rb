@@ -42,4 +42,5 @@ describe VotesController do
       expect(response).to be_redirect
       expect(response).to redirect_to idea_path
     end
+  end
 end
