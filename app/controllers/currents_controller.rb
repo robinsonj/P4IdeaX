@@ -7,8 +7,8 @@ class CurrentsController < ApplicationController
     @currents = Current.all
   end
 
-  # GET /currents/1
-  # GET /currents/1.json
+  # GET /currents/:id
+  # GET /currents/:id.json
   def show
   end
 
@@ -17,7 +17,7 @@ class CurrentsController < ApplicationController
     @current = Current.new
   end
 
-  # GET /currents/1/edit
+  # GET /currents/:id/edit
   def edit
   end
 
@@ -37,8 +37,8 @@ class CurrentsController < ApplicationController
     end
   end
 
-  # PATCH/PUT /currents/1
-  # PATCH/PUT /currents/1.json
+  # PATCH/PUT /currents/:id
+  # PATCH/PUT /currents/:id.json
   def update
     respond_to do |format|
       if @current.update(current_params)
@@ -51,8 +51,8 @@ class CurrentsController < ApplicationController
     end
   end
 
-  # DELETE /currents/1
-  # DELETE /currents/1.json
+  # DELETE /currents/:id
+  # DELETE /currents/:id.json
   def destroy
     @current.destroy
     respond_to do |format|
