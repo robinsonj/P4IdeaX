@@ -8,7 +8,7 @@ describe "CurrentsViews" do
     end
 
     it "renders the edit current form" do
-      render
+      render :template => "currents/edit"
 
       assert_select "form[action=?][method=?]", current_path(@current), "post" do
       end
@@ -24,7 +24,7 @@ describe "CurrentsViews" do
     end
 
     it "renders a list of currents" do
-      render
+      render :template => "currents/index"
     end
   end
 
@@ -34,7 +34,7 @@ describe "CurrentsViews" do
     end
 
     it "renders new current form" do
-      render
+      render :template => "currents/new"
 
       assert_select "form[action=?][method=?]", currents_path, "post" do
       end
@@ -47,7 +47,7 @@ describe "CurrentsViews" do
     end
 
     it "renders attributes in <p>" do
-      render
+      render :template => "currents/show"
     end
   end
 end
