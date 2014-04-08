@@ -1,6 +1,9 @@
-# Read about factories at https://github.com/thoughtbot/factory_girl
+require 'faker'
 
 FactoryGirl.define do
   factory :current do
+    title { Faker::Lorem.sentence }
+    description { Faker::Lorem.paragraph(3) }
+    owner_id { rand(1000) }
   end
 end
