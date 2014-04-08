@@ -4,7 +4,7 @@ describe "CurrentsViews" do
 
   describe "currents/edit" do
     before(:each) do
-      @current = assign(:current, stub_model(Current))
+      @current = create(:current)
     end
 
     it "renders the edit current form" do
@@ -18,8 +18,8 @@ describe "CurrentsViews" do
   describe "currents/index" do
     before(:each) do
       assign(:currents, [
-        stub_model(Current),
-        stub_model(Current)
+        create(:current),
+        create(:current)
       ])
     end
 
@@ -43,7 +43,7 @@ describe "CurrentsViews" do
 
   describe "currents/show" do
     before(:each) do
-      @current = assign(:current, stub_model(Current))
+      @current = assign(:current, create(:current))
     end
 
     it "renders attributes in <p>" do
