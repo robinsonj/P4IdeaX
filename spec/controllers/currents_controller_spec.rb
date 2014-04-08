@@ -34,7 +34,8 @@ describe CurrentsController do
     it "assigns all currents as @currents" do
       current = Current.create! valid_attributes
       get :index, {}, valid_session
-      assigns(:currents).should eq([current])
+
+      expect(assigns(:currents)).to eq([current])
     end
   end
 
@@ -42,14 +43,16 @@ describe CurrentsController do
     it "assigns the requested current as @current" do
       current = Current.create! valid_attributes
       get :show, {:id => current.to_param}, valid_session
-      assigns(:current).should eq(current)
+
+      expect(assigns(:currents)).to eq([current])
     end
   end
 
   describe "GET new" do
     it "assigns a new current as @current" do
       get :new, {}, valid_session
-      assigns(:current).should be_a_new(Current)
+
+      expect(assigns(:current)).to be_a_new(Current)
     end
   end
 
@@ -57,7 +60,8 @@ describe CurrentsController do
     it "assigns the requested current as @current" do
       current = Current.create! valid_attributes
       get :edit, {:id => current.to_param}, valid_session
-      assigns(:current).should eq(current)
+
+      expect(assigns(:current)).to eq(current)
     end
   end
 
@@ -71,13 +75,15 @@ describe CurrentsController do
 
       it "assigns a newly created current as @current" do
         post :create, {:current => valid_attributes}, valid_session
-        assigns(:current).should be_a(Current)
-        assigns(:current).should be_persisted
+
+        expect(assigns(:current)).to be_a(Current)
+        expect(assigns(:current)).to be_persisted
       end
 
       it "redirects to the created current" do
         post :create, {:current => valid_attributes}, valid_session
-        response.should redirect_to(Current.last)
+
+        expect(response).to redirect_to(Current.last)
       end
     end
 
@@ -86,14 +92,16 @@ describe CurrentsController do
         # Trigger the behavior that occurs when invalid params are submitted
         Current.any_instance.stub(:save).and_return(false)
         post :create, {:current => {  }}, valid_session
-        assigns(:current).should be_a_new(Current)
+
+        expect(assigns(:current)).to be_a_new(Current)
       end
 
       it "re-renders the 'new' template" do
         # Trigger the behavior that occurs when invalid params are submitted
         Current.any_instance.stub(:save).and_return(false)
         post :create, {:current => {  }}, valid_session
-        response.should render_template("new")
+
+        expect(response).to render_template("new")
       end
     end
   end
