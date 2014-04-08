@@ -10,7 +10,7 @@ describe "CurrentsViews" do
     it "renders the edit current form" do
       render :template => "currents/edit"
 
-      assert_select "form[action=?][method=?]", current_path(@current), "post" do
+      assert_select "form[action=?][method=?]", '/currents/' + @current.id.to_s, "post" do
       end
     end
   end
