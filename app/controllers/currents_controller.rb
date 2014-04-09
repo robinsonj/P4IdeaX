@@ -25,7 +25,9 @@ class CurrentsController < ApplicationController
   # POST /currents
   # POST /currents.json
   def create
+
     @current = Current.new(current_params)
+    @current.owner = current_user
 
     respond_to do |format|
       if @current.save
