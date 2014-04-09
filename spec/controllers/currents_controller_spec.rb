@@ -31,7 +31,15 @@ describe CurrentsController do
   # This should return the minimal set of values that should be in the session
   # in order to pass any filters (e.g. authentication) defined in
   # CurrentsController. Be sure to keep this updated too.
-  let(:valid_session) { {} }
+  let(:valid_session) { { "warden.user.user.key" => session["warden.user.user.key"] } }
+
+  before(:each) do
+    @request.env["devise.mapping"] = Devise.mappings[:user]
+
+    @user = create(:user)
+    @user.confirm!
+    sign_in @user
+  end
 
   describe "GET index" do
     it "assigns all currents as @currents" do
