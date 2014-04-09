@@ -71,7 +71,7 @@ describe CurrentsController do
   describe "GET edit" do
     it "assigns the requested current as @current" do
       current = create(:current, :owner_id => @user.id)
-      get :edit, {:id => current.to_param}, valid_session
+      get :edit, { :id => current.to_param }, valid_session
 
       expect(assigns(:current)).to eq(current)
     end
@@ -132,13 +132,13 @@ describe CurrentsController do
 
       it "assigns the requested current as @current" do
         current = create(:current, :owner_id => @user.id)
-        put :update, {:id => current.to_param, :current => valid_attributes}, valid_session
+        put :update, { :id => current.to_param, :current => valid_attributes }, valid_session
         expect(assigns(:current)).to eq(current)
       end
 
       it "redirects to the current" do
         current = create(:current, :owner_id => @user.id)
-        put :update, {:id => current.to_param, :current => valid_attributes}, valid_session
+        put :update, { :id => current.to_param, :current => valid_attributes }, valid_session
         expect(response).to redirect_to(current)
       end
     end
@@ -166,13 +166,13 @@ describe CurrentsController do
     it "destroys the requested current" do
       current = create(:current, :owner_id => @user.id)
       expect {
-        delete :destroy, {:id => current.to_param}, valid_session
+        delete :destroy, { :id => current.to_param }, valid_session
       }.to change(Current, :count).by(-1)
     end
 
     it "redirects to the currents list" do
       current = create(:current, :owner_id => @user.id)
-      delete :destroy, {:id => current.to_param}, valid_session
+      delete :destroy, { :id => current.to_param }, valid_session
       expect(response).to redirect_to(currents_url)
     end
   end
