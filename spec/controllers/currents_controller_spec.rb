@@ -81,19 +81,19 @@ describe CurrentsController do
     describe "with valid params" do
       it "creates a new Current" do
         expect {
-          post :create, {:current => build(:current)}, valid_session
+          post :create, { :current => valid_attributes }, valid_session
         }.to change(Current, :count).by(1)
       end
 
       it "assigns a newly created current as @current" do
-        post :create, {:current => build(:current)}, valid_session
+        post :create, { :current => valid_attributes }, valid_session
 
         expect(assigns(:current)).to be_a(Current)
         expect(assigns(:current)).to be_persisted
       end
 
       it "redirects to the created current" do
-        post :create, {:current => build(:current)}, valid_session
+        post :create, { :current => valid_attributes }, valid_session
 
         expect(response).to redirect_to(Current.last)
       end
@@ -103,7 +103,7 @@ describe CurrentsController do
       it "assigns a newly created but unsaved current as @current" do
         # Trigger the behavior that occurs when invalid params are submitted
         Current.any_instance.stub(:save).and_return(false)
-        post :create, {:current => {  }}, valid_session
+        post :create, { :current => invalid_attributes }, valid_session
 
         expect(assigns(:current)).to be_a_new(Current)
       end
@@ -111,7 +111,7 @@ describe CurrentsController do
       it "re-renders the 'new' template" do
         # Trigger the behavior that occurs when invalid params are submitted
         Current.any_instance.stub(:save).and_return(false)
-        post :create, {:current => {  }}, valid_session
+        post :create, { :current => invalid_attributes }, valid_session
 
         expect(response).to render_template("new")
       end
@@ -148,7 +148,7 @@ describe CurrentsController do
         current = create(:current, :owner_id => @user.id)
         # Trigger the behavior that occurs when invalid params are submitted
         Current.any_instance.stub(:save).and_return(false)
-        put :update, {:id => current.to_param, :current => {  }}, valid_session
+        put :update, { :id => current.to_param, :current => invalid_attributes }, valid_session
         assigns(:current).should eq(current)
       end
 
@@ -156,7 +156,7 @@ describe CurrentsController do
         current = create(:current, :owner_id => @user.id)
         # Trigger the behavior that occurs when invalid params are submitted
         Current.any_instance.stub(:save).and_return(false)
-        put :update, {:id => current.to_param, :current => {  }}, valid_session
+        put :update, { :id => current.to_param, :current => invalid_attributes }, valid_session
         response.should render_template("edit")
       end
     end
