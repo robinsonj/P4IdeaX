@@ -133,13 +133,13 @@ describe CurrentsController do
       it "assigns the requested current as @current" do
         current = create(:current, :owner_id => @user.id)
         put :update, {:id => current.to_param, :current => valid_attributes}, valid_session
-        assigns(:current).should eq(current)
+        expect(assigns(:current)).to eq(current)
       end
 
       it "redirects to the current" do
         current = create(:current, :owner_id => @user.id)
         put :update, {:id => current.to_param, :current => valid_attributes}, valid_session
-        response.should redirect_to(current)
+        expect(response).to redirect_to(current)
       end
     end
 
@@ -149,7 +149,7 @@ describe CurrentsController do
         # Trigger the behavior that occurs when invalid params are submitted
         Current.any_instance.stub(:save).and_return(false)
         put :update, { :id => current.to_param, :current => invalid_attributes }, valid_session
-        assigns(:current).should eq(current)
+        expect(assigns(:current)).to eq(current)
       end
 
       it "re-renders the 'edit' template" do
@@ -157,7 +157,7 @@ describe CurrentsController do
         # Trigger the behavior that occurs when invalid params are submitted
         Current.any_instance.stub(:save).and_return(false)
         put :update, { :id => current.to_param, :current => invalid_attributes }, valid_session
-        response.should render_template("edit")
+        expect(response).to render_template("edit")
       end
     end
   end
@@ -173,7 +173,7 @@ describe CurrentsController do
     it "redirects to the currents list" do
       current = create(:current, :owner_id => @user.id)
       delete :destroy, {:id => current.to_param}, valid_session
-      response.should redirect_to(currents_url)
+      expect(response).to redirect_to(currents_url)
     end
   end
 
