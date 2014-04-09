@@ -54,7 +54,9 @@ describe CurrentsController do
     it "assigns the requested current as @current" do
       current = create(:current, :owner => @user)
 
-      expect(assigns(:currents)).to eq([current])
+      get :show, { :id => current.to_param }, valid_session
+
+      expect(assigns(:current)).to eq(current)
     end
   end
 
