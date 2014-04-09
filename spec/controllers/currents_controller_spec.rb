@@ -126,8 +126,8 @@ describe CurrentsController do
         # specifies that the Current created on the previous line
         # receives the :update_attributes message with whatever params are
         # submitted in the request.
-        Current.any_instance.should_receive(:update).with({ "these" => "params" })
-        put :update, {:id => current.to_param, :current => { "these" => "params" }}, valid_session
+        Current.any_instance.should_receive(:update).with({ "title" => "New Title" })
+        put :update, { :id => current.to_param, :current => { "title" => "New Title" } }, valid_session
       end
 
       it "assigns the requested current as @current" do
