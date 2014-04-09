@@ -72,7 +72,6 @@ class CurrentsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def current_params
-      params[:current]
-      # params.require(:current).permit(:title, :description)
+      params.require(:current).permit(:title, :description)
     end
 end
