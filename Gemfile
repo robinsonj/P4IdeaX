@@ -13,6 +13,9 @@ gem 'haml-rails', '~> 0.5.0'
 # Use devise for use authentication
 gem 'devise', '~> 3.2.3'
 
+# Use omniauth for authentication with twitter
+gem 'omniauth-twitter'
+
 # Use SCSS for stylesheets
 gem 'sass-rails', '~> 4.0.0'
 
