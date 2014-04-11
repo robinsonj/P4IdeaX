@@ -3,7 +3,8 @@ class User < ActiveRecord::Base
   # :confirmable, :lockable, :timeoutable and :omniauthable
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :trackable, :validatable,
-         :confirmable
+         :confirmable,
+         :omniauthable, :omniauth_providers => [:twitter]
 
   has_many :comments, :foreign_key => 'author_id'
   has_many :votes, :dependent => :destroy, :foreign_key => [:user_id, :idea_id]
