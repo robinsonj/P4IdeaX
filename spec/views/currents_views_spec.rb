@@ -2,9 +2,17 @@ require 'spec_helper'
 
 describe "CurrentsViews" do
 
+  before(:each) do
+    @request.env["devise.mapping"] = Devise.mappings[:user]
+
+    @user = create(:user)
+    @user.confirm!
+    sign_in @user
+  end
+
   describe "currents/edit" do
     before(:each) do
-      @current = create(:current)
+      @current = create(:current, :owner_id => @user.id)
     end
 
     it "renders the edit current form" do
@@ -18,8 +26,8 @@ describe "CurrentsViews" do
   describe "currents/index" do
     before(:each) do
       assign(:currents, [
-        create(:current),
-        create(:current)
+        create(:current, :owner_id => @user.id),
+        create(:current, :owner_id => @user.id)
       ])
     end
 
@@ -43,7 +51,7 @@ describe "CurrentsViews" do
 
   describe "currents/show" do
     before(:each) do
-      @current = assign(:current, create(:current))
+      @current = assign(:current, create(:current, :owner_id => @user.id))
     end
 
     it "renders attributes in <p>" do
