@@ -10,7 +10,7 @@ class Tag < ActiveRecord::Base
   def self.from_string(tag_names)
     tags = []
 
-    tag_names.strip.downcase.gsub(/ +/, '').split(/,/).each do |tag_name|
+    tag_names.first.strip.downcase.gsub(/ +/, '').split(/,/).each do |tag_name|
       tags.push(find_or_create_by(name: tag_name)) if !tag_name.blank?
     end
 
