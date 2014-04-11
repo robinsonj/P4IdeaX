@@ -1,5 +1,7 @@
 class IdeasController < ApplicationController
 
+  autocomplete :tag, :name, :full => false
+
   # GET /ideas/new
   def new
     @idea = Idea.new

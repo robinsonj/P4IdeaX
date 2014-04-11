@@ -9,6 +9,8 @@ BBYIDX::Application.routes.draw do
   match '/contact'  => 'home#contact',  via: 'get',   :as => :home_contact
 
   resources :ideas do
+    get :autocomplete_tag_name, :on => :collection
+
     resources :comments
 
     collection do
