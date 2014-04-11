@@ -16,10 +16,6 @@ EMAIL_FROM_ADDRESS = "#{LONG_SITE_NAME} <noreply@#{PRODUCTION_HOST}>"
 # Customize to suit your product/idea coverage needs.
 EXAMPLE_TAGS = "music, home entertainment, discount"
 
-# # Specify a long random string for SESSION_SECRET to secure user sessions
-# SESSION_SECRET = nil
-# SESSION_KEY = "_#{SHORT_SITE_NAME.downcase}_session"
-
 # # Configure Twitter in twitter.yml, then set "TWITTER_ENABLED = true" to enable Twitter integration.
 # TWITTER_ENABLED = false
 
