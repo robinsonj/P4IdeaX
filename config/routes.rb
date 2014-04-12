@@ -1,7 +1,7 @@
 BBYIDX::Application.routes.draw do
   root :to => "home#index"
 
-  devise_for :users
+  devise_for :users, :controllers => { :omniauth_callbacks => "users/omniauth_callbacks" }
   # resources :users
 
   match '/index'    => 'home#index',    via: 'get',   :as => :home_index
