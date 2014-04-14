@@ -18,6 +18,4 @@
     %br/
     = f.password_field :password_confirmation, autocomplete: "off"
   %div= f.submit "Sign up"
-%p or
-= link_to "Sign in with Twitter", user_omniauth_authorize_path(:twitter)
 = render "users/shared/links"
