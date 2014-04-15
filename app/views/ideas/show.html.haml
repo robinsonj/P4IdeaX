@@ -8,7 +8,7 @@
     = @idea.tags.map { |tag| link_to h(tag.name), search_ideas_path(:search => ['tag', tag.name]), :method => :post }.join(', ')
   %div
     %h3 Comments
-    %div= render :partial => 'comments/comment', :collection => @idea.comments, :controller => 'comments'
+    %div= render :partial => 'comments/comment', :collection => @comments, :controller => 'comments'
     %div
       - if user_signed_in?
         %h4 Comment on this idea
