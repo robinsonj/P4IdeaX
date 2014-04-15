@@ -11,7 +11,7 @@ BBYIDX::Application.routes.draw do
   resources :ideas do
     get :autocomplete_tag_name, :on => :collection
 
-    resources :comments
+    resources :comments, except: [:index]
 
     collection do
       post 'search', to: 'ideas#index'
