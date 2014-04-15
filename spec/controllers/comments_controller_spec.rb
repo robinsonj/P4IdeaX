@@ -14,21 +14,21 @@ describe CommentsController do
   describe "GET 'new'" do
     it "returns http success" do
       get 'new', { :idea_id => @idea.id }
-      response.should be_success
+      expect(response).to be_success
     end
   end
 
   describe "GET 'edit'" do
     it "returns http success" do
       get 'edit', { :idea_id => @idea.id, :id => @comment.id }
-      response.should be_success
+      expect(response).to be_success
     end
   end
 
   describe "GET 'show'" do
     it "returns http success" do
       get 'show', { :idea_id => @idea.id, :id => @comment.id }
-      response.should be_success
+      expect(response).to be_success
     end
   end
 
