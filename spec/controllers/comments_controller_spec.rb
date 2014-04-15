@@ -11,13 +11,6 @@ describe CommentsController do
     sign_in @user
   end
 
-  describe "GET 'index'" do
-    it "returns http success" do
-      get 'index', { :idea_id => @idea.id }
-      response.should be_success
-    end
-  end
-
   describe "GET 'new'" do
     it "returns http success" do
       get 'new', { :idea_id => @idea.id }
