@@ -2,7 +2,7 @@ require 'spec_helper'
 
 describe CommentsController do
 
-  before do
+  before(:each) do
     @user    = create(:user)
     @idea    = create(:idea)
     @comment = create(:comment)
