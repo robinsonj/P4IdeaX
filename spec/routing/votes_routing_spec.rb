@@ -1,6 +1,6 @@
 require 'spec_helper'
 
-describe "VotesRouting" do
+describe VotesController do
 
   before do
     @idea = create(:idea)

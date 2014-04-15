@@ -1,6 +1,6 @@
 require 'spec_helper'
 
-describe "IdeasRouting" do
+describe IdeasController do
 
   describe "GET 'index'" do
     it "should be routable" do

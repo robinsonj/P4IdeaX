@@ -1,6 +1,6 @@
 require 'spec_helper'
 
-describe "TagsRouting" do
+describe TagsController do
 
   describe "GET 'index'" do
     it "should be routable" do
