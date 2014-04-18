@@ -2,19 +2,43 @@
 #
 #   1. Get an API key from http://dev.twitter.com/apps
 #   2. Set TWITTER_ENABLED = true in config/environment_custom.rb
+#
+# NOTE: Do not commit/publish your private keys + secrets.
 
-development:
-    :key:    YOUR_TWITTER_API_KEY
-    :secret: YOUR_TWITTER_API_SECRET
+twitter:
+    development:
+        :key:       YOUR_TWITTER_API_KEY
+        :secret:    YOUR_TWITTER_API_SECRET
 
-test:
-    :key:    test
-    :secret: test
+    test:
+        :key:       test
+        :secret:    test
 
-staging:
-    :key:    YOUR_TWITTER_API_KEY
-    :secret: YOUR_TWITTER_API_SECRET
+    staging:
+        :key:       YOUR_TWITTER_API_KEY
+        :secret:    YOUR_TWITTER_API_SECRET
 
-production:
-    :key:    YOUR_TWITTER_API_KEY
-    :secret: YOUR_TWITTER_API_SECRET
+    production:
+        :key:       YOUR_TWITTER_API_KEY
+        :secret:    YOUR_TWITTER_API_SECRET
+
+facebook:
+    development:
+        :app_id:    YOUR_FACEBOOK_APP_ID
+        :api_key:   YOUR_FACEBOOK_API_KEY
+        :secret:    YOUR_FACEBOOK_APP_SECRET
+
+    test:
+        :app_id:    YOUR_FACEBOOK_APP_ID
+        :api_key:   YOUR_FACEBOOK_API_KEY
+        :secret:    YOUR_FACEBOOK_APP_SECRET
+
+    staging:
+        :app_id:    YOUR_FACEBOOK_APP_ID
+        :api_key:   YOUR_FACEBOOK_API_KEY
+        :secret:    YOUR_FACEBOOK_APP_SECRET
+
+    production:
+        :app_id:    YOUR_FACEBOOK_APP_ID
+        :api_key:   YOUR_FACEBOOK_API_KEY
+        :secret:    YOUR_FACEBOOK_APP_SECRET
