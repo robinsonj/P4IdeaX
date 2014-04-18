@@ -11,6 +11,12 @@ class User < ActiveRecord::Base
   has_many :currents, :foreign_key => 'owner_id'
 
   validates :name, presence: true, uniqueness: {case_sensitive: false}
-  validates :email, presence: true, uniqueness: {case_sensitive: false}
   validates :encrypted_password, presence: true
+
+  # Provider and uid can be blank but records can not exist that have
+  # the same provider + uid combination.
+  validates :provider, :allow_blank => true, uniqueness: {
+    scope: :uid,
+    message: "A user already exists from that provider."
+  }
 end
