@@ -19,4 +19,13 @@ class User < ActiveRecord::Base
     scope: :uid,
     message: "A user already exists from that provider."
   }
+  protected
+
+    # Override Devise's email requirement check. Devise requires an
+    # email by default, but some oauth providers (Twitter, etc) don't
+    # provide user emails. Instead of always returning true, return
+    # false when a user record has a provider and a uid.
+    def email_required?
+      true unless provider? && uid?
+    end
 end
