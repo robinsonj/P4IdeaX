@@ -4,7 +4,7 @@ class User < ActiveRecord::Base
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :trackable, :validatable,
          :confirmable,
-         :omniauthable, :omniauth_providers => [:twitter]
+         :omniauthable, :omniauth_providers => [:twitter, :facebook]
 
   has_many :comments, :foreign_key => 'author_id'
   has_many :votes, :dependent => :destroy, :foreign_key => [:user_id, :idea_id]

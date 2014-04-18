@@ -3,6 +3,10 @@ class Users::OmniauthCallbacksController < Devise::OmniauthCallbacksController
     authorize "Twitter"
   end
 
+  def facebook
+    authorize "Facebook"
+  end
+
   def passthru
     raise ActionController::RoutingError.new('Not Found')
   end
