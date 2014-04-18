@@ -16,15 +16,10 @@ EMAIL_FROM_ADDRESS = "#{LONG_SITE_NAME} <noreply@#{PRODUCTION_HOST}>"
 # Customize to suit your product/idea coverage needs.
 EXAMPLE_TAGS = "music, home entertainment, discount"
 
-# # Configure Twitter in twitter.yml, then set "TWITTER_ENABLED = true" to enable Twitter integration.
-# TWITTER_ENABLED = false
-
-# Enable twitter during development and testing
-TWITTER_ENABLED = true if Rails.env.test? || Rails.env.development?
-
-# # Configure Facebook in facebooker.yml, then set "FACEBOOK_ENABLED = true" to enable Twitter integration.
-# # You can also set FACEBOOK_APP_ID, FACEBOOK_API_KEY and FACEBOOK_APP_SECRET as environment variables.
-# FACEBOOK_ENABLED = ENV['FACEBOOK_API_KEY'] || ENV['RAILS_ENV'] == 'test'
+# Configure omniauth providers in 'config/initializers/auth_providers.rb'
+# Set the provider flags you wish to use to 'true' here.
+TWITTER_ENABLED = false
+FACEBOOK_ENABLED = false
 
 # # Customize the user contribution points for various activities, if you like.
 # CONTRIBUTION_SCORES = {
