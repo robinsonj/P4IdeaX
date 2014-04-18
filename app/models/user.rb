@@ -19,6 +19,21 @@ class User < ActiveRecord::Base
     scope: :uid,
     message: "A user already exists from that provider."
   }
+
+  def self.find_by_oauth(provider, uid, info)
+    find_or_create_by!(provider: provider, uid: uid) do |user|
+      user.name     = info[:nickname]
+      if info[:email]
+        user.email  = info[:email]
+      end
+      user.password = Devise.friendly_token
+      user.provider = provider
+      user.uid      = uid
+
+      user.confirm!
+    end
+  end
+
   protected
 
     # Override Devise's email requirement check. Devise requires an
