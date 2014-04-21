@@ -46,6 +46,9 @@ RSpec.configure do |config|
 
   # Use factory_girl & factory_girl_rails to generate test data.
   config.include FactoryGirl::Syntax::Methods
+
+  # Include macros for stubbing omniauth hashes returned from providers.
+  config.include(OmniauthMacros)
 end
 
 OmniAuth.config.test_mode = true
