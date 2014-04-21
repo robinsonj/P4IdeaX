@@ -18,8 +18,8 @@ EXAMPLE_TAGS = "music, home entertainment, discount"
 
 # Configure omniauth providers in 'config/initializers/auth_providers.rb'
 # Set the provider flags you wish to use to 'true' here.
-TWITTER_ENABLED = false
-FACEBOOK_ENABLED = false
+TWITTER_ENABLED = Rails.env.test? || true
+FACEBOOK_ENABLED = Rails.env.test? || true
 
 # # Customize the user contribution points for various activities, if you like.
 # CONTRIBUTION_SCORES = {
