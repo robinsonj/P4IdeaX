@@ -10,6 +10,7 @@ class User < ActiveRecord::Base
   has_many :votes, :dependent => :destroy, :foreign_key => [:user_id, :idea_id]
   has_many :currents, :foreign_key => 'owner_id'
 
+  validates :email, uniqueness: true, allow_blank: true
   validates :name, presence: true, uniqueness: {case_sensitive: false}
   validates :encrypted_password, presence: true
 
