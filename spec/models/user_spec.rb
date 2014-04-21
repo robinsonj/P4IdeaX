@@ -141,5 +141,17 @@ describe User do
       expect(twitter_user).to   be_valid
       expect(facebook_user).to  be_valid
     end
+
+    it "allows users with identical providers but different uids" do
+      twitter_user1   = create(:twitter_user)
+      twitter_user2   = create(:twitter_user, :uid => twitter_user1.uid + '1')
+      facebook_user1  = create(:facebook_user)
+      facebook_user2  = create(:facebook_user, :uid => facebook_user1.uid + '1')
+
+      expect(twitter_user1).to  be_valid
+      expect(twitter_user2).to  be_valid
+      expect(facebook_user1).to be_valid
+      expect(facebook_user2).to be_valid
+    end
   end
 end
