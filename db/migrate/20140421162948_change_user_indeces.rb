@@ -3,7 +3,7 @@ class ChangeUserIndeces < ActiveRecord::Migration
     remove_index :users, :email
 
     add_index :users, :email, unique: false, using: 'btree'
-    add_index :users, column: [:provider, :uid], unique: true, using: 'btree'
+    add_index :users, [:provider, :uid], unique: true, using: 'btree'
 
   end
 
