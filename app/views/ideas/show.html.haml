@@ -5,7 +5,8 @@
   %p=    @idea.description
   %div
     %h5 Tags
-    = @idea.tags.map { |tag| link_to h(tag.name), search_ideas_path(:search => ['tag', tag.name]), :method => :post }.join(', ')
+    - @idea.tags.each do |tag|
+      = render :partial => 'tags/tag', :locals => { :tag => tag }
   %div
     %h3 Comments
     %div= render :partial => 'comments/comment', :collection => @comments, :controller => 'comments'
