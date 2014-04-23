@@ -1,3 +1,1 @@
--# %a{ :href => idea_search_path(:search => ['tag', tag.name]) }
-== #{h(tag.name)}
--# %span== (#{h(tag.idea_count)})
+= link_to("#{h(tag.name)} (#{h(tag.ideas.length)})", tag_path(tag))
