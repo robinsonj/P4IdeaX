@@ -1,7 +1,7 @@
 require 'spec_helper'
 
 describe "TagViews" do
-  before do
+  before(:each) do
     @tag1 = create(:tag, name: "tag1")
     @tag2 = create(:tag, name: "tag2")
     @tag3 = create(:tag, name: "tag3")
