@@ -30,7 +30,7 @@ You will first need to edit the following files to get the app running in your e
 * config/database.yml
 * config/omniauth_providers.yml (Twitter and Facebook integration)
 
-_*Note: Don't use the same database for development & testing as production. Specify separate databases for different environments. *_
+_* Note: Don't use the same database for development & testing as production. Specify separate databases for different environments. *_
 
 ## Customization
 
