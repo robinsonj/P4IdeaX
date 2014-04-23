@@ -21,4 +21,27 @@ describe "TagViews" do
       expect(rendered).to include @tag5.name
     end
   end
+
+  describe "tags/show" do
+
+    it "has tag name" do
+      @tag = @tag1
+      render :template => "tags/show.html.haml"
+      expect(rendered).to include @tag.name
+    end
+
+    it "has tag's ideas" do
+      @tag = @tag1
+      assign(:ideas, [
+        create(:idea, :title => 'new title'),
+        create(:idea),
+        create(:idea),
+        create(:idea)
+        ])
+
+      render :template => "tags/show.html.haml"
+
+      expect(rendered).to include 'new title'
+    end
+  end
 end
