@@ -21,8 +21,8 @@ describe TagsController do
   end
 
   describe "GET 'show'" do
-    it "should not be routable" do
-      expect(:get => 'show').not_to be_routable
+    it "should be routable" do
+      expect(:get => 'show').to be_routable
     end
   end
 
