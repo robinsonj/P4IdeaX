@@ -1,6 +1,8 @@
 class Tag < ActiveRecord::Base
 
-  has_and_belongs_to_many :ideas
+  has_and_belongs_to_many :ideas,
+    -> { order('rating') },
+    join_table: "idea_tags"
 
   validates :name, presence: true, uniqueness: {case_sensitive: false}
 
