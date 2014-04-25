@@ -5,7 +5,11 @@ class Idea < ActiveRecord::Base
 
   has_many :votes, :dependent => :destroy, :foreign_key => [:user_id, :idea_id]
   has_many :voters, :through => :votes, :source => :user, :class_name => 'User'
-  has_many :comments, -> { order(created_at: :asc) }, :dependent => :destroy
+  has_many :comments, -> { order(created_at: :asc) }, :dependent => :destroy do
+    def visible
+      r = find :all, :conditions => { :hidden => false }
+    end
+  end
   has_and_belongs_to_many :tags,
     -> { order('name').uniq },
     join_table: "idea_tags"
