@@ -27,7 +27,8 @@ describe "IdeaViews" do
   describe "ideas/show.html.haml" do
 
     before(:each) do
-      @idea = assign(:idea, create(:idea, :owner_id => @user.id))
+      assign(:idea, create(:idea, :owner_id => @user.id))
+      assign(:comments, [])
     end
 
     it "renders ideas/show" do
