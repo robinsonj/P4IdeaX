@@ -32,10 +32,10 @@
               - @idea.tags.each do |tag|
                 = render :partial => 'tags/tag', :locals => { :tag => tag }
       #comments.group.slate
-        - if @idea.comments.visible.empty? && !@idea.closed?
+        - if @comments.empty? && !@idea.closed?
           %h3 No comments yet. Write one!
         - else
-          %h3== #{@idea.comments.visible.length} #{'Comment'.pluralize(@idea.comments.visible.length)}
+          %h3== #{@comments.length} #{'Comment'.pluralize(@comments.length)}
           .comments.inset
             %div
               %div= render :partial => 'comments/comment', :collection => @comments, :controller => 'comments'
