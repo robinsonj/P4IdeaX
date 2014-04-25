@@ -10,6 +10,7 @@ class IdeasController < ApplicationController
   # POST /ideas
   def create
     @idea = Idea.new(idea_params)
+    @idea.owner = current_user
 
     if params[:idea][:tag_names]
       @idea.tags += Tag.from_string(params[:idea][:tag_names])
@@ -63,7 +64,7 @@ class IdeasController < ApplicationController
   private
 
     def idea_params
-      params.require(:idea).permit(:owner_id, :title, :description)
+      params.require(:idea).permit(:title, :description)
     end
 
 end
