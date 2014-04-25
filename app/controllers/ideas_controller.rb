@@ -16,8 +16,17 @@ class IdeasController < ApplicationController
       @idea.tags += Tag.from_string(idea_tag_params)
     end
 
-    @idea.save
-    redirect_to idea_path(@idea.id)
+    respond_to do |format|
+      if @idea.save
+        format.html { redirect_to idea_path(@idea.id), notice: 'Your Idea was successfully created.' }
+      else
+        if user_signed_in?
+          format.html { render action: 'new', notice: 'Your Idea could not be saved.' }
+        else
+          format.html { redirect_to new_user_session_path, notice: 'Please sign in to create an idea.' }
+        end
+      end
+    end
   end
 
   # GET /ideas/:id
