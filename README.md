@@ -14,7 +14,7 @@ The application runs on Ruby 2.0 and Rails 4.0.
 
 The app requires a PostgreSQL database and runs on version 9.3.
 
-The application takes advantage of Postgres' text search capabilities and as such does not current work with other database systems.
+The application takes advantage of Postgres' text search capabilities and as such does not currently work with other database systems.
 
 If you want to run it on MySQL, we welcome patches! However, it will likely require a dependency on an external search engine.
 
