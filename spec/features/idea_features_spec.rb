@@ -6,10 +6,10 @@ describe "IdeaFeatures" do
     @user = create(:user)
     @user.confirm!
 
-    @idea1 = create(:idea)
-    @idea2 = create(:idea)
-    @idea3 = create(:idea)
-    @idea4 = create(:idea)
+    @idea1 = create(:idea, :owner => @user)
+    @idea2 = create(:idea, :owner => @user)
+    @idea3 = create(:idea, :owner => @user)
+    @idea4 = create(:idea, :owner => @user)
 
     @tag1 = create(:tag, name: 'tag1')
     @tag2 = create(:tag, name: 'tag2')

@@ -25,8 +25,12 @@ describe "IdeaViews" do
   end
 
   describe "ideas/show.html.haml" do
+
+    before(:each) do
+      @idea = assign(:idea, create(:idea, :owner_id => @user.id))
+    end
+
     it "renders ideas/show" do
-      @idea = create(:idea)
       render :template => "ideas/show"
       expect(rendered).to render_template("ideas/show")
     end
