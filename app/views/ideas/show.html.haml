@@ -25,7 +25,8 @@
       .idea-meta
         %div
           %ul.entry-meta
-            / %li.comments
+            %li.votes
+              %div= render :partial => 'votes/vote'
             %li.tags
               %h3 Tags
               - @idea.tags.each do |tag|
