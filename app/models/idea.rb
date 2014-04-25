@@ -7,7 +7,7 @@ class Idea < ActiveRecord::Base
   has_many :voters, :through => :votes, :source => :user, :class_name => 'User'
   has_many :comments, -> { order(created_at: :asc) }, :dependent => :destroy do
     def visible
-      r = where :hidden => false
+      where :hidden => false
     end
   end
   has_and_belongs_to_many :tags,
