@@ -2,7 +2,7 @@ require 'spec_helper'
 
 describe "IdeaViews" do
 
-  before do
+  before(:each) do
     @user = create(:user)
     @user.confirm!
     sign_in @user
