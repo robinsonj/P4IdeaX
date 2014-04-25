@@ -12,8 +12,8 @@ class IdeasController < ApplicationController
     @idea = Idea.new(idea_params)
     @idea.owner = current_user
 
-    if params[:idea][:tag_names]
-      @idea.tags += Tag.from_string(params[:idea][:tag_names])
+    if idea_tag_params
+      @idea.tags += Tag.from_string(idea_tag_params)
     end
 
     @idea.save
@@ -67,4 +67,7 @@ class IdeasController < ApplicationController
       params.require(:idea).permit(:title, :description)
     end
 
+    def idea_tag_params
+      params.require(:idea).permit(:tag_names => [])[:tag_names]
+    end
 end
