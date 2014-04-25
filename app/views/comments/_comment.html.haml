@@ -1,4 +1,13 @@
-%div
-  %div.comment{ :id => "comment_#{comment.id}" }
-    %h5= comment.author.name
-    %p=  comment.text
+.comment{ :id => "comment_#{comment.id}" }
+  .comment-inner
+    %h4.vcard.author
+      /* INSERT GRAVATAR THINGS HERE */
+      = link_to h(comment.author.name), user_profile_path(comment.author)
+    .comment-content
+      %h5.posted
+        Posted
+        %abbr.published.time-relative== #{time_ago_in_words(comment.created_at)} ago
+    %p= comment.text
+  - if comment.author == current_user
+    %div
+      = link_to('Edit', edit_idea_comment_path(:idea_id => @idea.id, :id => comment.id))
