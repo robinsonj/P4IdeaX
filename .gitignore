@@ -21,6 +21,3 @@
 
 # Ignore secret token file
 /.secret_token
-
-# Ignore rvm ruby version and gemset config files.
-/.ruby-*
