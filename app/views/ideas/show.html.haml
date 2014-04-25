@@ -10,7 +10,7 @@
         %abbr.published.time-relative== #{@idea.created_at}
         by
         %span.vcard.author
-          = link_to h(@idea.owner.name), user_profile_path
+          = link_to h(@idea.owner.name), user_profile_path(@idea.owner)
         %br
         - if !@idea.current.nil? && @idea.current.id != Current::DEFAULT_CURRENT_ID
           Part of:
