@@ -11,7 +11,7 @@
   %body
     #wrap
       = render :partial => 'layouts/header'
-      #main_content
+      #content
         = render :partial => 'layouts/flash_messages'
         = yield
       - cache 'footer' do
