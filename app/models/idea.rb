@@ -18,6 +18,9 @@ class Idea < ActiveRecord::Base
     :tags => :name
   }
 
+  extend FriendlyId
+  friendly_id :title, use: :slugged
+
   def tag_names
     tags.map{ |tag| tag.name }.sort.join(', ')
   end
