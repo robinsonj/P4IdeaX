@@ -63,7 +63,7 @@ ActiveRecord::Schema.define(version: 20140428205755) do
     t.integer  "rating",      default: 0
     t.integer  "current_id"
     t.boolean  "closed",      default: false, null: false
-    t.string   "slug",                    null: false
+    t.string   "slug",                        null: false
   end
 
   create_table "tags", force: true do |t|
