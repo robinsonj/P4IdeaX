@@ -8,6 +8,6 @@ class HomeController < ApplicationController
   def contact
   end
 
-  def terms_of_service
+  def terms_of_use
   end
 end
