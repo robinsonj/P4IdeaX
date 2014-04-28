@@ -7,7 +7,7 @@
           = link_to('Edit', edit_idea_path(@idea))
       %h4.posted
         Posted at
-        %abbr.published.time-relative== #{@idea.created_at}
+        %abbr.published.time-relative= time_tag @idea.created_at
         by
         %span.vcard.author
           = link_to h(@idea.owner.name), user_profile_path(@idea.owner)
