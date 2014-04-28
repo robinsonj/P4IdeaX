@@ -44,6 +44,6 @@ class VotesController < ApplicationController
     def vote_params
       params.require(:id)
       params.require(:value)
-      { :idea_id => params[:id], :user_id => current_user.id, :value => params[:value] }
+      { :idea_id => Idea.friendly.find(params[:id]).id, :user_id => current_user.id, :value => params[:value] }
     end
 end
