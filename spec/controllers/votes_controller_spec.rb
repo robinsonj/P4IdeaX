@@ -16,7 +16,7 @@ describe VotesController do
 
     it "should return http 'redirect'" do
       expect(response).to be_redirect
-      expect(response).to redirect_to idea_path
+      expect(response).to redirect_to idea_path(@idea.slug)
     end
   end
 
@@ -28,7 +28,7 @@ describe VotesController do
 
     it "should return http 'redirect'" do
       expect(response).to be_redirect
-      expect(response).to redirect_to idea_path
+      expect(response).to redirect_to idea_path(@idea.slug)
     end
   end
 
@@ -40,7 +40,7 @@ describe VotesController do
 
     it "should return http 'redirect'" do
       expect(response).to be_redirect
-      expect(response).to redirect_to idea_path
+      expect(response).to redirect_to idea_path(@idea.slug)
     end
   end
 end

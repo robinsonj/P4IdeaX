@@ -21,7 +21,7 @@ describe IdeasController do
 
   describe "GET 'edit'" do
     it "returns http success" do
-      get 'edit', { id: 1 }
+      get 'edit', { id: @idea.id }
       expect(response).to be_success
     end
   end
