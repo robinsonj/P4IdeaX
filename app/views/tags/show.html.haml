@@ -1,4 +1,6 @@
-%h3= h @tag.name
 %div
-  %div
-    = render :partial => 'ideas/idea_teaser', :collection => @ideas, :as => :idea
+  .main.panel.section
+    .header
+      %h2.icon.tags= h @tag.name
+    .body
+      = render :partial => 'ideas/idea_teaser', :collection => @ideas, :as => :idea
