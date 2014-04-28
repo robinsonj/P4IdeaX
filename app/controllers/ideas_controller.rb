@@ -21,7 +21,7 @@ class IdeasController < ApplicationController
 
   # GET /ideas/:id
   def show
-    @idea = Idea.find(params[:id])
+    @idea = Idea.friendly.find(params[:id])
     @comments = @idea.comments
     @user_vote ||= Vote.find(@idea.id, current_user.id) \
       if user_signed_in? && Vote.exists?(idea_id: @idea.id, user_id: current_user.id)
@@ -53,6 +53,7 @@ class IdeasController < ApplicationController
 
   # GET /users/:id/edit
   def edit
+    @idea = Idea.friendly.find(params[:id])
     render :partial => 'edit'
   end
 

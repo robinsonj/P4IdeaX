@@ -7,14 +7,15 @@ class CommentsController < ApplicationController
   end
 
   def create
+    @idea = Idea.friendly.find(params[:idea_id])
     @comment = Comment.new(comment_params)
-    @comment.idea_id = params[:idea_id]
+    @comment.idea = @idea
     @comment.author_id = current_user.id
 
     if @comment.save
-      redirect_to idea_path(:id => params[:idea_id]), notice: 'Your comment has been saved.'
+      redirect_to idea_path(@idea), notice: 'Your comment has been saved.'
     else
-      redirect_to idea_path(:id => params[:idea_id]), notice: 'Your comment could not be saved.'
+      redirect_to idea_path(@idea), notice: 'Your comment could not be saved.'
     end
   end
 
