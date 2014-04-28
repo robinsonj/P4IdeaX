@@ -32,11 +32,15 @@ describe "TagViews" do
 
     it "has tag's ideas" do
       @tag = @tag1
+
+      user = create(:user)
+      user.confirm!
+
       assign(:ideas, [
-        create(:idea, :title => 'new title'),
-        create(:idea),
-        create(:idea),
-        create(:idea)
+        create(:idea, :title => 'new title', :owner => user),
+        create(:idea, :owner => user),
+        create(:idea, :owner => user),
+        create(:idea, :owner => user)
         ])
 
       render :template => "tags/show.html.haml"
