@@ -1,3 +1,8 @@
 %div
-  %h2 Tags
-  = render :partial => 'tags/tag', :collection => tags_objects()
+  .main.panel.section
+    .header
+      %h2.icon.tags Tags
+    .body
+      .tag-cloud
+        = render :partial => 'tags/tag', :collection => tags_objects()
+    .footer
