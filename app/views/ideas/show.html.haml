@@ -26,7 +26,7 @@
         %div
           %ul.entry-meta
             %li.votes
-              %div= render :partial => 'votes/vote'
+              %div= render :partial => 'votes/vote', :locals => { :idea => @idea }
             %li.tags
               %h3 Tags
               - @idea.tags.each do |tag|
