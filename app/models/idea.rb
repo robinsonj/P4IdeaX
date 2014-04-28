@@ -1,5 +1,8 @@
 class Idea < ActiveRecord::Base
 
+  STATES = ['new', 'discussion', 'under review', 'accepted', 'denied', 'launched']
+  STATES.freeze
+
   belongs_to :owner, :class_name => 'User'
   belongs_to :current
 
@@ -16,6 +19,7 @@ class Idea < ActiveRecord::Base
 
   validates :title, presence: true, uniqueness: {case_sensitive: false}
   validates :description, :owner_id, presence: true
+  validates :status, presence: true, inclusion: { in: STATES }, allow_nil: false
 
   include PgSearch
   pg_search_scope :search_tags, :associated_against => {
