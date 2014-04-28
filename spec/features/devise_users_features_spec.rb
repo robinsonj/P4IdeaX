@@ -17,6 +17,7 @@ describe "UsersFeatures" do
       fill_in "Email",                  :with => "test@test.com"
       fill_in "Password",               :with => "testtest"
       fill_in "Password confirmation",  :with => "testtest"
+      check 'user_terms_of_use'
 
       click_button "Sign up"
 
@@ -31,6 +32,7 @@ describe "UsersFeatures" do
       fill_in "Email",                 :with => "test1@test.com"
       fill_in "Password",              :with => "testtest"
       fill_in "Password confirmation", :with => "testtest"
+      check 'user_terms_of_use'
 
       click_button "Sign up"
 
