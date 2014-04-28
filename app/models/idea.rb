@@ -49,4 +49,13 @@ class Idea < ActiveRecord::Base
     self.save!
     vote
   end
+
+  def description_excerpt(excerpt_size = 400)
+    desc_compact = description.gsub(/\s+/, ' ')  # Remove line breaks & extra space for compact excerpt
+    if desc_compact.length <= excerpt_size
+      desc_compact
+    else
+      desc_compact[0...excerpt_size-3] + '...'  # TODO: respect word boundaries
+    end
+  end
 end
