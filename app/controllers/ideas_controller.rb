@@ -9,8 +9,8 @@ class IdeasController < ApplicationController
 
   # POST /ideas
   def create
-    @idea = Idea.new(idea_params)
-    @idea.owner = current_user
+    @idea         = Idea.new(idea_params)
+    @idea.owner   = current_user
 
     if idea_tag_params
       @idea.tags += Tag.from_string(idea_tag_params)
@@ -37,24 +37,15 @@ class IdeasController < ApplicationController
       if user_signed_in? && Vote.exists?(idea_id: @idea.id, user_id: current_user.id)
   end
 
-  # GET   /ideas
-  # POST  /ideas/search   # Potentially needs to be moved to another action?
+  # GET /ideas
   def index
-    if params[:search]
-      @ideas = Idea.search_tags(params[:search])
-    else
-      @ideas = Idea.all
-    end
+    @ideas = Idea.all
 
-    if params[:page_size]
-      page_size = params[:page_size].to_i
-      params[:page_size] = 10 if page_size < 10
-      params[:page_size] = 50 if page_size > 50
-    end
-
-    respond_to do |format|
-      format.html
-    end
+    # if params[:page_size]
+    #   page_size = params[:page_size].to_i
+    #   params[:page_size] = 10 if page_size < 10
+    #   params[:page_size] = 50 if page_size > 50
+    # end
   end
 
   # GET /users/:id/edit
