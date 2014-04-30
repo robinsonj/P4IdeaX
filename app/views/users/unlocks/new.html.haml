@@ -7,7 +7,7 @@
         = devise_error_messages!
         .form-group.inline
           = f.label :email
-          = f.email_field :email, autofocus: true
+          = f.email_field :email, autofocus: true, :class => "input-text big"
         .form-submit-inline
           = f.submit "Resend unlock instructions", :id => "submit-signup", :class => "input-submit"
       = render "users/shared/links"
