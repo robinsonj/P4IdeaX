@@ -21,6 +21,8 @@ class User < ActiveRecord::Base
     message: "A user already exists from that provider."
   }
 
+  validates_acceptance_of :terms_of_use, :allow_nil => false, :if => 'new_record?'
+
   def self.find_by_oauth(provider, uid, info)
     find_or_create_by!(provider: provider, uid: uid) do |user|
       user.name     = info[:nickname]

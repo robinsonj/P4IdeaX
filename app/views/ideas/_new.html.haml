@@ -1,15 +1,14 @@
 = form_for :idea, :url => ideas_path do |f|
-  = f.hidden_field :owner_id, :value => current_user.id
-  #idea-title.form-group.inline
+  #idea-title-group.form-group.inline
     = f.label :title, "Idea"
     = f.text_field :title, :placeholder => "My ideas is...", :maxlength => 120, :id => "new-idea-title"
-  #idea-description.form-group.inline
+  #idea-description-group.form-group.inline
     = f.label :description, "Description"
     = f.text_area :description, :placeholder => "It would be great if...", :id => "new-idea-description", :rows => "7", :columns => "20"
-  #idea-tags.form-group.inline
+  #idea-tags-group.form-group.inline
     %label{:for => "tags"} Tags
     = render :partial => 'tags/tag_editor', :locals => { :f => f }
     = submit_tag 'Share my idea', :class => 'input-submit'
-  %p
+  %p.note>
     %strong<>
       Remember, please keep it constructive!

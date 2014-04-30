@@ -2,7 +2,7 @@ require 'spec_helper'
 
 describe "IdeaViews" do
 
-  before do
+  before(:each) do
     @user = create(:user)
     @user.confirm!
     sign_in @user
@@ -25,8 +25,13 @@ describe "IdeaViews" do
   end
 
   describe "ideas/show.html.haml" do
+
+    before(:each) do
+      assign(:idea, create(:idea, :owner_id => @user.id))
+      assign(:comments, [])
+    end
+
     it "renders ideas/show" do
-      @idea = create(:idea)
       render :template => "ideas/show"
       expect(rendered).to render_template("ideas/show")
     end

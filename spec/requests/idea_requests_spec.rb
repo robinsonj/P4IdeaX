@@ -2,8 +2,10 @@ require 'spec_helper'
 
 describe "IdeaRequests" do
   before do
-    @idea1 = create(:idea)
-    @idea2 = create(:idea)
+    @user = create(:user)
+    @user.confirm!
+    @idea1 = create(:idea, :owner => @user)
+    @idea2 = create(:idea, :owner => @user)
   end
 
   describe "GET /ideas" do
@@ -15,8 +17,6 @@ describe "IdeaRequests" do
 
   describe "GET /ideas/new" do
     before do
-      @user = create(:user)
-      @user.confirm!
       post_via_redirect user_session_path, 'user[email]' => @user.email, 'user[password]' => @user.password
     end
 

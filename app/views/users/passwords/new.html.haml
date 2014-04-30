@@ -1,9 +1,15 @@
-%h2 Forgot your password?
-= form_for(resource, as: resource_name, url: password_path(resource_name), html: { method: :post }) do |f|
-  = devise_error_messages!
-  %div
-    = f.label :email
-    %br/
-    = f.email_field :email, autofocus: true
-  %div= f.submit "Send me reset password instructions"
-= render "users/shared/links"
+%div
+  .main.panel.section
+    .header
+      %h2 Forgot your password?
+      %h3 No worries! Enter your email address and we will send you an email that will allow you to reset your password.
+    .body
+      .group
+        = form_for(resource, as: resource_name, url: password_path(resource_name), html: { method: :post }) do |f|
+          = devise_error_messages!
+          .form-group.inline
+            = f.label :email
+            = f.email_field :email, autofocus: true, :class => "input-text big"
+          .form-submit.inline
+            = f.submit "Send me reset password instructions", :id => "submit-signup", :class => "input-submit"
+        = render "users/shared/links"

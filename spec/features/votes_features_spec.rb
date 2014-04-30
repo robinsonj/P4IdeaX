@@ -2,9 +2,11 @@ require 'spec_helper'
 
 describe "VoteFeatures" do
   before do
-    @idea = create(:idea)
     @user = create(:user)
     @user.confirm!
+
+    @idea = create(:idea, :owner => @user)
+
     visit new_user_session_path
     fill_in "Email",    :with => "#{@user.email}"
     fill_in "Password", :with => "#{@user.password}"

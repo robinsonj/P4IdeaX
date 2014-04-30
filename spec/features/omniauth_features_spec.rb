@@ -24,11 +24,11 @@ describe "Omniauth Users" do
     end
   end
 
-  it "does not sign in with invalid credentials" do
-    visit new_user_session_path
-    mock_invalid_credentials(:twitter)
-    click_link "Sign in with Twitter"
+  # it "does not sign in with invalid credentials" do
+  #   visit new_user_session_path
+  #   mock_invalid_credentials(:twitter)
+  #   click_link "Sign in with Twitter"
 
-    expect(page).to have_content("Sign in")
-  end
+  #   expect(page).to have_content("Sign in")
+  # end
 end

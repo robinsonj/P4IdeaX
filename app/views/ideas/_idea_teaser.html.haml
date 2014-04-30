@@ -1,3 +1,18 @@
-%div
-  %h3.entry-title= link_to h(idea.title), idea_path(idea)
-  %p= h idea.description
+.idea.teaser.hentry
+  %div
+    %h4.posted
+      Posted
+      %abbr.punlished.time-relative
+        = time_ago_in_words(idea.created_at)
+        ago
+      by
+      %span.vcard.author
+        = link_to h(idea.owner.name), user_profile_path(idea.owner)
+    %h3.entry-title= link_to h(idea.title), idea_path(idea)
+    %span= render :partial => 'votes/vote', :locals => { :idea => idea }
+    .entry-content
+      %p= h idea.description_excerpt
+    %ul.entry-meta
+      %li.tags
+        - idea.tags.each do |tag|
+          == #{link_to h(tag.name), tag_path(tag)}

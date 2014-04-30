@@ -1,16 +1,43 @@
 %div
-  %div= render :partial => 'votes/vote'
-  %h= @idea.rating
-  %h2= h @idea.title
-  %p=    @idea.description
-  %div
-    %h5 Tags
-    - @idea.tags.each do |tag|
-      = render :partial => 'tags/tag', :locals => { :tag => tag }
-  %div
-    %h3 Comments
-    %div= render :partial => 'comments/comment', :collection => @comments, :controller => 'comments'
-    %div
-      - if user_signed_in?
-        %h4 Comment on this idea
-        %div= render :partial => 'comments/new'
+  #idea-1.main.panel.section.idea.hentry
+    .header
+      %h2.entry-title= @idea.title
+      - if (@idea.owner == current_user)
+        %div
+          = link_to('Edit', edit_idea_path(@idea))
+      %h4.posted
+        Posted at
+        %abbr.published.time-relative= time_tag @idea.created_at
+        by
+        %span.vcard.author
+          = link_to h(@idea.owner.name), user_profile_path(@idea.owner)
+        %br
+        - if !@idea.current.nil? && @idea.current.id != Current::DEFAULT_CURRENT_ID
+          Part of:
+          %strong= link_to h(@idea.current.title), current_path(@idea.current)
+          %br
+        Status:
+        %strong= @idea.status
+
+    .body
+      .entry-content
+        %p= @idea.description
+      .idea-meta
+        %div
+          %ul.entry-meta
+            %li.votes
+              %div= render :partial => 'votes/vote', :locals => { :idea => @idea }
+            %li.tags
+              %h3 Tags
+              - @idea.tags.each do |tag|
+                = render :partial => 'tags/tag', :locals => { :tag => tag }
+      #comments.group.slate
+        - if @comments.empty? && !@idea.closed?
+          %h3 No comments yet. Write one!
+        - else
+          %h3== #{@comments.length} #{'Comment'.pluralize(@comments.length)}
+          .comments.inset
+            %div
+              %div= render :partial => 'comments/comment', :collection => @comments, :controller => 'comments'
+        -if !@idea.closed? && user_signed_in?
+          %div= render :partial => 'comments/new'

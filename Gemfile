@@ -44,6 +44,13 @@ gem 'jbuilder', '~> 1.2'
 # Use autocompletion tool for filling in some form fields.
 gem 'rails4-autocomplete'
 
+# Use FriendlyId to make URLs prettier to read
+# URLs look like:
+#     http://host/model/friendly-string
+#
+# ...instead of http://host/model/1
+gem 'friendly_id', '~> 5.0.0'
+
 group :doc do
   # bundle exec rake doc:rails generates the API under doc/api.
   gem 'sdoc', require: false

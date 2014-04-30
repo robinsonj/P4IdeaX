@@ -2,11 +2,14 @@
   %div
     %h1#logo= link_to LONG_SITE_NAME, root_path
     #nav-primary
-      / -cache('primary_nav') do
-      %ul.nav.user
-        %li= link_to "About", home_about_path
-        %li= link_to "Ideas", ideas_path
-        %li= link_to "Tags",  tags_path
+      -cache('primary_nav') do
+        %ul.nav.site.alt.title-ideas
+          %li= link_to "About", home_about_path
+        %ul.nav.site
+          %li= link_to "Ideas", ideas_path
+          %li= link_to "Tags",  tags_path
+          %li= link_to "Currents", currents_path
+    %ul.nav.user
       - if user_signed_in?
         / %li.first= link_to "#{h current_user.name}" , profile_url(current_user)
         %li= link_to 'Settings', edit_user_registration_path
@@ -14,4 +17,4 @@
       - else
         - cache('no_user_nav') do
           %li= link_to "Sign Up", new_user_registration_path
-          %li=link_to 'Log in', new_user_session_path
+          %li= link_to 'Log in', new_user_session_path

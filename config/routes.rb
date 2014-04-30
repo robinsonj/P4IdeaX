@@ -4,9 +4,11 @@ BBYIDX::Application.routes.draw do
   devise_for :users, :controllers => { :omniauth_callbacks => "users/omniauth_callbacks" }
   # resources :users
 
-  match '/index'    => 'home#index',    via: 'get',   :as => :home_index
-  match '/about'    => 'home#about',    via: 'get',   :as => :home_about
-  match '/contact'  => 'home#contact',  via: 'get',   :as => :home_contact
+  match '/user/:id'         => 'user#show',             via: 'get',   :as => :user_profile
+  match '/index'            => 'home#index',            via: 'get',   :as => :home_index
+  match '/about'            => 'home#about',            via: 'get',   :as => :home_about
+  match '/contact'          => 'home#contact',          via: 'get',   :as => :home_contact
+  match '/terms_of_use'     => 'home#terms_of_use',     via: 'get',   :as => :home_tou
 
   resources :ideas do
     get :autocomplete_tag_name, :on => :collection

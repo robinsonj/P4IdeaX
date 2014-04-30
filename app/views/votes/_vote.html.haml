@@ -1,15 +1,20 @@
-- if user_signed_in?
-  - if @user_vote
-    - if @user_vote.value == 1
-      = button_to 'Delete Vote', remove_idea_vote_path(@idea), :method => :delete
-    - else
-      = button_to 'Vote Up', change_idea_vote_path(@idea, :value => 1), :method => :patch
-  - else
-    = button_to 'Vote Up', create_idea_vote_path(@idea, :value => 1), :method => :post
-  - if @user_vote
-    - if @user_vote.value == -1
-      = button_to 'Delete Vote', remove_idea_vote_path(@idea), :method => :delete
-    - else
-      = button_to 'Vote Down', change_idea_vote_path(@idea, :value => -1), :method => :patch
-  - else
-    = button_to 'Vote Down', create_idea_vote_path(@idea, :value => -1), :method => :post
+%ul.vote
+  %li.vote_count
+    = h "#{idea.rating}"
+    %span.points= h "#{'vote'.pluralize(idea.rating)}"
+  %li.vote-for-it
+    - if user_signed_in?
+      - if @user_vote
+        - if @user_vote.value == 1
+          = button_to 'Delete Vote', remove_idea_vote_path(idea), :method => :delete
+        - else
+          = button_to 'Vote Up', change_idea_vote_path(idea, :value => 1), :method => :patch
+      - else
+        = button_to 'Vote Up', create_idea_vote_path(idea, :value => 1), :method => :post
+      - if @user_vote
+        - if @user_vote.value == -1
+          = button_to 'Delete Vote', remove_idea_vote_path(idea), :method => :delete
+        - else
+          = button_to 'Vote Down', change_idea_vote_path(idea, :value => -1), :method => :patch
+      - else
+        = button_to 'Vote Down', create_idea_vote_path(idea, :value => -1), :method => :post
