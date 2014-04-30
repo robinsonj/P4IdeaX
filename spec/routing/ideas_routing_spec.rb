@@ -15,15 +15,15 @@ describe IdeasController do
     end
   end
 
-  describe "POST 'index'" do
+  describe "GET 'search'" do
     it "should be routable" do
-      expect(:post => '/ideas/search').to be_routable
+      expect(:get => '/ideas/search').to be_routable
     end
 
-    it "should route to ideas#index" do
-      expect(:post => '/ideas/search').to route_to(
+    it "should route to ideas#search" do
+      expect(:get => '/ideas/search').to route_to(
           :controller => 'ideas',
-          :action => 'index'
+          :action => 'search'
         )
     end
   end

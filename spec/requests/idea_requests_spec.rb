@@ -40,9 +40,9 @@ describe "IdeaRequests" do
     end
   end
 
-  describe "POST /ideas/search" do
+  describe "GET /ideas/search" do
     it "should return http success" do
-      post search_ideas_path(:search => ['tag', 'tag1'])
+      get search_ideas_path(:search_text => 'example text')
       expect(response).to be_success
     end
   end
