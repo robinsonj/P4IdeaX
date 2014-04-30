@@ -1,6 +1,7 @@
 class IdeasController < ApplicationController
 
   before_action :set_idea, :only => [:show, :edit, :update]
+  before_filter :authenticate_user!, :except => [:index, :show]
 
   autocomplete :tag, :name, :full => false
 
