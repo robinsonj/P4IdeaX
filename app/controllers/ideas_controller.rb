@@ -1,5 +1,7 @@
 class IdeasController < ApplicationController
 
+  before_action :set_idea, :only => [:show, :edit, :update]
+
   autocomplete :tag, :name, :full => false
 
   # GET /ideas/new
@@ -31,7 +33,6 @@ class IdeasController < ApplicationController
 
   # GET /ideas/:id
   def show
-    @idea = Idea.friendly.find(params[:id])
     @comments = @idea.comments.visible
     @user_vote ||= Vote.find(@idea.id, current_user.id) \
       if user_signed_in? && Vote.exists?(idea_id: @idea.id, user_id: current_user.id)
@@ -50,7 +51,6 @@ class IdeasController < ApplicationController
 
   # GET /users/:id/edit
   def edit
-    @idea = Idea.friendly.find(params[:id])
     render :partial => 'edit'
   end
 
@@ -59,6 +59,10 @@ class IdeasController < ApplicationController
   end
 
   private
+
+    def set_idea
+      @idea = Idea.friendly.find(params[:id])
+    end
 
     def idea_params
       params.require(:idea).permit(:title, :description)
