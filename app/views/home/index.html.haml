@@ -10,16 +10,16 @@
         for ideas you like, and
         %strong discussing
         them with the rest of the community.
-    - if user_signed_in?
-      %h3
-        %em Share Ideas Now
-      .body#submit-idea
-        = render :partial => 'ideas/new', :locals => { :small => true }
-    - else
-      %h3
-        = link_to "Sign Up", new_user_registration_path
-        %em to Get Started Now
-
+      - if user_signed_in?
+        %h3
+          %em Share Ideas Now
+      - else
+        %h3
+          = link_to "Sign Up", new_user_registration_path
+          %em to Get Started Now
+    .body#submit-idea
+      = render :partial => 'ideas/new', :locals => { :small => true }
+  %hr.hide
   #instructions.section
     %h2.header
       This is how it works.
