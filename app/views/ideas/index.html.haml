@@ -1,3 +1,8 @@
 %div
-  %div
-    = render :partial => 'ideas/idea_teaser', :collection => idea_objects_list, :as => :idea
+  #popular-ideas.main.panel.section.hfeed
+    .header
+      %h2 Ideas
+    .body.ideas-list.inset
+      %div
+        %div
+          = render :partial => 'ideas/idea_teaser', :collection => idea_objects_list, :as => :idea
