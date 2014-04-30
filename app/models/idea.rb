@@ -22,8 +22,10 @@ class Idea < ActiveRecord::Base
   validates :status, presence: true, inclusion: { in: STATES }, allow_nil: false
 
   include PgSearch
-  pg_search_scope :search_tags, :associated_against => {
-    :tags => :name
+  pg_search_scope :search_ideas, :against => [:title, :description, :status], :associated_against => {
+    :owner =>   :name,
+    :tags =>    :name,
+    :current => :title
   }
 
   extend FriendlyId

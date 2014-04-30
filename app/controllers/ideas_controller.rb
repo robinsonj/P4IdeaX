@@ -1,7 +1,7 @@
 class IdeasController < ApplicationController
 
-  before_action :set_idea, :only => [:show, :edit, :update]
-  before_filter :authenticate_user!, :except => [:index, :show]
+  before_action :set_idea, only: [:show, :edit, :update]
+  before_filter :authenticate_user!, :except => [:index, :show, :search]
 
   autocomplete :tag, :name, :full => false
 
@@ -42,12 +42,11 @@ class IdeasController < ApplicationController
   # GET /ideas
   def index
     @ideas = Idea.all
+  end
 
-    # if params[:page_size]
-    #   page_size = params[:page_size].to_i
-    #   params[:page_size] = 10 if page_size < 10
-    #   params[:page_size] = 50 if page_size > 50
-    # end
+  # GET /ideas/search
+  def search
+    @ideas = Idea.search_ideas(search_params)
   end
 
   # GET /users/:id/edit
@@ -71,5 +70,9 @@ class IdeasController < ApplicationController
 
     def idea_tag_params
       params.require(:idea).permit(:tag_names => [])[:tag_names]
+    end
+
+    def search_params
+      params.require(:search_text)
     end
 end

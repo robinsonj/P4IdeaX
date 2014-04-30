@@ -16,7 +16,7 @@ BBYIDX::Application.routes.draw do
     resources :comments, except: [:index]
 
     collection do
-      post 'search', to: 'ideas#index'
+      get 'search', to: 'ideas#search'
     end
 
     member do

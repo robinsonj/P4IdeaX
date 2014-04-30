@@ -1,0 +1,8 @@
+%div
+  #popular-ideas.main.panel.section.hfeed
+    .header
+      %h2 Results
+    .body.ideas-list.inset
+      %div
+        %div
+          = render :partial => 'ideas/idea_teaser', :collection => @ideas, :as => :idea
