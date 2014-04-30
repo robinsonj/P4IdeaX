@@ -28,7 +28,7 @@ describe "IdeaRequests" do
 
   describe "GET /ideas/:id/edit" do
     it "should return http success" do
-      get edit_idea_path(:id => @idea1.id)
+      get edit_idea_path(:id => @idea1.slug)
       expect(response).to be_success
     end
   end
