@@ -3,11 +3,12 @@
     .header
       %h2 Resend unlock instructions
     .body
-      = form_for(resource, as: resource_name, url: unlock_path(resource_name), html: { method: :post }) do |f|
-        = devise_error_messages!
-        .form-group.inline
-          = f.label :email
-          = f.email_field :email, autofocus: true, :class => "input-text big"
-        .form-submit-inline
-          = f.submit "Resend unlock instructions", :id => "submit-signup", :class => "input-submit"
-      = render "users/shared/links"
+      .group
+        = form_for(resource, as: resource_name, url: unlock_path(resource_name), html: { method: :post }) do |f|
+          = devise_error_messages!
+          .form-group.inline
+            = f.label :email
+            = f.email_field :email, autofocus: true, :class => "input-text big"
+          .form-submit.inline
+            = f.submit "Resend unlock instructions", :id => "submit-signup", :class => "input-submit"
+        = render "users/shared/links"
