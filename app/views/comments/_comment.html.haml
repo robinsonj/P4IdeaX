@@ -7,7 +7,7 @@
       %h5.posted
         Posted
         %abbr.published.time-relative== #{time_ago_in_words(comment.created_at)} ago
-    %p= comment.text
-  - if comment.author == current_user
-    %div
-      = link_to('Edit', edit_idea_comment_path(:idea_id => @idea.id, :id => comment.id))
+      %p= comment.text
+      - if comment.author == current_user
+        %div
+          = link_to('Edit', edit_idea_comment_path(:idea_id => @idea.id, :id => comment.id))
