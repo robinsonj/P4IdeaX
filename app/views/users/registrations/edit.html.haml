@@ -26,7 +26,7 @@
             = f.label :current_password
             = f.password_field :current_password, autocomplete: "off", :class => "input-text big"
             %p.note (we need your current password to confirm your changes)
-          .form-submit-inline
+          .form-submit.inline
             = f.submit "Update", :id => "submit-signup", :class => "input-submit"
         %h3 Cancel my account
         %p
