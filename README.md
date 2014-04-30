@@ -36,13 +36,13 @@ _* Note: Don't use the same database for development & testing as production. Sp
 
 To customize the UI, edit / create files in the following directories:
 
-* app/views/
+* app/views/custom/*
 * app/assets/stylesheets/
 * app/assets/images/
 
 ## Installation
 
-1. `git clone https://github.com/robinsonj/P4IdeaX && cd ./P4IdeaX`
+1. `$ git clone https://github.com/robinsonj/P4IdeaX && cd ./P4IdeaX`
 2. `$ bundle install`
 3. `$ psql template1 -c "CREATE USER ideabox WITH CREATEDB PASSWORD 'ideabox';"`
 4. `$ rake db:create && rake db:migrate`
