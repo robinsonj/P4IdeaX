@@ -54,8 +54,28 @@ class IdeasController < ApplicationController
     render :partial => 'edit'
   end
 
+  # PATCH/PUT /ideas/:id
+  # PATCH/PUT /ideas/:id.json
   def update
+    respond_to do |format|
+      if @idea.update(idea_params)
+        format.html { redirect_to @idea, notice: 'Idea was successfully updated.' }
+        format.json { head :no_content }
+      else
+        format.html { render action: 'edit' }
+        format.json { render json: @idea.errors, status: :unprocessable_entity }
+      end
+    end
+  end
 
+  # DELETE /ideas/:id
+  # DELETE /ideas/:id.json
+  def destroy
+    @idea.destroy
+    respond_to do |format|
+      format.html { redirect_to ideas_url }
+      format.json { head :no_content }
+    end
   end
 
   private
