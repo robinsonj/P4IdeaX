@@ -9,31 +9,31 @@
         %h3<
           Hey, why not? It's completely
           %em free!
-      .body
-        .group
-          = form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f|
-            = devise_error_messages!
-            .form-group.inline
-              = f.label :name
-              = f.text_field :name, autofocus: true, :class => "input-text big"
-              %p.note== This is your public name on #{SHORT_SITE_NAME}
-            .form-group.inline
-              = f.label :email
-              = f.email_field :email, :class => "input-text big"
-              %p.note You'll use this when you log in.
-            .form-group.inline
-              = f.label :password
-              = f.password_field :password, autocomplete: "off", :class => "input-text big"
-              %p.note Minimum 8 characters.
-            .form-group.inline
-              = f.label :password_confirmation
-              = f.password_field :password_confirmation, autocomplete: "off", :class => "input-text big"
-            .form-group.inline.checkbox
-              = f.check_box :terms_of_use, :class => "input-checkbox"
-              %label{ :for => "user_terms_of_use" }
-                I agree to the
-                = link_to 'terms of use', home_tou_path, :target => "_blank"
-                == .
-            .form-submit-inline
-              = f.submit "Sign up", :id => "submit-signup", :class => "input-submit"
-          = render "users/shared/links"
+    .body
+      .group
+        = form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f|
+          = devise_error_messages!
+          .form-group.inline
+            = f.label :name
+            = f.text_field :name, autofocus: true, :class => "input-text big"
+            %p.note== This is your public name on #{SHORT_SITE_NAME}
+          .form-group.inline
+            = f.label :email
+            = f.email_field :email, :class => "input-text big"
+            %p.note You'll use this when you log in.
+          .form-group.inline
+            = f.label :password
+            = f.password_field :password, autocomplete: "off", :class => "input-text big"
+            %p.note Minimum 8 characters.
+          .form-group.inline
+            = f.label :password_confirmation
+            = f.password_field :password_confirmation, autocomplete: "off", :class => "input-text big"
+          .form-group.inline.checkbox
+            = f.check_box :terms_of_use, :class => "input-checkbox"
+            %label{ :for => "user_terms_of_use" }
+              I agree to the
+              = link_to 'terms of use', home_tou_path, :target => "_blank"
+              == .
+          .form-submit-inline
+            = f.submit "Sign up", :id => "submit-signup", :class => "input-submit"
+        = render "users/shared/links"
