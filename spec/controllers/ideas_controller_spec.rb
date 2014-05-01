@@ -50,6 +50,10 @@ describe IdeasController do
     end
   end
 
+  describe "GET 'search'" do
+    pending
+  end
+
   describe "POST 'create'" do
     describe "with valid params" do
       it "creates a new Idea" do
