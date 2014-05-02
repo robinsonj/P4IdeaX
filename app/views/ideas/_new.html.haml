@@ -1,14 +1,14 @@
 = form_for :idea, :url => ideas_path do |f|
   #idea-title-group.form-group.inline
     = f.label :title, "Idea"
-    = f.text_field :title, :placeholder => "My ideas is...", :maxlength => 120, :id => "new-idea-title"
+    = f.text_field :title, :placeholder => "My ideas is...", :maxlength => 120, :id => "new-idea-title", :class => "input-text big", :size => "51"
   #idea-description-group.form-group.inline
     = f.label :description, "Description"
-    = f.text_area :description, :placeholder => "It would be great if...", :id => "new-idea-description", :rows => "7", :columns => "20"
+    = f.text_area :description, :placeholder => "It would be great if...", :id => "new-idea-description", :class => "input-textarea big", :rows => "7", :columns => "40"
   #idea-tags-group.form-group.inline
     %label{:for => "tags"} Tags
     = render :partial => 'tags/tag_editor', :locals => { :f => f }
-    = submit_tag 'Share my idea', :class => 'input-submit'
+    = submit_tag 'Share my idea', :class => 'input-submit big'
   %p.note>
     %strong<>
       Remember, please keep it constructive!
