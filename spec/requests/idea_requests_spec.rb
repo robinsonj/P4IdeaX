@@ -27,6 +27,10 @@ describe "IdeaRequests" do
   end
 
   describe "GET /ideas/:id/edit" do
+    before do
+      post_via_redirect user_session_path, 'user[email]' => @user.email, 'user[password]' => @user.password
+    end
+
     it "should return http success" do
       get edit_idea_path(:id => @idea1.slug)
       expect(response).to be_success
