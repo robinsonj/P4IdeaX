@@ -699,13 +699,11 @@ body.life-cycles .nav li a.life-cycles {
     width: 300px; }
     #intro .header h2 {
       margin-top: 10px;
-      height: 36px;
       background-color: transparent;
       background-position: left top;
       background-repeat: no-repeat;
       display: block;
-      overflow: hidden;
-      text-indent: -9000px; }
+      overflow: hidden; }
     #intro .header p {
       padding: 0 16px;
       color: #444444;
@@ -732,14 +730,12 @@ body.life-cycles .nav li a.life-cycles {
       #intro .header h3 a {
         margin: 0 auto;
         background-image: url(../images/intro-signup.png);
-        height: 70px;
         width: 189px;
         background-color: transparent;
         background-position: left top;
         background-repeat: no-repeat;
         display: block;
-        overflow: hidden;
-        text-indent: -9000px; }
+        overflow: hidden; }
   #intro .body {
     float: right;
     width: 600px; }
