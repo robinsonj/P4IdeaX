@@ -1,9 +1,13 @@
 require 'spec_helper'
 
-describe "IdeaRequests" do
+describe "Ideas" do
+
+  let(:valid_attributes) { FactoryGirl.attributes_for(:idea) }
+
   before do
     @user = create(:user)
     @user.confirm!
+
     @idea1 = create(:idea, :owner => @user)
     @idea2 = create(:idea, :owner => @user)
   end
@@ -51,8 +55,54 @@ describe "IdeaRequests" do
     end
   end
 
-  pending "POST /ideas"
-  pending "PATCH /ideas/:id"
-  pending "PUT /ideas/:id"
-  pending "DELETE /ideas/:id"
+  describe "POST /ideas" do
+    before do
+      post_via_redirect user_session_path, 'user[email]' => @user.email, 'user[password]' => @user.password
+    end
+
+    it "should return http success" do
+      post ideas_path, :idea => valid_attributes
+
+      expect(response).to be(302)
+    end
+  end
+
+  describe "PATCH /ideas/:id" do
+    before do
+      post_via_redirect user_session_path, 'user[email]' => @user.email, 'user[password]' => @user.password
+    end
+
+    it "should return http success" do
+      idea = create(:idea, :owner_id => @user.id)
+      patch idea_path(:id => idea.id), :idea => valid_attributes
+
+      expect(response).to be_success
+    end
+  end
+
+  describe "PUT /ideas/:id" do
+    before do
+      post_via_redirect user_session_path, 'user[email]' => @user.email, 'user[password]' => @user.password
+    end
+
+    it "should return http success" do
+      idea = create(:idea, :owner_id => @user.id)
+      put idea_path(:id => idea.id), :idea => valid_attributes
+
+      expect(response).to be_success
+    end
+  end
+
+  describe "DELETE /ideas/:id" do
+    before do
+      post_via_redirect user_session_path, 'user[email]' => @user.email, 'user[password]' => @user.password
+    end
+
+    it "should return http success" do
+      idea = create(:idea, :owner_id => @user.id)
+      delete idea_path(:id => idea.id)
+
+      expect(response).to be_success
+    end
+  end
 end
