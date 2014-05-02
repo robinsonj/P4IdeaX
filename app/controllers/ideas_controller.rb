@@ -23,11 +23,7 @@ class IdeasController < ApplicationController
       if @idea.save
         format.html { redirect_to idea_path(@idea.slug), notice: 'Your Idea was successfully created.' }
       else
-        if user_signed_in?
-          format.html { render action: 'new', notice: 'Your Idea could not be saved.' }
-        else
-          format.html { redirect_to new_user_session_path, notice: 'Please sign in to create an idea.' }
-        end
+        format.html { render action: 'new', notice: 'Your Idea could not be saved.' }
       end
     end
   end
