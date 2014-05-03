@@ -21,7 +21,7 @@ class IdeasController < ApplicationController
 
     respond_to do |format|
       if @idea.save
-        format.html { redirect_to idea_path(@idea.slug), notice: 'Your Idea was successfully created.' }
+        format.html { redirect_to @idea, notice: 'Your Idea was successfully created.' }
       else
         format.html { render action: 'new', notice: 'Your Idea could not be saved.' }
       end

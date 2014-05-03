@@ -51,7 +51,32 @@ describe IdeasController do
   end
 
   describe "GET 'search'" do
-    pending
+    it "assigns matching ideas as @ideas" do
+      idea1 = create(:idea, :owner_id => @user.id)
+      get :search, { :search_text => idea1.title }, valid_session
+
+      expect(assigns(:ideas)).to eq([idea1])
+    end
+  end
+
+  describe "GET 'autocomplete_tag_name'" do
+    before(:all) do
+      @tag1 = create(:tag, :name => 'tag1')
+      @tag2 = create(:tag, :name => 'tag2')
+    end
+
+    it "returns tags matching the input term" do
+      get :autocomplete_tag_name, { :term => 'tag' }, valid_session
+
+      expect(response.body).to have_content(@tag1.name, @tag2.name)
+    end
+
+    it "does not return tags mismatching the input term" do
+      get :autocomplete_tag_name, { :term => 'tag1' }, valid_session
+
+      expect(response.body).to      have_content(@tag1.name)
+      expect(response.body).not_to  have_content(@tag2.name)
+    end
   end
 
   describe "POST 'create'" do
