@@ -124,7 +124,7 @@ describe IdeasController do
     describe "with valid params" do
       it "updates the requested idea" do
         idea = create(:idea, :owner_id => @user.id)
-        # Assuming there are no other currents in the database, this
+        # Assuming there are no other ideas in the database, this
         # specifies that the idea created on the previous line
         # receives the :update_attributes message with whatever params are
         # submitted in the request.
@@ -172,7 +172,7 @@ describe IdeasController do
       }.to change(Idea, :count).by(-1)
     end
 
-    it "redirects to the currents list" do
+    it "redirects to the ideas list" do
       idea = create(:idea, :owner_id => @user.id)
       delete :destroy, { :id => idea.to_param }, valid_session
       expect(response).to redirect_to(ideas_url)
