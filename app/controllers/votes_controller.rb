@@ -1,9 +1,10 @@
 class VotesController < ApplicationController
 
+  before_action :set_idea
+  before_action :set_vote, only: [:update, :destroy]
   before_filter :authenticate_user! # Require users to be authenticated for any voting actions.
 
   def create
-    @idea = Idea.friendly.find(params[:id])
     @vote = Vote.new(vote_params)
 
     if @vote.save!
@@ -15,9 +16,7 @@ class VotesController < ApplicationController
   end
 
   def update
-    @idea = Idea.friendly.find(params[:id])
-    @vote = Vote.find(@idea.id, current_user.id)
-    @vote.value = params[:value]
+    @vote.update(vote_params)
 
     if @vote.save!
       @idea.change_vote(@vote)
@@ -28,8 +27,6 @@ class VotesController < ApplicationController
   end
 
   def destroy
-    @idea = Idea.friendly.find(params[:id])
-    @vote = Vote.find(@idea.id, current_user.id)
     @idea.subtract_vote(@vote)
 
     if @vote.destroy!
@@ -40,6 +37,14 @@ class VotesController < ApplicationController
   end
 
   private
+
+    def set_idea
+      @idea = Idea.friendly.find(params[:id])
+    end
+
+    def set_vote
+      @vote = Vote.find(@idea.id, current_user.id)
+    end
 
     def vote_params
       params.require(:id)
