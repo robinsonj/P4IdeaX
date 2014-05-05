@@ -1,46 +1,104 @@
 require 'spec_helper'
 
 describe VotesController do
-  before do
+
+  let(:valid_attributes)    { FactoryGirl.attributes_for(:vote) }
+  let(:valid_session)       { { "warden.user.user.key" => session["warden.user.user.key"] } }
+
+  before(:each) do
+    @request.env["devise.mapping"] = Devise.mappings[:user]
+
     @user = create(:user)
     @idea = create(:idea)
-
     @user.confirm!
+
     sign_in @user
   end
 
   describe "POST 'create'" do
-    before(:each) do
-      post 'create', { :id => @idea.id, :value => -1 }
-    end
+    describe "with valid params" do
+      it "creates a new Vote" do
+        expect {
+          post :create, { :id => @idea.id, :value => valid_attributes[:value] }, valid_session
+        }.to change(Vote, :count).by(1)
+      end
 
-    it "should return http 'redirect'" do
-      expect(response).to be_redirect
-      expect(response).to redirect_to idea_path(@idea.slug)
+      it "assigns a newly created vote as @vote" do
+        post :create, { :id => @idea.id, :value => valid_attributes[:value] }, valid_session
+
+        expect(assigns(:vote)).to be_a(Vote)
+        expect(assigns(:vote)).to be_persisted
+      end
+
+      it "redirects to the vote's idea" do
+        post :create, { :id => @idea.id, :value => valid_attributes[:value] }, valid_session
+
+        expect(response).to redirect_to(@idea)
+      end
     end
   end
 
   describe "PATCH 'update'" do
-    before(:each) do
-      create(:vote, :idea_id => @idea.id, :user_id => @user.id, :value => -1)
-      patch 'update', { :id => @idea.id, :value => 1 }
+    describe "with valid params" do
+      it "updates the requested vote" do
+        vote = create(:vote, :idea_id => @idea.id, :user_id => @user.id, :value => -1)
+        # Assuming there are no other votes in the database, this
+        # specifies that the vote created on the previous line
+        # receives the :update_attributes message with whatever params are
+        # submitted in the request.
+        Vote.any_instance.should_receive(:update).with({ :idea_id => @idea.id, :user_id => @user.id, :value => "1" })
+
+        patch :update, { :id => @idea.id, :value => 1 }, valid_session
+      end
+
+      it "assigns the requested vote as @vote" do
+        vote = create(:vote, :idea_id => @idea.id, :user_id => @user.id, :value => -1)
+        patch :update, { :id => @idea.id, :value => 1 }, valid_session
+
+        expect(assigns(:vote)).to eq(vote)
+      end
+
+      it "redirects to the vote's idea" do
+        vote = create(:vote, :idea_id => @idea.id, :user_id => @user.id, :value => -1)
+        patch :update, { :id => @idea.id, :value => 1 }, valid_session
+
+        expect(response).to redirect_to idea_path(@idea.slug)
+      end
     end
 
-    it "should return http 'redirect'" do
-      expect(response).to be_redirect
-      expect(response).to redirect_to idea_path(@idea.slug)
+    describe "with invalid params" do
+      it "assigns the vote as @vote" do
+        vote = create(:vote, :idea_id => @idea.id, :user_id => @user.id, :value => -1)
+        # Trigger the behavior that occurs when invalid params are submitted
+        Vote.any_instance.stub(:save).and_return(false)
+        patch :update, { :id => @idea.id, :value => 1 }, valid_session
+
+        expect(assigns(:vote)).to eq(vote)
+      end
+
+      it "redirects to the vote's idea" do
+        vote = create(:vote, :idea_id => @idea.id, :user_id => @user.id, :value => -1)
+        # Trigger the behavior that occurs when invalid params are submitted
+        Vote.any_instance.stub(:save).and_return(false)
+        patch :update, { :id => @idea.id, :value => 1 }, valid_session
+
+        expect(response).to redirect_to idea_path(@idea)
+      end
     end
   end
 
   describe "DELETE 'destroy'" do
-    before(:each) do
-      create(:vote, :idea_id => @idea.id, :user_id => @user.id, :value => -1)
-      delete 'destroy', { :id => @idea.id }
+    it "destroys the requested vote" do
+      vote = create(:vote, :idea_id => @idea.id, :user_id => @user.id)
+      expect {
+        delete 'destroy', { :id => @idea.id }, valid_session
+      }.to change(Vote, :count).by(-1)
     end
 
-    it "should return http 'redirect'" do
-      expect(response).to be_redirect
-      expect(response).to redirect_to idea_path(@idea.slug)
+    it "redirects to the vote's idea" do
+      vote = create(:vote, :idea_id => @idea.id, :user_id => @user.id)
+      delete :destroy, { :id => @idea.id }, valid_session
+      expect(response).to redirect_to idea_path(@idea)
     end
   end
 end
