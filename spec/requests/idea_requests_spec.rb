@@ -60,10 +60,10 @@ describe "Ideas" do
       post_via_redirect user_session_path, 'user[email]' => @user.email, 'user[password]' => @user.password
     end
 
-    it "should return http success" do
+    it "should return http redirect" do
       post ideas_path, :idea => valid_attributes
 
-      expect(response).to be(302)
+      expect(response).to redirect_to idea_path(assigns(:idea))
     end
   end
 
@@ -72,11 +72,11 @@ describe "Ideas" do
       post_via_redirect user_session_path, 'user[email]' => @user.email, 'user[password]' => @user.password
     end
 
-    it "should return http success" do
+    it "should return http redirect" do
       idea = create(:idea, :owner_id => @user.id)
       patch idea_path(:id => idea.id), :idea => valid_attributes
 
-      expect(response).to be_success
+      expect(response).to redirect_to idea_path(assigns(:idea))
     end
   end
 
@@ -85,11 +85,11 @@ describe "Ideas" do
       post_via_redirect user_session_path, 'user[email]' => @user.email, 'user[password]' => @user.password
     end
 
-    it "should return http success" do
+    it "should return http redirect" do
       idea = create(:idea, :owner_id => @user.id)
       put idea_path(:id => idea.id), :idea => valid_attributes
 
-      expect(response).to be_success
+      expect(response).to redirect_to idea_path(assigns(:idea))
     end
   end
 
@@ -98,11 +98,11 @@ describe "Ideas" do
       post_via_redirect user_session_path, 'user[email]' => @user.email, 'user[password]' => @user.password
     end
 
-    it "should return http success" do
+    it "should return http redirect" do
       idea = create(:idea, :owner_id => @user.id)
       delete idea_path(:id => idea.id)
 
-      expect(response).to be_success
+      expect(response).to redirect_to ideas_url
     end
   end
 end
