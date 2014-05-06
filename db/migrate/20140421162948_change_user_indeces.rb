@@ -4,7 +4,6 @@ class ChangeUserIndeces < ActiveRecord::Migration
 
     add_index :users, :email, unique: false, using: 'btree'
     add_index :users, [:provider, :uid], unique: true, using: 'btree'
-
   end
 
   def self.down

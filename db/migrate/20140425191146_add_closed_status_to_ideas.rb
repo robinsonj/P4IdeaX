@@ -1,6 +1,6 @@
 class AddClosedStatusToIdeas < ActiveRecord::Migration
   def self.up
-    add_column :ideas, :closed, :boolean, :default => false, :null => false
+    add_column :ideas, :closed, :boolean, default: false, null: false
   end
 
   def self.down

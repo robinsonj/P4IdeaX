@@ -1,6 +1,6 @@
 class AddSlugsToIdeas < ActiveRecord::Migration
   def self.up
-    add_column :ideas, :slug, :string, :unique => true, :null => false
+    add_column :ideas, :slug, :string, unique: true, null: false
   end
 
   def self.down
