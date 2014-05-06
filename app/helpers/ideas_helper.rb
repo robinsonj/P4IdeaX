@@ -4,6 +4,5 @@ module IdeasHelper
   end
 
   def search_ideas(params)
-
   end
 end

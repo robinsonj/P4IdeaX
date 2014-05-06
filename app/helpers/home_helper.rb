@@ -1,5 +1,4 @@
 module HomeHelper
-
   def recent_ideas(max = 5)
     @ideas = Idea.where(status: 'new').order(created_at: :desc).first(max)
   end
