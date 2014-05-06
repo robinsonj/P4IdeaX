@@ -1,8 +1,8 @@
 require 'spec_helper'
 
 describe IdeasHelper do
-  describe "idea_objects_list" do
-    it "fetches all ideas" do
+  describe 'idea_objects_list' do
+    it 'fetches all ideas' do
       idea1 = create(:idea, id: 1)
       idea2 = create(:idea, id: 2)
       idea3 = create(:idea, id: 3)
@@ -16,11 +16,11 @@ describe IdeasHelper do
       helper.idea_objects_list.should include idea5
     end
 
-    it "should return an array (empty)" do
+    it 'should return an array (empty)' do
       expect(helper.idea_objects_list).to eq([])
     end
 
-    it "should return an array (not empty)" do
+    it 'should return an array (not empty)' do
       idea1 = create(:idea)
       idea2 = create(:idea)
 

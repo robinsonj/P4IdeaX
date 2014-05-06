@@ -11,5 +11,5 @@ require 'spec_helper'
 #   end
 # end
 describe CurrentsHelper do
-  pending "has no Currents helper functions to test."
+  pending 'has no Currents helper functions to test.'
 end

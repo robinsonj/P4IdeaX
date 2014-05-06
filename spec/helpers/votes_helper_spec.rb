@@ -11,5 +11,5 @@ require 'spec_helper'
 #   end
 # end
 describe VotesHelper do
-  pending "has no votes helper functions to test."
+  pending 'has no votes helper functions to test.'
 end
