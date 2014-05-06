@@ -14,7 +14,7 @@ EMAIL_FROM_ADDRESS = "#{LONG_SITE_NAME} <noreply@#{PRODUCTION_HOST}>"
 
 # Tag names shown in the idea tag editor as examples before user input.
 # Customize to suit your product/idea coverage needs.
-EXAMPLE_TAGS = "music, home entertainment, discount"
+EXAMPLE_TAGS = 'music, home entertainment, discount'
 
 # Configure omniauth providers in 'config/initializers/auth_providers.rb'
 # Set the provider flags you wish to use to 'true' here.
