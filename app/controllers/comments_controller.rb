@@ -1,7 +1,6 @@
 class CommentsController < ApplicationController
-
-  before_action :set_comment, :only => [:show, :edit, :update, :destroy]
-  before_action :authenticate_user!, :except => [:index, :show]
+  before_action :set_comment, only: [:show, :edit, :update, :destroy]
+  before_action :authenticate_user!, except: [:index, :show]
 
   # GET /ideas/:idea_id/comments/new
   def new
@@ -33,7 +32,6 @@ class CommentsController < ApplicationController
   # PATCH /ideas/:idea_id/comments/:id
   # PUT   /ideas/:idea_id/comments/:id
   def update
-
     if @comment.update(comment_params)
       redirect_to @comment.idea, notice: 'Your comment was successfully updated.'
     else
@@ -50,16 +48,15 @@ class CommentsController < ApplicationController
     else
       redirect_to idea_path(@idea), notice: 'Your comment could not be removed.'
     end
-
   end
 
   private
 
-    def set_comment
-      @comment = Comment.find(params[:id])
-    end
+  def set_comment
+    @comment = Comment.find(params[:id])
+  end
 
-    def comment_params
-      params.require(:comment).permit(:text)
-    end
+  def comment_params
+    params.require(:comment).permit(:text)
+  end
 end

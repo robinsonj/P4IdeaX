@@ -1,5 +1,5 @@
 class UsersController < ApplicationController
-  skip_before_filter :require_user, :only => [:new, :create]
+  skip_before_action :require_user, only: [:new, :create]
   before_action :set_user, only: [:show]
 
   # GET /users/1
@@ -9,8 +9,7 @@ class UsersController < ApplicationController
 
   private
 
-    def set_user
-      @user = User.find(params[:id])
-    end
-
+  def set_user
+    @user = User.find(params[:id])
+  end
 end

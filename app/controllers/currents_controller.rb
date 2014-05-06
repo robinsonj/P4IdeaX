@@ -1,6 +1,6 @@
 class CurrentsController < ApplicationController
   before_action :set_current, only: [:show, :edit, :update, :destroy]
-  before_filter :authenticate_user!, :except => [:index, :show]
+  before_action :authenticate_user!, except: [:index, :show]
 
   # GET /currents
   # GET /currents.json
@@ -25,7 +25,6 @@ class CurrentsController < ApplicationController
   # POST /currents
   # POST /currents.json
   def create
-
     @current = Current.new(current_params)
     @current.owner = current_user
 
@@ -66,12 +65,12 @@ class CurrentsController < ApplicationController
 
   private
     # Use callbacks to share common setup or constraints between actions.
-    def set_current
-      @current = Current.find(params[:id])
-    end
+  def set_current
+    @current = Current.find(params[:id])
+  end
 
     # Never trust parameters from the scary internet, only allow the white list through.
-    def current_params
-      params.require(:current).permit(:title, :description)
-    end
+  def current_params
+    params.require(:current).permit(:title, :description)
+  end
 end

@@ -1,9 +1,8 @@
 class IdeasController < ApplicationController
-
   before_action :set_idea, only: [:show, :edit, :update, :destroy]
-  before_filter :authenticate_user!, :except => [:index, :show, :search, :autocomplete_tag_name]
+  before_action :authenticate_user!, except: [:index, :show, :search, :autocomplete_tag_name]
 
-  autocomplete :tag, :name, :full => false
+  autocomplete :tag, :name, full: false
 
   # GET /ideas/new
   def new
@@ -47,7 +46,7 @@ class IdeasController < ApplicationController
 
   # GET /users/:id/edit
   def edit
-    render :partial => 'edit'
+    render partial: 'edit'
   end
 
   # PATCH/PUT /ideas/:id
@@ -76,19 +75,19 @@ class IdeasController < ApplicationController
 
   private
 
-    def set_idea
-      @idea = Idea.friendly.find(params[:id])
-    end
+  def set_idea
+    @idea = Idea.friendly.find(params[:id])
+  end
 
-    def idea_params
-      params.require(:idea).permit(:title, :description)
-    end
+  def idea_params
+    params.require(:idea).permit(:title, :description)
+  end
 
-    def idea_tag_params
-      params.require(:idea).permit(:tag_names => [])[:tag_names]
-    end
+  def idea_tag_params
+    params.require(:idea).permit(tag_names: [])[:tag_names]
+  end
 
-    def search_params
-      params.require(:search_text)
-    end
+  def search_params
+    params.require(:search_text)
+  end
 end
