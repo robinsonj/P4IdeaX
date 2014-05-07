@@ -4,7 +4,7 @@ BBYIDX::Application.routes.draw do
   devise_for :users, controllers: { omniauth_callbacks: 'users/omniauth_callbacks' }
   # resources :users
 
-  match '/user/:id'         => 'user#show',             via: 'get',   :as => :user_profile
+  match '/user/:id'         => 'users#show',             via: 'get',   :as => :user_profile
   match '/index'            => 'home#index',            via: 'get',   :as => :home_index
   match '/about'            => 'home#about',            via: 'get',   :as => :home_about
   match '/contact'          => 'home#contact',          via: 'get',   :as => :home_contact
