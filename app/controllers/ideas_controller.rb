@@ -41,7 +41,16 @@ class IdeasController < ApplicationController
 
   # GET /ideas/search
   def search
-    @ideas = Idea.search_ideas(search_params)
+    case search_params
+    when 'new'
+      @ideas = Idea.where(status: 'new').order(created_at: :desc)
+    when 'popular'
+      @ideas = Idea.where(status: 'new' || 'discussion').order(rating: :desc)
+    when 'coming soon'
+      @ideas = Idea.where(status: 'accepted').order(rating :desc)
+    else
+      @ideas = Idea.search_ideas(search_params)
+    end
   end
 
   # GET /users/:id/edit
