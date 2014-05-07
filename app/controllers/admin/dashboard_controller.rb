@@ -12,6 +12,7 @@ class Admin::DashboardController < ApplicationController
   private
 
   def require_admin
-    current_user.admin?
+    # redirect_to root_path, notice: "#{t 'authorization.admin.unauthorized'}" unless current_user.admin?
+    redirect_to root_path unless current_user.admin?
   end
 end
