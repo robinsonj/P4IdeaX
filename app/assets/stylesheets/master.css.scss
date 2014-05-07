@@ -78,7 +78,7 @@ input, textarea {
 .input-text {
   margin: 0;
   padding: 7px 8px 0;
-  background: white url(../images/input-inner-shadow.png) left top repeat-x;
+  background: white url(input-inner-shadow.png) left top repeat-x;
   border: 2px solid #a6abb0;
   font-size: 14px;
   -moz-border-radius: 8px;
@@ -99,7 +99,7 @@ input, textarea {
 .comment-input textarea {
   margin: 0;
   padding: 7px 8px 0;
-  background: white url(../images/input-inner-shadow.png) left top repeat-x;
+  background: white url(input-inner-shadow.png) left top repeat-x;
   border: 2px solid #a6abb0;
   font-size: 13px;
   -moz-border-radius: 8px;
@@ -191,31 +191,31 @@ input, textarea {
     background-position: left -64px; }
 
 #share .input-submit {
-  background-image: url(../images/form-submit-share-it.gif); }
+  background-image: url(form-submit-share-it.gif); }
 
 #comments .input-submit {
-  background-image: url(../images/form-submit-post-comment.gif); }
+  background-image: url(form-submit-post-comment.gif); }
 
 #ideas .input-submit {
-  background-image: url(../images/form-submit-share-it.gif); }
+  background-image: url(form-submit-share-it.gif); }
 
 #submit-login {
-  background-image: url(../images/form-submit-login.gif); }
+  background-image: url(form-submit-login.gif); }
 
 #submit-signup {
-  background-image: url(../images/form-submit-signup.gif); }
+  background-image: url(form-submit-signup.gif); }
 
 #submit-update-account {
-  background-image: url(../images/form-submit-update-account.gif); }
+  background-image: url(form-submit-update-account.gif); }
 
 #submit-save-changes {
-  background-image: url(../images/form-submit-save-changes.gif); }
+  background-image: url(form-submit-save-changes.gif); }
 
 #idea_search_box .input-submit {
-  background-image: url(../images/form-submit-search.gif); }
+  background-image: url(form-submit-search.gif); }
 
 #forgot-password .input-submit {
-  background-image: url(../images/form-submit-send-reminder.gif); }
+  background-image: url(form-submit-send-reminder.gif); }
 
 #intro .input-submit,
 #current .input-submit {
@@ -251,7 +251,7 @@ input, textarea {
     list-style: none; }
   .errorExplanation li {
     padding-left: 24px;
-    background: url(../images/icn/16-sq-ex.png) left center no-repeat; }
+    background: url(icn/16-sq-ex.png) left center no-repeat; }
 
 .fieldWithErrors .input-text, .fieldWithErrors .input-textarea {
   background-color: #fbe3e4;
@@ -729,7 +729,7 @@ body.life-cycles .nav li a.life-cycles {
         line-height: 14px; }
       #intro .header h3 a {
         margin: 0 auto;
-        background-image: url(../images/intro-signup.png);
+        background-image: url(intro-signup.png);
         width: 189px;
         background-color: transparent;
         background-position: left top;
@@ -758,12 +758,12 @@ body.life-cycles .nav li a.life-cycles {
     #intro .input-textarea.blur, #intro .input-textarea.example {
       border-color: #a6abb0; }
   #intro #idea-title-group {
-    background: url(../images/intro-form-icon-bulb.png) left top no-repeat; }
+    background: url(intro-form-icon-bulb.png) left top no-repeat; }
   #intro #idea-description-group {
-    background: url(../images/intro-form-icon-pencil.png) left top no-repeat; }
+    background: url(intro-form-icon-pencil.png) left top no-repeat; }
   #intro #idea-tags-group {
     margin-bottom: 18px;
-    background: url(../images/intro-form-icon-tag.png) left top no-repeat;
+    background: url(intro-form-icon-tag.png) left top no-repeat;
     position: relative; }
     #intro #idea-tags-group a {
       font-size: 90%; }
@@ -791,7 +791,7 @@ body.life-cycles .nav li a.life-cycles {
           overflow: hidden;
           position: absolute;
           text-indent: -9999px;
-          background: url(../images/close.gif) left center no-repeat; }
+          background: url(close.gif) left center no-repeat; }
           #intro #idea-tags-group #tags .tag a:hover {
             background-position: -10px center; }
     #intro #idea-tags-group .input-text {
@@ -963,19 +963,19 @@ h3.icon {
   .pagination .prev_page {
     padding: 0;
     padding-left: 10px;
-    background: url(../images/pagination-prev.png) left center no-repeat;
+    background: url(pagination-prev.png) left center no-repeat;
     left: 20px;
     position: absolute; }
     .pagination .prev_page.disabled {
-      background-image: url(../images/pagination-prev-off.png); }
+      background-image: url(pagination-prev-off.png); }
   .pagination .next_page {
     padding: 0;
     padding-right: 10px;
-    background: url(../images/pagination-next.png) right center no-repeat;
+    background: url(pagination-next.png) right center no-repeat;
     position: absolute;
     right: 20px; }
     .pagination .next_page.disabled {
-      background-image: url(../images/pagination-next-off.png); }
+      background-image: url(pagination-next-off.png); }
   .pagination .current {
     background: #888888;
     color: white;
@@ -1091,7 +1091,7 @@ h3.icon {
       background-position: left top;
       background-repeat: no-repeat; }
       .idea .entry-meta li.ideas {
-        background-image: url(../images/idea-marker.png); }
+        background-image: url(idea-marker.png); }
   .idea.main .header {
     padding-right: 155px;
     width: 450px; }
@@ -1107,7 +1107,7 @@ h3.icon {
   .idea.main .vote-for-it span {
     margin: 0;
     margin-left: 2px;
-    background-image: url(../images/idea-vote-button.gif);
+    background-image: url(idea-vote-button.gif);
     height: 26px;
     width: 106px; }
   .idea.main .vote-for-it a:hover {
@@ -1159,7 +1159,7 @@ h3.icon {
     .idea.teaser .vote-for-it a,
     .idea.teaser .vote-for-it span {
       margin-left: 3px;
-      background-image: url(../images/idea-vote-teaser-button.png);
+      background-image: url(idea-vote-teaser-button.png);
       height: 25px;
       width: 104px; }
     .idea.teaser .vote-for-it a:hover {
@@ -1185,7 +1185,7 @@ h3.icon {
           margin-left: 18px;
           width: 260px; }
     .idea.teaser .flag, .idea.teaser .flagged {
-      background-image: url(../images/idea-flag.gif);
+      background-image: url(idea-flag.gif);
       height: 21px;
       position: absolute;
       right: 8px;
@@ -1241,7 +1241,7 @@ h3.icon {
     .idea.mini .vote-for-it a,
     .idea.mini .vote-for-it span {
       margin-left: 2px;
-      background-image: url(../images/idea-vote-mini-button.png);
+      background-image: url(idea-vote-mini-button.png);
       height: 11px;
       width: 36px; }
     .idea.mini .vote-for-it a:hover {
@@ -1398,7 +1398,7 @@ h3.icon {
     font-size: 13px !important;
     font-weight: normal; }
   .comment .flag, .comment .flagged {
-    background-image: url(../images/comment-flag.gif);
+    background-image: url(comment-flag.gif);
     height: 20px;
     position: absolute;
     right: 0;
@@ -1445,7 +1445,7 @@ h3.icon {
   .voted-for li {
     margin-bottom: 4px;
     padding-left: 93px;
-    background: url(../images/voted-for.png) left top no-repeat;
+    background: url(voted-for.png) left top no-repeat;
     font-size: 13px;
     height: 41px; }
     .voted-for li a {
@@ -1486,7 +1486,7 @@ h3.icon {
   .tag-cloud a {
     margin: 0 8px 8px 0;
     padding: 4px 8px 4px 18px;
-    background: #fff895 url(../images/tag-hole.gif) 4px center no-repeat;
+    background: #fff895 url(tag-hole.gif) 4px center no-repeat;
     border: 1px solid #decf00;
     border-bottom-width: 2px;
     color: #534d00;
