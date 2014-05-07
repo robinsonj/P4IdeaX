@@ -20,4 +20,7 @@
 # available at http://guides.rubyonrails.org/i18n.html.
 
 en:
-  hello: "Hello world"
+  authorization:
+    admin:
+      authorized: 'Welcome!'
+      unauthorized: 'You do not have permission to do that.'
