@@ -2,8 +2,7 @@ class UsersController < ApplicationController
   skip_before_action :require_user, only: [:new, :create]
   before_action :set_user, only: [:show]
 
-  # GET /users/1
-  # GET /users/1.json
+  # GET /users/:id
   def show
   end
 
