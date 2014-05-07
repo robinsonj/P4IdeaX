@@ -73,7 +73,7 @@
             = render :partial => 'home/idea', :collection => popular_ideas(5), :as => :idea
           .footer
             .pagination
-              = link_to 'More', search_ideas_path(:search => 'popular')
+              = link_to 'More', search_ideas_path(search_text: 'popular')
       .ideas-group
         #recent-ideas.panel.summary.hfeed
           .header
@@ -85,7 +85,7 @@
             = render :partial => 'home/idea', :collection => recent_ideas(5), :as => :idea
           .footer
             .pagination
-              = link_to 'More', search_ideas_path(:search => 'new')
+              = link_to 'More', search_ideas_path(search_text: 'new')
       / .ideas-group
       /   #recent-ideas.panel.summary.hfeed
       /     .header
@@ -97,4 +97,4 @@
       /       = render :partial => 'home/idea', :collection => accepted_ideas(5), :as => :idea
       /     .footer
       /       .pagination
-      /         = link_to 'More', search_ideas_path(:search => 'new')
+      /         = link_to 'More', search_ideas_path(search_text: 'coming soon')
