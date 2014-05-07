@@ -1,4 +1,7 @@
 class TagsController < ApplicationController
+
+  before_action :set_tag, only: [:show]
+
   # GET /tags
   def index
     @tags = Tag.all
@@ -6,7 +9,6 @@ class TagsController < ApplicationController
 
   # GET /tags/:id
   def show
-    @tag = Tag.find(params[:id])
     @ideas = @tag.ideas
   end
 end
