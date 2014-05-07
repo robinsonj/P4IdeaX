@@ -47,7 +47,7 @@ class IdeasController < ApplicationController
     when 'popular'
       @ideas = Idea.where(status: 'new' || 'discussion').order(rating: :desc)
     when 'coming soon'
-      @ideas = Idea.where(status: 'accepted').order(rating :desc)
+      @ideas = Idea.where(status: 'accepted').order(rating: :desc)
     else
       @ideas = Idea.search_ideas(search_params)
     end
