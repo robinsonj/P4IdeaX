@@ -11,4 +11,10 @@ class TagsController < ApplicationController
   def show
     @ideas = @tag.ideas
   end
+
+  private
+
+  def set_tag
+    @tag = Tag.friendly.find(params[:id])
+  end
 end

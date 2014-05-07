@@ -8,6 +8,9 @@ class Tag < ActiveRecord::Base
   include PgSearch
   pg_search_scope :search_name, against: :name
 
+  extend FriendlyId
+  friendly_id :name
+
   def self.from_string(tag_names)
     tags = []
 
