@@ -27,6 +27,8 @@ class User < ActiveRecord::Base
 
   validates_acceptance_of :terms_of_use, allow_nil: false, if: 'new_record?'
 
+  before_create :set_first_admin
+
   def self.find_by_oauth(provider, uid, info)
     find_or_create_by!(provider: provider, uid: uid) do |user|
       user.name     = info[:nickname]
@@ -49,5 +51,11 @@ class User < ActiveRecord::Base
     # false when a user record has a provider and a uid.
   def email_required?
     true unless provider? && uid?
+  end
+
+  private
+
+  def set_first_admin
+    self.admin = true if User.count == 0
   end
 end

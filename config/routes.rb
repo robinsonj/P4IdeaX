@@ -2,8 +2,7 @@ BBYIDX::Application.routes.draw do
   root to: 'home#index'
 
   devise_for :users, controllers: {
-    omniauth_callbacks: 'users/omniauth_callbacks',
-    registrations:      'users/registrations'
+    omniauth_callbacks: 'users/omniauth_callbacks'
   }
 
   match '/user/:id'         => 'users#show',             via: 'get',   :as => :user_profile
