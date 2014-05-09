@@ -1,0 +1,16 @@
+!!!
+%html
+  %head
+    %title== #{LONG_SITE_NAME} - Admin
+    = stylesheet_link_tag    'admin/admin', media: 'all', 'data-turbolinks-track' => true
+    = javascript_include_tag 'admin/admin', 'data-turbolinks-track' => true
+    = csrf_meta_tags
+
+    - cache 'header' do
+      %meta{ :content => 'text/html; charset=UTF-8', "http-equiv" => "Content-Type" }
+
+  %body
+    = render :partial => 'layouts/admin/header'
+    = render :partial => 'layouts/application/flash_messages'
+    = yield
+
