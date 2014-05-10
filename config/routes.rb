@@ -30,9 +30,11 @@ BBYIDX::Application.routes.draw do
   end
 
   resources :tags, only: [:index, :show]
-  resources :currents
+  resources :currents, only: [:index, :show]
 
   namespace :admin do
     match '' => 'dashboard#index', via: 'get', as: :dashboard
+
+    resources :ideas, :tags, :currents
   end
 end
