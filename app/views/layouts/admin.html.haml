@@ -1,4 +1,4 @@
-!!!
+!!! 5
 %html
   %head
     %title== #{LONG_SITE_NAME} - Admin
@@ -11,6 +11,10 @@
 
   %body
     = render :partial => 'layouts/admin/header'
-    = render :partial => 'layouts/application/flash_messages'
-    = yield
+    %div.container{ style: 'padding-top: 50px;' }
+      = render :partial => 'layouts/application/flash_messages'
+      %div.col-lg-2.col-md-2.col-sm-2.col-xs-2
+        =render :partial => 'layouts/admin/sidebar'
+      %div.col-lg-10.col-md-10.col-sm-10.col-xs-10
+        = yield
 
