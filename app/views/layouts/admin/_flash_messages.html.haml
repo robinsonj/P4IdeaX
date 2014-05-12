@@ -1,0 +1,14 @@
+.row
+  .col-lg-10.col-md-10.col-sm-10.col-xs-10.col-lg-offset-1.col-md-offset-1.col-sm-offset-1.col-xs-offset-1
+    - if flash[:info]
+      %div.alert.alert-info.alert-dismissable
+        %button{ 'type' => 'button', 'class' => 'close', 'data-dismiss' => 'alert', 'aria-hidden' => 'true' }  &times;
+        = flash[:info]
+    - elsif flash[:error]
+      %div.alert.alert-danger.alert-dismissable
+        %button{ 'type' => 'button', 'class' => 'close', 'data-dismiss' => 'alert', 'aria-hidden' => 'true' }  &times;
+        = flash[:error]
+    - elsif flash[:notice]
+      %div.alert.alert-warning.alert-dismissable
+        %button{ 'type' => 'button', 'class' => 'close', 'data-dismiss' => 'alert', 'aria-hidden' => 'true' }  &times;
+        = flash[:notice]
