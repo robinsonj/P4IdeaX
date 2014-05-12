@@ -42,3 +42,20 @@
             %th Manage
 
 = link_to 'New Idea', new_admin_idea_path
+          - @ideas.each do |idea|
+            %tr
+              %td= idea.id
+              %td= link_to "#{idea.owner.name}", user_profile_path(idea.owner)
+              %td= link_to "#{idea.title}", idea_path(idea)
+              %td= idea.description_excerpt(80)
+              %th= idea.status
+              %td
+                - if idea.current
+                  = link_to "#{idea.current.title}", current_path(idea.current)
+              %td
+                - idea.tags.each do |tag|
+                  = render :partial => 'tags/tag', :locals => { :tag => tag }
+              %td
+                = link_to 'Edit', edit_admin_idea_path(idea)
+                \|
+                = link_to 'Delete', idea, :method => :delete, :data => { :confirm => 'Are you sure?' }
