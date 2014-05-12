@@ -66,4 +66,8 @@ class Idea < ActiveRecord::Base
       desc_compact[0...excerpt_size - 3] + '...'  # TODO: respect word boundaries
     end
   end
+
+  def self.states
+    STATES
+  end
 end
