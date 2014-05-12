@@ -5,7 +5,8 @@ class Admin::IdeasController < Admin::AdminController
 
   # GET /admin/ideas
   def index
-    @ideas = Idea.all
+    @idea = Idea.new
+    @ideas = Idea.all.order(id: :desc)
   end
 
   # POST /admin/ideas
