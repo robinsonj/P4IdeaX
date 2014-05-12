@@ -2,11 +2,6 @@ class Admin::IdeasController < Admin::AdminController
 
   before_action :set_idea, only: [:edit, :update, :destroy]
 
-  # GET /admin/ideas/new
-  def new
-    @idea = Idea.new
-  end
-
   # GET /admin/ideas
   def index
     @ideas = Idea.all
