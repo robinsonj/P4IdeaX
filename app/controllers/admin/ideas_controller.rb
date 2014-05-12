@@ -1,6 +1,7 @@
 class Admin::IdeasController < Admin::AdminController
 
   before_action :set_idea, only: [:edit, :update, :destroy]
+  before_action :set_idea_assoc, only: [:index, :edit]
 
   # GET /admin/ideas
   def index
@@ -42,6 +43,12 @@ class Admin::IdeasController < Admin::AdminController
 
   def set_idea
     @idea = Idea.find(params[:id])
+  end
+
+  def set_idea_assoc
+    @users = User.all.order(name: :desc).map{ |user| [user.name, user.id] }
+    @currents = Current.all.order(title: :desc).map{ |current| [current.title, current.id] }
+    @states = Idea.states
   end
 
   def idea_params
