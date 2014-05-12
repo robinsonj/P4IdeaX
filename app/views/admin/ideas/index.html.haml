@@ -4,11 +4,6 @@
       .page-header
         %h1 Ideas
 
-%table
-  %tr
-    %th
-    %th
-    %th
   .row
     .col-lg-12.col-md-12.col-sm-12.col-xs-12
       .row
@@ -32,5 +27,18 @@
       %td= link_to 'Destroy', admin_idea, :method => :delete, :data => { :confirm => 'Are you sure?' }
 
 %br
+  .row
+    .col-lg-12.col-md-12.col-sm-12.col-xs-12
+      .table-responsive
+        %table.table.table-striped.table-hover
+          %tr
+            %th ID
+            %th Owner
+            %th Title
+            %th Description
+            %th Status
+            %th Current
+            %th Tags
+            %th Manage
 
 = link_to 'New Idea', new_admin_idea_path
