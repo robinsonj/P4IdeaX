@@ -21,7 +21,7 @@ class Admin::IdeasController < Admin::AdminController
     end
 
     if @idea.save
-
+      redirect_to edit_admin_idea_path(@idea), notice: 'Idea created.'
     end
 
   end
@@ -33,7 +33,9 @@ class Admin::IdeasController < Admin::AdminController
 
   # PATCH/PUT /admin/ideas/:id
   def update
-
+    if @idea.update(idea_params)
+      redirect_to edit_admin_idea_path(@idea), notice: 'Idea updated.'
+    end
   end
 
   # DELETE /admin/ideas/:id
