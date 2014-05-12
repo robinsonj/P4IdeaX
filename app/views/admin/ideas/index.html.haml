@@ -1,0 +1,17 @@
+%h1 Listing admin_ideas
+
+%table
+  %tr
+    %th
+    %th
+    %th
+
+  - @admin_ideas.each do |admin_idea|
+    %tr
+      %td= link_to 'Show', admin_idea
+      %td= link_to 'Edit', edit_admin_idea_path(admin_idea)
+      %td= link_to 'Destroy', admin_idea, :method => :delete, :data => { :confirm => 'Are you sure?' }
+
+%br
+
+= link_to 'New Idea', new_admin_idea_path
