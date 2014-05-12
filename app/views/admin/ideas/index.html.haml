@@ -20,11 +20,6 @@
             = form_for @idea, class: 'form-inline', url: admin_ideas_path do |f|
               = render 'form', :locals => { :f => f }
 
-  - @admin_ideas.each do |admin_idea|
-    %tr
-      %td= link_to 'Show', admin_idea
-      %td= link_to 'Edit', edit_admin_idea_path(admin_idea)
-      %td= link_to 'Destroy', admin_idea, :method => :delete, :data => { :confirm => 'Are you sure?' }
 
 %br
   .row
@@ -41,7 +36,6 @@
             %th Tags
             %th Manage
 
-= link_to 'New Idea', new_admin_idea_path
           - @ideas.each do |idea|
             %tr
               %td= idea.id
