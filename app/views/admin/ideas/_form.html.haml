@@ -1,9 +1,9 @@
-= form_for @admin_idea do |f|
-  - if @admin_idea.errors.any?
+= form_for @idea, class: 'form-inline' do |f|
+  - if @idea.errors.any?
     #error_explanation
-      %h2= "#{pluralize(@admin_idea.errors.count, "error")} prohibited this admin_idea from being saved:"
+      %h2= "#{pluralize(@idea.errors.count, "error")} prohibited this idea from being saved:"
       %ul
-        - @admin_idea.errors.full_messages.each do |msg|
+        - @idea.errors.full_messages.each do |msg|
           %li= msg
 
   .form-group.row
