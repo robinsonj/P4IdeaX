@@ -48,7 +48,7 @@ class Admin::IdeasController < Admin::AdminController
   private
 
   def set_idea
-    @idea = Idea.find(params[:id])
+    @idea = Idea.friendly.find(params[:id])
   end
 
   def set_idea_assoc
