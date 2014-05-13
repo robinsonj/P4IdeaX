@@ -7,32 +7,32 @@ describe CurrentsController do
       expect(get: '/currents').to route_to('currents#index')
     end
 
-    it 'routes to #new' do
-      expect(get: '/currents/new').to route_to('currents#new')
+    it 'does not route to #new' do
+      expect(get: '/currents/new').to route_to('currents#show', id: 'new')
     end
 
     it 'routes to #show' do
       expect(get: '/currents/1').to route_to('currents#show', id: '1')
     end
 
-    it 'routes to #edit' do
-      expect(get: '/currents/1/edit').to route_to('currents#edit', id: '1')
+    it 'does not route to #edit' do
+      expect(get: '/currents/1/edit').not_to be_routable
     end
 
-    it 'routes to #create' do
-      expect(post: '/currents').to route_to('currents#create')
+    it 'does not route to #create' do
+      expect(post: '/currents').not_to be_routable
     end
 
-    it 'routes to #update' do
-      expect(patch: '/currents/1').to route_to('currents#update', id: '1')
+    it 'does not route to #update' do
+      expect(patch: '/currents/1').not_to be_routable
     end
 
-    it 'routes to #update' do
-      expect(put: '/currents/1').to route_to('currents#update', id: '1')
+    it 'does not route to #update' do
+      expect(put: '/currents/1').not_to be_routable
     end
 
-    it 'routes to #destroy' do
-      expect(delete: '/currents/1').to route_to('currents#destroy', id: '1')
+    it 'does not route to #destroy' do
+      expect(delete: '/currents/1').not_to be_routable
     end
 
   end
