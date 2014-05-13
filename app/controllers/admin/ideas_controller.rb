@@ -62,7 +62,7 @@ class Admin::IdeasController < Admin::AdminController
   end
 
   def idea_params
-    params.require(:idea).permit(:owner, :title, :description, :current)
+    params.require(:idea).permit(:owner_id, :title, :description, :current, :status)
   end
 
   def idea_tag_params
