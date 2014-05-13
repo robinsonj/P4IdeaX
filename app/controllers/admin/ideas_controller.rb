@@ -22,12 +22,10 @@ class Admin::IdeasController < Admin::AdminController
     else
       redirect_to admin_ideas_path, error: 'Idea could not be created.'
     end
-
   end
 
   # GET /admin/ideas/:id/edit
   def edit
-
   end
 
   # PATCH/PUT /admin/ideas/:id
@@ -35,7 +33,6 @@ class Admin::IdeasController < Admin::AdminController
     if idea_tag_params
       @idea.tags = Tag.from_string(idea_tag_params)
     end
-
 
     if @idea.update(idea_params)
       redirect_to edit_admin_idea_path(@idea), notice: 'Idea updated.'
