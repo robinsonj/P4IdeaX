@@ -14,7 +14,7 @@ class Admin::IdeasController < Admin::AdminController
     @idea = Idea.new(idea_params)
 
     if idea_tag_params
-      @idea.tags += Tag.from_string(idea_tag_params)
+      @idea.tags = Tag.from_string(idea_tag_params)
     end
 
     if @idea.save
