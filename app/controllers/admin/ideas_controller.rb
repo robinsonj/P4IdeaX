@@ -19,6 +19,8 @@ class Admin::IdeasController < Admin::AdminController
 
     if @idea.save
       redirect_to edit_admin_idea_path(@idea), notice: 'Idea created.'
+    else
+      redirect_to admin_ideas_path, error: 'Idea could not be created.'
     end
 
   end
