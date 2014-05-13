@@ -42,7 +42,11 @@ class Admin::IdeasController < Admin::AdminController
 
   # DELETE /admin/ideas/:id
   def destroy
-    @idea.destroy
+    if @idea.destroy
+      redirect_to admin_ideas_path, notice: 'Idea deleted.'
+    else
+      redirect_to admin_ideas_path, notice: 'Idea could not be deleted.'
+    end
   end
 
   private
