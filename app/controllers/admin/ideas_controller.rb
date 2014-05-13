@@ -30,6 +30,11 @@ class Admin::IdeasController < Admin::AdminController
 
   # PATCH/PUT /admin/ideas/:id
   def update
+    if idea_tag_params
+      @idea.tags = Tag.from_string(idea_tag_params)
+    end
+
+
     if @idea.update(idea_params)
       redirect_to edit_admin_idea_path(@idea), notice: 'Idea updated.'
     end
