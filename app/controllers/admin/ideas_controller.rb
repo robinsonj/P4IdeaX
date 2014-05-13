@@ -36,6 +36,8 @@ class Admin::IdeasController < Admin::AdminController
 
     if @idea.update(idea_params)
       redirect_to edit_admin_idea_path(@idea), notice: 'Idea updated.'
+    else
+      redirect_to edit_admin_idea_path(@idea), notice: 'Idea could not updated.'
     end
   end
 
