@@ -62,6 +62,6 @@ class Admin::CurrentsController < Admin::AdminController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def current_params
-      params.require(:current).permit(:title, :description)
+      params.require(:current).permit(:owner_id, :title, :description)
     end
 end
