@@ -20,140 +20,136 @@ require 'spec_helper'
 
 describe Admin::IdeasController do
 
-  # This should return the minimal set of attributes required to create a valid
-  # Admin::Idea. As you add validations to Admin::Idea, be sure to
-  # adjust the attributes here as well.
-  let(:valid_attributes) { {  } }
+  let(:valid_attributes) { FactoryGirl.attributes_for(:idea) }
+  let(:invalid_attributes) { FactoryGirl.attributes_for(:idea, title: nil) }
+  let(:valid_session) { { 'warden.user.user.key' => session['warden.user.user.key'] } }
+  let(:invalid_session) { {} }
 
-  # This should return the minimal set of values that should be in the session
-  # in order to pass any filters (e.g. authentication) defined in
-  # Admin::IdeasController. Be sure to keep this updated too.
-  let(:valid_session) { {} }
+  before(:each) do
+    @request.env['devise.mapping'] = Devise.mappings[:user]
 
-  describe "GET index" do
-    it "assigns all admin_ideas as @admin_ideas" do
-      idea = Admin::Idea.create! valid_attributes
+    @user = create(:user)
+    @user.confirm!
+    @user.admin = true
+    sign_in @user
+  end
+
+  describe "GET 'index'" do
+    it 'assigns all ideas as @ideas' do
+      idea = create(:idea, owner_id: @user.id)
       get :index, {}, valid_session
-      assigns(:admin_ideas).should eq([idea])
+
+      expect(assigns(:ideas)).to eq([idea])
     end
   end
 
-  describe "GET show" do
-    it "assigns the requested admin_idea as @admin_idea" do
-      idea = Admin::Idea.create! valid_attributes
-      get :show, {:id => idea.to_param}, valid_session
-      assigns(:admin_idea).should eq(idea)
+  describe "GET 'edit'" do
+    it 'assigns the requested idea as @idea' do
+      idea = create(:idea, owner_id: @user.id)
+      get :edit, { id: idea.to_param }, valid_session
+
+      expect(assigns(:idea)).to eq(idea)
     end
   end
 
-  describe "GET new" do
-    it "assigns a new admin_idea as @admin_idea" do
-      get :new, {}, valid_session
-      assigns(:admin_idea).should be_a_new(Admin::Idea)
-    end
-  end
-
-  describe "GET edit" do
-    it "assigns the requested admin_idea as @admin_idea" do
-      idea = Admin::Idea.create! valid_attributes
-      get :edit, {:id => idea.to_param}, valid_session
-      assigns(:admin_idea).should eq(idea)
-    end
-  end
-
-  describe "POST create" do
-    describe "with valid params" do
-      it "creates a new Admin::Idea" do
-        expect {
-          post :create, {:admin_idea => valid_attributes}, valid_session
-        }.to change(Admin::Idea, :count).by(1)
+  describe "POST 'create'" do
+    describe 'with valid params' do
+      it 'creates a new Idea' do
+        expect do
+          post :create, { idea: valid_attributes }, valid_session
+        end.to change(Idea, :count).by(1)
       end
 
-      it "assigns a newly created admin_idea as @admin_idea" do
-        post :create, {:admin_idea => valid_attributes}, valid_session
-        assigns(:admin_idea).should be_a(Admin::Idea)
-        assigns(:admin_idea).should be_persisted
+      it 'assigns a newly created idea as @idea' do
+        post :create, { idea: valid_attributes }, valid_session
+
+        expect(assigns(:idea)).to be_a(Idea)
+        expect(assigns(:idea)).to be_persisted
       end
 
-      it "redirects to the created admin_idea" do
-        post :create, {:admin_idea => valid_attributes}, valid_session
-        response.should redirect_to(Admin::Idea.last)
+      it 'redirects to the created idea\'s \'admin/edit\'' do
+        post :create, { idea: valid_attributes }, valid_session
+
+        expect(response).to redirect_to(edit_admin_idea_path(Idea.last))
       end
     end
 
-    describe "with invalid params" do
-      it "assigns a newly created but unsaved admin_idea as @admin_idea" do
+    describe 'with invalid params' do
+      it 'assigns a newly created but unsaved idea as @idea' do
         # Trigger the behavior that occurs when invalid params are submitted
-        Admin::Idea.any_instance.stub(:save).and_return(false)
-        post :create, {:admin_idea => {  }}, valid_session
-        assigns(:admin_idea).should be_a_new(Admin::Idea)
+        Idea.any_instance.stub(:save).and_return(false)
+        post :create, { idea: invalid_attributes }, valid_session
+
+        expect(assigns(:idea)).to be_a_new(Idea)
       end
 
-      it "re-renders the 'new' template" do
+      it "re-renders the 'index' template" do
         # Trigger the behavior that occurs when invalid params are submitted
-        Admin::Idea.any_instance.stub(:save).and_return(false)
-        post :create, {:admin_idea => {  }}, valid_session
-        response.should render_template("new")
+        Idea.any_instance.stub(:save).and_return(false)
+        post :create, { idea: invalid_attributes }, valid_session
+
+        expect(response).to render_template('index')
       end
     end
   end
 
-  describe "PUT update" do
-    describe "with valid params" do
-      it "updates the requested admin_idea" do
-        idea = Admin::Idea.create! valid_attributes
-        # Assuming there are no other admin_ideas in the database, this
-        # specifies that the Admin::Idea created on the previous line
+  describe "PATCH 'update'" do
+    describe 'with valid params' do
+      it 'updates the requested idea' do
+        idea = create(:idea, owner_id: @user.id)
+        # Assuming there are no other ideas in the database, this
+        # specifies that the idea created on the previous line
         # receives the :update_attributes message with whatever params are
         # submitted in the request.
-        Admin::Idea.any_instance.should_receive(:update).with({ "these" => "params" })
-        put :update, {:id => idea.to_param, :admin_idea => { "these" => "params" }}, valid_session
+        Idea.any_instance.should_receive(:update).with('title' => 'New Title')
+        patch :update, { id: idea.to_param, idea: { 'title' => 'New Title' } }, valid_session
       end
 
-      it "assigns the requested admin_idea as @admin_idea" do
-        idea = Admin::Idea.create! valid_attributes
-        put :update, {:id => idea.to_param, :admin_idea => valid_attributes}, valid_session
-        assigns(:admin_idea).should eq(idea)
+      it 'assigns the requested idea as @idea' do
+        idea = create(:idea, owner_id: @user.id)
+        patch :update, { id: idea.to_param, idea: valid_attributes }, valid_session
+        expect(assigns(:idea)).to eq(idea)
       end
 
-      it "redirects to the admin_idea" do
-        idea = Admin::Idea.create! valid_attributes
-        put :update, {:id => idea.to_param, :admin_idea => valid_attributes}, valid_session
-        response.should redirect_to(idea)
+      it 'redirects to the idea' do
+        idea = create(:idea, owner_id: @user.id)
+        patch :update, { id: idea.to_param, idea: valid_attributes }, valid_session
+        expect(response).to redirect_to(edit_admin_idea_path(idea))
       end
     end
 
-    describe "with invalid params" do
-      it "assigns the admin_idea as @admin_idea" do
-        idea = Admin::Idea.create! valid_attributes
+    describe 'with invalid params' do
+      it 'assigns the idea as @idea' do
+        idea = create(:idea, owner_id: @user.id)
         # Trigger the behavior that occurs when invalid params are submitted
-        Admin::Idea.any_instance.stub(:save).and_return(false)
-        put :update, {:id => idea.to_param, :admin_idea => {  }}, valid_session
-        assigns(:admin_idea).should eq(idea)
+        Idea.any_instance.stub(:save).and_return(false)
+        patch :update, { id: idea.to_param, idea: invalid_attributes }, valid_session
+        expect(assigns(:idea)).to eq(idea)
       end
 
       it "re-renders the 'edit' template" do
-        idea = Admin::Idea.create! valid_attributes
+        idea = create(:idea, owner_id: @user.id)
         # Trigger the behavior that occurs when invalid params are submitted
-        Admin::Idea.any_instance.stub(:save).and_return(false)
-        put :update, {:id => idea.to_param, :admin_idea => {  }}, valid_session
-        response.should render_template("edit")
+        Idea.any_instance.stub(:save).and_return(false)
+        patch :update, { id: idea.to_param, idea: invalid_attributes }, valid_session
+
+        expect(response).to render_template('edit')
       end
     end
   end
 
-  describe "DELETE destroy" do
-    it "destroys the requested admin_idea" do
-      idea = Admin::Idea.create! valid_attributes
+  describe "DELETE 'destroy'" do
+    it 'destroys the requested idea' do
+      idea = create(:idea, owner_id: @user.id)
       expect {
-        delete :destroy, {:id => idea.to_param}, valid_session
-      }.to change(Admin::Idea, :count).by(-1)
+        delete :destroy, { id: idea.to_param }, valid_session
+      }.to change(Idea, :count).by(-1)
     end
 
-    it "redirects to the admin_ideas list" do
-      idea = Admin::Idea.create! valid_attributes
-      delete :destroy, {:id => idea.to_param}, valid_session
-      response.should redirect_to(admin_ideas_url)
+    it 'redirects to the ideas list' do
+      idea = create(:idea, owner_id: @user.id)
+      delete :destroy, { id: idea.to_param }, valid_session
+      expect(response).to redirect_to(admin_ideas_url)
     end
   end
 
