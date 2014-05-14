@@ -8,11 +8,11 @@ describe Admin::IdeasController do
     end
 
     it "routes to #new" do
-      expect(get: '/admin/ideas/new').not_to route_to('admin/ideas#new')
+      expect(get: '/admin/ideas/new').not_to be_routable
     end
 
     it "routes to #show" do
-      expect(get: '/admin/ideas/1').not_to route_to('admin/ideas#show', :id => '1')
+      expect(get: '/admin/ideas/1').not_to be_routable
     end
 
     it "routes to #edit" do
