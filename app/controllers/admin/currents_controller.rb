@@ -1,5 +1,6 @@
 class Admin::CurrentsController < Admin::AdminController
   before_action :set_current, only: [:edit, :update, :destroy]
+  before_action :set_admin_users, only: [:index, :edit]
 
   # GET /admin/currents
   # GET /admin/currents.json
@@ -53,6 +54,10 @@ class Admin::CurrentsController < Admin::AdminController
     # Use callbacks to share common setup or constraints between actions.
     def set_current
       @current = Current.find(params[:id])
+    end
+
+    def set_admin_users
+      @admin_users = User.where(admin: true).order(name: :desc).map{ |user| [user.name, user.id] }
     end
 
     # Never trust parameters from the scary internet, only allow the white list through.
