@@ -11,5 +11,5 @@ require 'spec_helper'
 #   end
 # end
 describe Admin::IdeasHelper do
-  pending "add some examples to (or delete) #{__FILE__}"
+  pending "implementation of Admin Idea Helper specs #{__FILE__}"
 end
