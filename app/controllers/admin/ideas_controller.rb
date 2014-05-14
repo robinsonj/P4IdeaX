@@ -20,7 +20,7 @@ class Admin::IdeasController < Admin::AdminController
     if @idea.save
       redirect_to edit_admin_idea_path(@idea), notice: 'Idea created.'
     else
-      redirect_to admin_ideas_path, error: 'Idea could not be created.'
+      render action: 'index', error: 'Idea could not be created.'
     end
   end
 
@@ -37,7 +37,7 @@ class Admin::IdeasController < Admin::AdminController
     if @idea.update(idea_params)
       redirect_to edit_admin_idea_path(@idea), notice: 'Idea updated.'
     else
-      redirect_to edit_admin_idea_path(@idea), notice: 'Idea could not updated.'
+      render action: 'edit', notice: 'Idea could not updated.'
     end
   end
 
