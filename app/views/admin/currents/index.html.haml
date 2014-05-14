@@ -1,15 +1,49 @@
-%h1 Listing admin_currents
+.container-fluid
+  .row
+    .col-lg-12.col-md-12.col-sm-12.col-xs-12
+      .page-header
+        %h1 Currents
 
-%table
-  %tr
-    %th
-    %th
-    %th
+  .row
+    .col-lg-12.col-md-12.col-sm-12.col-xs-12
+      .row
+        .col-lg-12.col-md-12.col-sm-12.col-xs-12
+          %button.btn.btn-success{ 'type' => 'button', 'data-toggle' => 'collapse', 'data-target' => '#new-current-form' }
+            %i.glyphicon.glyphicon-plus
+            Create a new Current
 
-  - @currents.each do |current|
-    %tr
-      %td= link_to 'Edit', edit_admin_current_path(current)
-      %td= link_to 'Destroy', current, :method => :delete, :data => { :confirm => 'Are you sure?' }
+      .row
+        .col-lg-12.col-md-12.col-sm-12.col-xs-12
+          .collapse.out#new-current-form
+            .page-header
+              %h2 New Current
+            = form_for @current, class: 'form-inline', url: admin_currents_path do |f|
+              = render 'form', :locals => { :f => f }
 
-%br
+  %br
+  %br
+
+  .row
+    .col-lg-12.col-md-12.col-sm-12.col-xs-12
+      .table-responsive
+        %table.table.table-striped.table-hover
+          %tr
+            %th ID
+            %th Owner
+            %th Title
+            %th Description
+            %th Actions
+
+          - @currents.each do |current|
+            %tr
+              %td= current.id
+              %td= link_to "#{current.owner.name}", user_profile_path(current.owner)
+              %td
+                = link_to "#{current.title}", current_path(current)
+                = "(#{current.ideas.count})"
+              %td= current.description_excerpt(120)
+              %td
+                = link_to 'Edit', edit_admin_current_path(current)
+                \|
+                = link_to 'Delete', admin_current_path(current), :method => :delete, :data => { :confirm => 'Are you sure?' }
 
