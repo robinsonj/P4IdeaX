@@ -1,6 +1,11 @@
 require 'spec_helper'
 
 describe 'HomeRequests' do
+
+  before(:all) do
+    create(:user)
+  end
+
   describe 'GET index' do
     it 'renders home#index template' do
       get home_index_path

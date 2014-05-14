@@ -2,6 +2,10 @@ require 'spec_helper'
 
 describe HomeController do
 
+  before(:all) do
+    create(:user)
+  end
+
   describe "GET 'index'" do
     it 'returns http success' do
       get 'index'
