@@ -9,9 +9,3 @@
   - @currents.each do |current|
     %tr
       %td= link_to 'Show', current
-      %td= link_to 'Edit', edit_current_path(current)
-      %td= link_to 'Destroy', current, :method => :delete, :data => { :confirm => 'Are you sure?' }
-
-%br
-
-= link_to 'New Current', new_current_path
