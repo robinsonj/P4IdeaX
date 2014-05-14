@@ -1,0 +1,15 @@
+%h1 Listing admin_currents
+
+%table
+  %tr
+    %th
+    %th
+    %th
+
+  - @currents.each do |current|
+    %tr
+      %td= link_to 'Edit', edit_admin_current_path(current)
+      %td= link_to 'Destroy', current, :method => :delete, :data => { :confirm => 'Are you sure?' }
+
+%br
+
