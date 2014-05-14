@@ -8,7 +8,7 @@
 
   .form-group.row
     .col-lg-2.col-md-2.col-sm-2.col-xs-2
-      = f.label :owner, 'Owner'
+      = f.label :owner_id, 'Owner'
     .col-lg-8.col-md-8.col-sm-8.col-xs-8
       = select :idea, :owner_id, @users, class: 'form-control'
   .form-group.row
@@ -28,9 +28,9 @@
       = select :idea, :status, @states, class: 'form-control'
   .form-group.row
     .col-lg-2.col-md-2.col-sm-2.col-xs-2
-      = f.label :current, 'Current'
+      = f.label :current_id, 'Current'
     .col-lg-8.col-md-8.col-sm-8.col-xs-8
-      = select :idea, :current, @currents, class: 'form-control'
+      = select :idea, :current_id, @currents, class: 'form-control', :include_blank => true
   .form-group.row
     .col-lg-2.col-md-2.col-sm-2.col-xs-2
       = f.label :tags, 'Tags'
