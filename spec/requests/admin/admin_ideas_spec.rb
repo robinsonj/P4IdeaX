@@ -7,7 +7,7 @@ describe "Admin::Ideas" do
     @user.confirm!
   end
 
-  describe "GET /admin_ideas" do
+  describe "GET /admin/ideas" do
 
     before do
       post_via_redirect user_session_path, 'user[email]' => @user.email, 'user[password]' => @user.password
