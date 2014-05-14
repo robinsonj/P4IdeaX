@@ -8,4 +8,13 @@ class Current < ActiveRecord::Base
   validates :title, presence: true, uniqueness: { case_sensitive: false }
   validates :description, :owner_id, presence: true
   validates_associated :owner
+
+  def description_excerpt(excerpt_size = 400)
+    desc_compact = description.gsub(/\s+/, ' ')  # Remove line breaks & extra space for compact excerpt
+    if desc_compact.length <= excerpt_size
+      desc_compact
+    else
+      desc_compact[0...excerpt_size - 3] + '...'  # TODO: respect word boundaries
+    end
+  end
 end
