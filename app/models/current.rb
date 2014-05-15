@@ -1,4 +1,8 @@
 class Current < ActiveRecord::Base
+
+  extend FriendlyId
+  friendly_id :title, use: :slugged
+
   DEFAULT_CURRENT_ID = 0
 
   belongs_to :owner, class_name: 'User'
