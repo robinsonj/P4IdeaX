@@ -7,7 +7,7 @@
   .row
     .col-lg-12.col-md-12.col-sm-12.col-xs-12
       = form_for @current, class: 'form-inline', url: admin_current_path do |f|
-        = render 'form', :locals => { :f => f }
+        = render partial: 'admin/currents/form', :locals => { :f => f }
 
   .row
     .col-lg-12.col-md-12.col-sm-12.col-xs-12

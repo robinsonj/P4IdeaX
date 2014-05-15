@@ -18,7 +18,7 @@
             .page-header
               %h2 New Current
             = form_for @current, class: 'form-inline', url: admin_currents_path do |f|
-              = render 'form', :locals => { :f => f }
+              = render partial: 'admin/currents/form', :locals => { :f => f }
 
   %br
   %br
