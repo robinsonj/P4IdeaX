@@ -1,6 +1,5 @@
 require 'spec_helper'
 
-
 describe 'AdminViews - Currents' do
 
   before(:each) do
