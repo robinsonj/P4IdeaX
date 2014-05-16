@@ -1,27 +1,26 @@
-= form_for @current, class: 'form-inline' do |f|
-  - if @current.errors.any?
-    #error_explanation
-      %h2= "#{pluralize(@current.errors.count, "error")} prohibited this current from being saved:"
-      %ul
-        - @current.errors.full_messages.each do |msg|
-          %li= msg
+- if @current.errors.any?
+  #error_explanation
+    %h2= "#{pluralize(@current.errors.count, "error")} prohibited this current from being saved:"
+    %ul
+      - @current.errors.full_messages.each do |msg|
+        %li= msg
 
-  .form-group.row
-    .col-lg-2.col-md-2.col-sm-2.col-xs-2
-      = f.label :owner_id, 'Owner'
-    .col-lg-8.col-md-8.col-sm-8.col-xs-8
-      = select :current, :owner_id, @admin_users, class: 'form-control'
-  .form-group.row
-    .col-lg-2.col-md-2.col-sm-2.col-xs-2
-      = f.label :title, 'Title'
-    .col-lg-8.col-md-8.col-sm-8.col-xs-8
-      = f.text_field :title, class: 'form-control'
-  .form-group.row
-    .col-lg-2.col-md-2.col-sm-2.col-xs-2
-      = f.label :description, 'Description'
-    .col-lg-8.col-md-8.col-sm-8.col-xs-8
-      = f.text_area :description, class: 'form-control', rows: '4'
+.form-group.row
+  .col-lg-2.col-md-2.col-sm-2.col-xs-2
+    = f.label :owner_id, 'Owner'
+  .col-lg-8.col-md-8.col-sm-8.col-xs-8
+    = select :current, :owner_id, @admin_users, class: 'form-control'
+.form-group.row
+  .col-lg-2.col-md-2.col-sm-2.col-xs-2
+    = f.label :title, 'Title'
+  .col-lg-8.col-md-8.col-sm-8.col-xs-8
+    = f.text_field :title, class: 'form-control'
+.form-group.row
+  .col-lg-2.col-md-2.col-sm-2.col-xs-2
+    = f.label :description, 'Description'
+  .col-lg-8.col-md-8.col-sm-8.col-xs-8
+    = f.text_area :description, class: 'form-control', rows: '4'
 
-  .actions.row
-    .col-lg-2.col-md-2.col-sm-2.col-xs-2.col-lg-offset-2.col-md-offset-2.col-sm-offset-2.col-xs-offset-2
-      = f.submit 'Save', class: 'btn btn-primary'
+.actions.row
+  .col-lg-2.col-md-2.col-sm-2.col-xs-2.col-lg-offset-2.col-md-offset-2.col-sm-offset-2.col-xs-offset-2
+    = f.submit 'Save', class: 'btn btn-primary'
