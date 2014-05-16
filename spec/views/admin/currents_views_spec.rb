@@ -8,12 +8,15 @@ describe 'AdminViews - Currents' do
 
     @user = create(:user)
     @user.confirm!
+    @user.admin = true
+
     sign_in @user
   end
 
   describe 'admin/currents/edit' do
     before(:each) do
       @current = assign(:current, create(:current, owner_id: @user.id))
+      assign(:admin_users, [@user])
     end
 
     it 'renders the edit admin_current form' do
@@ -26,10 +29,13 @@ describe 'AdminViews - Currents' do
 
   describe 'admin/currents/index' do
     before(:each) do
+      assign(:current, Current.new)
       assign(:currents, [
         create(:current, owner_id: @user.id),
         create(:current, owner_id: @user.id)
       ])
+
+      assign(:admin_users, [@user])
     end
 
     it 'renders a list of admin/currents' do
