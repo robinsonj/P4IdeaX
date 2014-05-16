@@ -24,6 +24,8 @@ describe 'AdminViews - Currents' do
 
       assert_select "form[action=?][method=?]", edit_admin_current_path(@current), 'post' do
       end
+
+      expect(rendered).to render_template('admin/currents/edit')
     end
   end
 
@@ -40,6 +42,7 @@ describe 'AdminViews - Currents' do
 
     it 'renders a list of admin/currents' do
       render template: 'admin/currents/index'
+      expect(rendered).to render_template('admin/currents/index')
     end
   end
 end
