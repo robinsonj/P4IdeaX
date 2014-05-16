@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140514235417) do
+ActiveRecord::Schema.define(version: 20140516182607) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -61,11 +61,12 @@ ActiveRecord::Schema.define(version: 20140514235417) do
     t.integer  "owner_id"
     t.datetime "created_at"
     t.datetime "updated_at"
-    t.integer  "rating",      default: 0
+    t.integer  "rating",          default: 0
     t.integer  "current_id"
-    t.boolean  "closed",      default: false, null: false
-    t.string   "slug",                        null: false
-    t.string   "status",      default: "new"
+    t.boolean  "closed",          default: false, null: false
+    t.string   "slug",                            null: false
+    t.string   "status",          default: "new"
+    t.boolean  "current_pending", default: false
   end
 
   create_table "tags", force: true do |t|
