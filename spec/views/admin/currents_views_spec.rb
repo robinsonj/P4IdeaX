@@ -21,7 +21,7 @@ describe 'AdminViews - Currents' do
     it 'renders the edit admin_current form' do
       render template: 'admin/currents/edit'
 
-      assert_select "form[action=?][method=?]", edit_admin_current_path(@current), 'post' do
+      assert_select "form[action=?][method=?]", admin_current_path(@current), 'post' do
       end
 
       expect(rendered).to render_template('admin/currents/edit')
