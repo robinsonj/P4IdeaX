@@ -16,7 +16,7 @@
         .collapse.out#new-idea-form
           .page-header
             %h2 New Idea
-          = form_for @idea, class: 'form-inline', url: admin_ideas_path do |f|
+          = form_for @idea, url: admin_ideas_path do |f|
             = render partial: 'admin/ideas/form', :locals => { :f => f }
 
 %br
