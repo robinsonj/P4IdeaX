@@ -14,9 +14,7 @@ class IdeasController < ApplicationController
     @idea         = Idea.new(idea_params)
     @idea.owner   = current_user
 
-    if idea_tag_params
-      @idea.tags += Tag.from_string(idea_tag_params)
-    end
+    save_associations
 
     respond_to do |format|
       if @idea.save
@@ -61,6 +59,9 @@ class IdeasController < ApplicationController
   # PATCH/PUT /ideas/:id
   # PATCH/PUT /ideas/:id.json
   def update
+
+    save_associations
+
     respond_to do |format|
       if @idea.update(idea_params)
         format.html { redirect_to @idea, notice: 'Idea was successfully updated.' }
@@ -98,5 +99,15 @@ class IdeasController < ApplicationController
 
   def search_params
     params.require(:search_text)
+  end
+
+  def save_associations
+    if idea_tag_params
+      @idea.tags += Tag.from_string(idea_tag_params)
+    end
+
+    if idea_params[:current_id]
+      @idea.current_pending = true
+    end
   end
 end
