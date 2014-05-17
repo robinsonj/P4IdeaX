@@ -44,7 +44,7 @@
             %td= link_to "#{idea.owner.name}", user_profile_path(idea.owner)
             %td= link_to "#{idea.title}", idea_path(idea)
             %td= idea.description_excerpt(80)
-            %th= idea.status
+            %td= idea.status
             %td
               - if idea.current
                 = link_to "#{idea.current.title}", current_path(idea.current)
