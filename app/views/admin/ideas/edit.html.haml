@@ -1,16 +1,15 @@
-.container-fluid
-  .row
-    .col-lg-12.col-md-12.col-sm-12.col-xs-12
-      .page-header
-        %h1 Edit Idea
+.row
+  .col-lg-12.col-md-12.col-sm-12.col-xs-12
+    .page-header
+      %h1 Edit Idea
 
-  .row
-    .col-lg-12.col-md-12.col-sm-12.col-xs-12
-      = form_for @idea, class: 'form-inline', url: admin_idea_path do |f|
-        = render 'form', :locals => { :f => f }
+.row
+  .col-lg-12.col-md-12.col-sm-12.col-xs-12
+    = form_for @idea, class: 'form-inline', url: admin_idea_path do |f|
+      = render 'form', :locals => { :f => f }
 
-  .row
-    .col-lg-12.col-md-12.col-sm-12.col-xs-12
-      = link_to 'Show', @idea
-      \|
-      = link_to 'Index', admin_ideas_path
+.row
+  .col-lg-12.col-md-12.col-sm-12.col-xs-12
+    = link_to 'Show', @idea
+    \|
+    = link_to 'Index', admin_ideas_path
