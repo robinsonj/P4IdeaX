@@ -5,6 +5,9 @@
   #idea-description-group.form-group.inline
     = f.label :description, "Description"
     = f.text_area :description, :placeholder => "It would be great if...", :id => "new-idea-description", :class => "input-textarea big", :rows => "7", :columns => "40"
+  #idea-description-group.form-group.inline
+    = f.label :current_id, 'Current'
+    = select :idea, :current_id, currents_list, :include_blank => true
   #idea-tags-group.form-group.inline
     %label{:for => "tags"} Tags
     = render :partial => 'tags/tag_editor', :locals => { :f => f }
