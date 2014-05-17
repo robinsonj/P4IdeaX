@@ -1,42 +1,46 @@
-= form_for @idea, class: 'form-inline' do |f|
-  - if @idea.errors.any?
-    #error_explanation
-      %h2= "#{pluralize(@idea.errors.count, "error")} prohibited this idea from being saved:"
-      %ul
-        - @idea.errors.full_messages.each do |msg|
-          %li= msg
+- if @idea.errors.any?
+  #error_explanation
+    %h2= "#{pluralize(@idea.errors.count, "error")} prohibited this idea from being saved:"
+    %ul
+      - @idea.errors.full_messages.each do |msg|
+        %li= msg
 
-  .form-group.row
-    .col-lg-2.col-md-2.col-sm-2.col-xs-2
-      = f.label :owner_id, 'Owner'
-    .col-lg-8.col-md-8.col-sm-8.col-xs-8
-      = select :idea, :owner_id, @users, class: 'form-control'
-  .form-group.row
-    .col-lg-2.col-md-2.col-sm-2.col-xs-2
-      = f.label :title, 'Idea'
-    .col-lg-8.col-md-8.col-sm-8.col-xs-8
-      = f.text_field :title, class: 'form-control'
-  .form-group.row
-    .col-lg-2.col-md-2.col-sm-2.col-xs-2
-      = f.label :description, 'Description'
-    .col-lg-8.col-md-8.col-sm-8.col-xs-8
-      = f.text_area :description, class: 'form-control', rows: '4'
-  .form-group.row
-    .col-lg-2.col-md-2.col-sm-2.col-xs-2
-      = f.label :status, 'Status'
-    .col-lg-8.col-md-8.col-sm-8.col-xs-8
-      = select :idea, :status, @states, class: 'form-control'
-  .form-group.row
-    .col-lg-2.col-md-2.col-sm-2.col-xs-2
-      = f.label :current_id, 'Current'
-    .col-lg-8.col-md-8.col-sm-8.col-xs-8
-      = select :idea, :current_id, @currents, class: 'form-control', :include_blank => true
-  .form-group.row
-    .col-lg-2.col-md-2.col-sm-2.col-xs-2
-      = f.label :tags, 'Tags'
-    .col-lg-8.col-md-8.col-sm-8.col-xs-8
-      = render :partial => 'admin/tags/tag_editor', :locals => { :f => f }
+.form-group.row
+  .col-lg-2.col-md-2.col-sm-2.col-xs-2
+    = f.label :owner_id, 'Owner', class: 'control-label'
+  .col-lg-8.col-md-8.col-sm-8.col-xs-8
+    = select :idea, :owner_id, @users, class: 'form-control'
+.form-group.row
+  .col-lg-2.col-md-2.col-sm-2.col-xs-2
+    = f.label :title, 'Idea', class: 'control-label'
+  .col-lg-8.col-md-8.col-sm-8.col-xs-8
+    = f.text_field :title, class: 'form-control'
+.form-group.row
+  .col-lg-2.col-md-2.col-sm-2.col-xs-2
+    = f.label :description, 'Description', class: 'control-label'
+  .col-lg-8.col-md-8.col-sm-8.col-xs-8
+    = f.text_area :description, class: 'form-control', rows: '4'
+.form-group.row
+  .col-lg-2.col-md-2.col-sm-2.col-xs-2
+    = f.label :status, 'Status', class: 'control-label'
+  .col-lg-8.col-md-8.col-sm-8.col-xs-8
+    = select :idea, :status, @states, class: 'form-control'
+.form-group.row
+  .col-lg-2.col-md-2.col-sm-2.col-xs-2
+    = f.label :current_id, 'Current', class: 'control-label'
+  .col-lg-2.col-md-2.col-sm-2.col-xs-2
+    = select :idea, :current_id, @currents, class: 'form-control', :include_blank => true
+  .col-lg-2.col-md-2.col-sm-2.col-xs-2
+    .form-inline
+      .checkbox
+        = f.check_box :current_pending, class: 'control-label'
+      Pending
+.form-group.row
+  .col-lg-2.col-md-2.col-sm-2.col-xs-2
+    = f.label :tags, 'Tags', class: 'control-label'
+  .col-lg-8.col-md-8.col-sm-8.col-xs-8
+    = render :partial => 'admin/tags/tag_editor', :locals => { :f => f }
 
-  .form-group.row
-    .col-lg-2.col-md-2.col-sm-2.col-xs-2.col-lg-offset-2.col-md-offset-2.col-sm-offset-2.col-xs-offset-2
-      = f.submit 'Save', class: 'btn btn-primary'
+.form-group.row
+  .col-lg-2.col-md-2.col-sm-2.col-xs-2.col-lg-offset-2.col-md-offset-2.col-sm-offset-2.col-xs-offset-2
+    = f.submit 'Save', class: 'btn btn-primary'
