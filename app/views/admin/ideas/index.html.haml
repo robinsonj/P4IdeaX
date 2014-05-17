@@ -28,6 +28,7 @@
       %table.table.table-striped.table-hover
         %tr
           %th ID
+          %th Votes
           %th Owner
           %th Title
           %th Description
@@ -39,6 +40,7 @@
         - @ideas.each do |idea|
           %tr
             %td= idea.id
+            %td= idea.rating
             %td= link_to "#{idea.owner.name}", user_profile_path(idea.owner)
             %td= link_to "#{idea.title}", idea_path(idea)
             %td= idea.description_excerpt(80)
