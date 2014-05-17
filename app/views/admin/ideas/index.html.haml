@@ -17,7 +17,7 @@
           .page-header
             %h2 New Idea
           = form_for @idea, class: 'form-inline', url: admin_ideas_path do |f|
-            = render 'form', :locals => { :f => f }
+            = render partial: 'admin/ideas/form', :locals => { :f => f }
 
 %br
 %br
