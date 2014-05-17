@@ -90,7 +90,7 @@ class IdeasController < ApplicationController
   end
 
   def idea_params
-    params.require(:idea).permit(:title, :description)
+    params.require(:idea).permit(:title, :description, :current_id)
   end
 
   def idea_tag_params
