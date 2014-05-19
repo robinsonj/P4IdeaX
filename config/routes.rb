@@ -35,7 +35,14 @@ BBYIDX::Application.routes.draw do
   namespace :admin do
     match '' => 'dashboard#index', via: 'get', as: :dashboard
 
-    resources :ideas, :currents, only: [:index, :edit, :create, :update, :destroy]
+    resources :ideas, only: [:index, :edit, :create, :update, :destroy] do
+      collection do
+        get     'edit'    => 'ideas#bulk_edit',     as: :edit
+        patch   'update'  => 'ideas#bulk_update',   as: :update
+        delete  'destroy' => 'ideas#bulk_destroy',  as: :destroy
+      end
+    end
+    resources :currents, only: [:index, :edit, :create, :update, :destroy]
     resources :tags
   end
 end
