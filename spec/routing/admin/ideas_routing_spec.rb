@@ -31,5 +31,17 @@ describe Admin::IdeasController do
       expect(delete: '/admin/ideas/1').to route_to('admin/ideas#destroy', :id => '1')
     end
 
+    it 'routes to #bulk_edit' do
+      expect(get: '/admin/ideas/edit').to route_to('admin/ideas#bulk_edit')
+    end
+
+    it 'routes to #bulk_update' do
+      expect(patch: '/admin/ideas/update').to route_to('admin/ideas#bulk_update')
+    end
+
+    it 'routes to #bulk_destroy' do
+      expect(delete: '/admin/ideas/destroy').to route_to('admin/ideas#bulk_destroy')
+    end
+
   end
 end
