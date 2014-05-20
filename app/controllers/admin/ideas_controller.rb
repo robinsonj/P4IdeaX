@@ -50,6 +50,18 @@ class Admin::IdeasController < Admin::AdminController
     end
   end
 
+  # DELETE /admin/ideas/destroy
+  def bulk_destroy
+    @ideas = Idea.find(params[:ideas])
+    # puts @ideas.inspect
+
+    for idea in @ideas do
+      idea.destroy
+    end
+
+    redirect_to admin_ideas_path, notice: 'Ideas deleted.'
+  end
+
   private
 
   def set_idea
