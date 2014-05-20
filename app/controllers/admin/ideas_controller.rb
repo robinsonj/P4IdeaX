@@ -46,7 +46,7 @@ class Admin::IdeasController < Admin::AdminController
     if @idea.destroy
       redirect_to admin_ideas_path, notice: 'Idea deleted.'
     else
-      redirect_to admin_ideas_path, notice: 'Idea could not be deleted.'
+      redirect_to admin_ideas_path, error: 'Idea could not be deleted.'
     end
   end
 
