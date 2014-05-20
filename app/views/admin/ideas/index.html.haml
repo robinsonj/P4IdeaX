@@ -25,33 +25,37 @@
 .row
   .col-lg-12.col-md-12.col-sm-12.col-xs-12
     .table-responsive
-      %table.table.table-striped.table-hover
-        %tr
-          %th ID
-          %th Votes
-          %th Owner
-          %th Title
-          %th Description
-          %th Status
-          %th Current
-          %th Tags
-          %th Manage
-
-        - @ideas.each do |idea|
+      = form_tag destroy_admin_ideas_path, method: :delete do
+        %table.table.table-striped.table-hover
           %tr
-            %td= idea.id
-            %td= idea.rating
-            %td= link_to "#{idea.owner.name}", user_profile_path(idea.owner)
-            %td= link_to "#{idea.title}", idea_path(idea)
-            %td= idea.description_excerpt(80)
-            %td= idea.status
-            %td
-              - if idea.current
-                = link_to "#{idea.current.title}", current_path(idea.current)
-            %td
-              - idea.tags.each do |tag|
-                = render :partial => 'tags/tag', :locals => { :tag => tag }
-            %td
-              = link_to 'Edit', edit_admin_idea_path(idea)
-              \|
-              = link_to 'Delete', idea, :method => :delete, :data => { :confirm => 'Are you sure?' }
+            %th ID
+            %th= check_box_tag 'select_all'
+            %th Votes
+            %th Owner
+            %th Title
+            %th Description
+            %th Status
+            %th Current
+            %th Tags
+            %th Manage
+
+          - @ideas.each do |idea|
+            %tr
+              %td= idea.id
+              %td= check_box_tag 'ideas[]', idea.id, false, class: 'idea_checkbox'
+              %td= idea.rating
+              %td= link_to "#{idea.owner.name}", user_profile_path(idea.owner)
+              %td= link_to "#{idea.title}", idea_path(idea)
+              %td= idea.description_excerpt(80)
+              %td= idea.status
+              %td
+                - if idea.current
+                  = link_to "#{idea.current.title}", current_path(idea.current)
+              %td
+                - idea.tags.each do |tag|
+                  = render :partial => 'tags/tag', :locals => { :tag => tag }
+              %td
+                = link_to 'Edit', edit_admin_idea_path(idea)
+                \|
+                = link_to 'Delete', idea, :method => :delete, :data => { :confirm => 'Are you sure?' }
+        = submit_tag 'Delete Selected', class: 'btn btn-danger'
