@@ -13,12 +13,13 @@ $ ->
   $ '.idea_checkbox'
     .click ->
       if all_checked()
-        $('#select_all').prop('checked', false)
-      else
         $('#select_all').prop('checked', true)
+      else
+        $('#select_all').prop('checked', false)
 
 all_checked = () ->
+  flag = true
   $('.idea_checkbox').each ->
     if $(this).prop('checked') is false
-      false
-  true
+      flag = false
+  flag
