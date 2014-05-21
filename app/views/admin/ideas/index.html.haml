@@ -39,7 +39,7 @@
             %th Manage
 
           - @ideas.each do |idea|
-            %tr
+            %tr{ class: needs_attention(idea) }
               %td= idea.id
               %td= check_box_tag 'ideas[]', idea.id, false, class: 'idea_checkbox'
               %td= idea.rating
