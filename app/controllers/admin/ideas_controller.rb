@@ -5,8 +5,16 @@ class Admin::IdeasController < Admin::AdminController
 
   # GET /admin/ideas
   def index
+    if params[:ideas_set]
+      case params[:ideas_set]
+      when 'current_pending'
+        @ideas = Idea.where(current_pending: true).order(id: :desc)
+      end
+    else
+      @ideas = Idea.all.order(id: :desc)
+    end
+
     @idea = Idea.new
-    @ideas = Idea.all.order(id: :desc)
   end
 
   # POST /admin/ideas
