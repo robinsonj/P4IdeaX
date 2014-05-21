@@ -1,7 +1,10 @@
 //= require jquery
 //= require jquery_ujs
+//= require jquery.ui.autocomplete
 //= require bootstrap
+//= require turbolinks
 //= require_tree ./admin/
+//= require autocomplete-rails
 
 $ ->
   $ '#select_all'
