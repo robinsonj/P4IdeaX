@@ -1,3 +1,8 @@
 %ul.nav.nav-stacked
-  %li= link_to 'Ideas', admin_ideas_path
+  %li
+    = link_to 'Ideas', admin_ideas_path
+    %ul
+      %li
+        = link_to 'Currents Pending', admin_ideas_path(ideas_set: :current_pending)
+        %span.badge= pending_ideas_count
   %li= link_to 'Currents', admin_currents_path
