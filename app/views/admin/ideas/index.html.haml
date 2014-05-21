@@ -49,6 +49,8 @@
               %td
                 - if idea.current
                   = link_to "#{idea.current.title}", current_path(idea.current)
+                - if idea.current_pending
+                  %i.glyphicon.glyphicon-warning-sign
               %td
                 - idea.tags.each do |tag|
                   = render :partial => 'tags/tag', :locals => { :tag => tag }
